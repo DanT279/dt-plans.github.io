@@ -40,27 +40,10 @@
             }
         },
 
-        // Enhanced smooth scrolling
+        // Smooth scrolling handled by original jQuery Scrolly plugin
         smoothScrolling: function() {
-            // Smooth scroll for anchor links
-            $('a[href*="#"]:not([href="#"])').click(function() {
-                if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-                    var target = $(this.hash);
-                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-                    if (target.length) {
-                        $('html, body').animate({
-                            scrollTop: target.offset().top - 100
-                        }, 1000, 'easeInOutCubic');
-                        return false;
-                    }
-                }
-            });
-
-            // Add easing function
-            $.easing.easeInOutCubic = function (x, t, b, c, d) {
-                if ((t/=d/2) < 1) return c/2*t*t*t + b;
-                return c/2*((t-=2)*t*t + 2) + b;
-            };
+            // Let the original jQuery Scrolly plugin handle smooth scrolling
+            // This prevents conflicts with the existing scrolly functionality
         },
 
         // Form validation and enhancement
@@ -363,6 +346,15 @@
         }
     `;
     document.head.appendChild(style);
+
+    // Suppress StorageType.persistent deprecation warning (not from our code)
+    const originalWarn = console.warn;
+    console.warn = function(...args) {
+        if (args[0] && args[0].includes && args[0].includes('StorageType.persistent is deprecated')) {
+            return; // Suppress this specific warning
+        }
+        originalWarn.apply(console, args);
+    };
 
     // Initialize when DOM is ready
     $(document).ready(function() {
