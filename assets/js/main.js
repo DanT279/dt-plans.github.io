@@ -302,17 +302,20 @@
 		
 		$('#project-details').html(modalContent);
 		$modal.show();
+		$body.addClass('is-modal-visible');
 	}
 
 	// Close modal
 	$close.on('click', function() {
 		$modal.hide();
+		$body.removeClass('is-modal-visible');
 	});
 
 	// Close modal when clicking outside
 	$(window).on('click', function(e) {
 		if (e.target == $modal[0]) {
 			$modal.hide();
+			$body.removeClass('is-modal-visible');
 		}
 	});
 
@@ -320,6 +323,7 @@
 	$(document).on('keydown', function(e) {
 		if (e.keyCode === 27) { // Escape key
 			$modal.hide();
+			$body.removeClass('is-modal-visible');
 		}
 	});
 
