@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" id="html-lang">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-en="Professional Portfolio - Construction Drafting" data-fr="Portfolio Professionnel - Dessin de Construction">Professional Portfolio - Construction Drafting</title>
+    <link rel="stylesheet" href="css/styles.css?v=20">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Basic favicon -->
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo"></h1>
+            <nav class="nav">
+                <a href="#home" class="nav-link active" data-en="Home" data-fr="Accueil">Home</a>
+                <a href="#work" class="nav-link" data-en="Projects" data-fr="Projets">Projects</a>
+                <a href="#skills" class="nav-link" data-en="Skills" data-fr="Compétences">Skills</a>
+                <a href="#about" class="nav-link" data-en="About" data-fr="À propos">About</a>
+                <a href="#contact" class="nav-link" data-en="Contact" data-fr="Contact">Contact</a>
+            </nav>
+            <div class="language-switcher">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="fr">FR</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <div class="hero-brand">
+                    <h1 class="hero-title" data-en="DT-Plans" data-fr="DT-Plans">DT-Plans</h1>
+                    <p class="hero-tagline" data-en="Professional Construction Drafting" data-fr="Dessin de Construction Professionnel">Professional Construction Drafting</p>
+                </div>
+                <div class="hero-description">
+                    <p class="hero-subtitle" data-en="Precision • Innovation • Professional Excellence" data-fr="Précision • Innovation • Excellence Professionnelle">Precision • Innovation • Professional Excellence</p>
+                    <p class="hero-text" data-en="Creating detailed architectural and technical drawings that bring construction projects to life with accuracy and professional standards." data-fr="Création de plans architecturaux et techniques détaillés qui donnent vie aux projets de construction avec précision et standards professionnels.">Creating detailed architectural and technical drawings that bring construction projects to life with accuracy and professional standards.</p>
+                </div>
+                <div class="hero-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">📐</span>
+                        <span class="feature-text" data-en="CAD Design" data-fr="Conception CAO">CAD Design</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🏗️</span>
+                        <span class="feature-text" data-en="Construction Plans" data-fr="Plans de Construction">Construction Plans</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">📋</span>
+                        <span class="feature-text" data-en="Technical Drawings" data-fr="Plans Techniques">Technical Drawings</span>
+                    </div>
+                </div>
+                <div class="hero-actions">
+                    <button class="hero-btn primary" data-en="View Portfolio" data-fr="Voir le Portfolio">View Portfolio</button>
+                    <button class="hero-btn secondary" data-en="Get In Touch" data-fr="Contactez-moi">Get In Touch</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Grid -->
+        <section id="work" class="portfolio-grid">
+            <div class="gallery" id="gallery">
+                <!-- Portfolio items will be dynamically generated -->
+            </div>
+        </section>
+
+        <!-- About Modal -->
+        <div class="modal" id="about-modal">
+            <div class="modal-backdrop"></div>
+            <div class="modal-content">
+                <button class="modal-close" id="closeAbout">&times;</button>
+                <div class="modal-image-container">
+                    <div class="about-hero">
+                        <img src="logo.svg" alt="DT-Plans Logo" class="modal-logo">
+                        <h2 data-en="About Me" data-fr="À Propos de Moi">About Me</h2>
+                        <p data-en="Professional construction drafting expertise" data-fr="Expertise professionnelle en dessin de construction">Professional construction drafting expertise</p>
+                    </div>
+                </div>
+                <div class="modal-scrollable-content">
+                    <div class="modal-info">
+                        <div class="about-text">
+                            <p data-en="I am a dedicated construction drafting professional currently pursuing specialized training in architectural and technical drawing. My passion lies in creating precise, detailed drawings that bring construction projects to life with accuracy and professional standards." data-fr="Je suis un professionnel du dessin de construction dédié, poursuivant actuellement une formation spécialisée en dessin architectural et technique. Ma passion réside dans la création de plans précis et détaillés qui donnent vie aux projets de construction avec précision et standards professionnels.">I am a dedicated construction drafting professional currently pursuing specialized training in architectural and technical drawing. My passion lies in creating precise, detailed drawings that bring construction projects to life with accuracy and professional standards.</p>
+                            <p data-en="With a strong foundation in CAD software and construction principles, I bring accuracy, attention to detail, and innovative problem-solving to every project. I specialize in translating complex architectural concepts into clear, actionable construction documents that contractors can execute flawlessly." data-fr="Avec une solide base en logiciels CAO et principes de construction, j'apporte précision, attention aux détails et résolution de problèmes innovante à chaque projet. Je me spécialise dans la traduction de concepts architecturaux complexes en documents de construction clairs et exploitables que les entrepreneurs peuvent exécuter parfaitement.">With a strong foundation in CAD software and construction principles, I bring accuracy, attention to detail, and innovative problem-solving to every project. I specialize in translating complex architectural concepts into clear, actionable construction documents that contractors can execute flawlessly.</p>
+                            <p data-en="My approach combines traditional drafting excellence with modern digital tools, ensuring every project meets the highest industry standards while staying ahead of technological advances in the construction field." data-fr="Mon approche combine l'excellence du dessin traditionnel avec les outils numériques modernes, garantissant que chaque projet respecte les normes industrielles les plus élevées tout en restant à l'avant-garde des avancées technologiques dans le domaine de la construction.">My approach combines traditional drafting excellence with modern digital tools, ensuring every project meets the highest industry standards while staying ahead of technological advances in the construction field.</p>
+                        </div>
+                        <div class="about-stats">
+                            <div class="stat">
+                                <span class="stat-number">25+</span>
+                                <span class="stat-label" data-en="Projects Completed" data-fr="Projets Terminés">Projects Completed</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">6+</span>
+                                <span class="stat-label" data-en="CAD Software" data-fr="Logiciels CAO">CAD Software</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">2+</span>
+                                <span class="stat-label" data-en="Years Training" data-fr="Années de Formation">Years Training</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">100%</span>
+                                <span class="stat-label" data-en="Client Satisfaction" data-fr="Satisfaction Client">Client Satisfaction</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="scroll-to-top" title="Scroll to top">
+        ↑
+    </button>
+
+    <!-- Project Modal/Lightbox (Forty-style) -->
+    <div class="modal" id="modal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">&times;</button>
+            <div class="modal-image-container">
+                <img class="modal-image" id="modalImage" src="" alt="">
+            </div>
+            <div class="modal-scrollable-content">
+                <div class="modal-info">
+                    <h2 class="modal-title" id="modalTitle"></h2>
+                    <div class="modal-description" id="modalDescription"></div>
+                </div>
+                <div class="modal-gallery-container">
+                    <button class="gallery-nav gallery-nav-left" id="galleryLeft">‹</button>
+                    <div class="modal-gallery" id="modalGallery">
+                        <!-- Additional images will be loaded here -->
+                    </div>
+                    <button class="gallery-nav gallery-nav-right" id="galleryRight">›</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skills Modal -->
+    <div class="modal" id="skills-modal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="closeSkillsModal">&times;</button>
+                <div class="modal-image-container">
+                    <div class="skills-hero">
+                        <img src="logo.svg" alt="DT-Plans Logo" class="modal-logo">
+                        <h2 data-en="Technical Skills" data-fr="Compétences Techniques">Technical Skills</h2>
+                        <p data-en="Professional expertise in construction drafting and CAD software" data-fr="Expertise professionnelle en dessin de construction et logiciels CAO">Professional expertise in construction drafting and CAD software</p>
+                    </div>
+                </div>
+            <div class="modal-scrollable-content">
+                <div class="modal-info">
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h4 data-en="CAD Software" data-fr="Logiciels CAO">CAD Software</h4>
+                            <div class="skill-items">
+                                <span class="skill-item">AutoCAD</span>
+                                <span class="skill-item">Revit</span>
+                                <span class="skill-item">SketchUp Pro</span>
+                                <span class="skill-item">SolidWorks</span>
+                                <span class="skill-item">Fusion 360</span>
+                                <span class="skill-item">Vectorworks</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4 data-en="Drafting Specialties" data-fr="Spécialités de Dessin">Drafting Specialties</h4>
+                            <div class="skill-items">
+                                <span class="skill-item" data-en="Architectural Plans" data-fr="Plans Architecturaux">Architectural Plans</span>
+                                <span class="skill-item" data-en="Structural Drawings" data-fr="Plans Structurels">Structural Drawings</span>
+                                <span class="skill-item" data-en="MEP Systems" data-fr="Systèmes MEP">MEP Systems</span>
+                                <span class="skill-item" data-en="3D Modeling" data-fr="Modélisation 3D">3D Modeling</span>
+                                <span class="skill-item" data-en="Site Plans" data-fr="Plans de Site">Site Plans</span>
+                                <span class="skill-item" data-en="Detail Drawings" data-fr="Plans de Détail">Detail Drawings</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4 data-en="Construction Knowledge" data-fr="Connaissances en Construction">Construction Knowledge</h4>
+                            <div class="skill-items">
+                                <span class="skill-item" data-en="Building Codes" data-fr="Codes du Bâtiment">Building Codes</span>
+                                <span class="skill-item" data-en="Materials & Methods" data-fr="Matériaux & Méthodes">Materials & Methods</span>
+                                <span class="skill-item" data-en="Project Management" data-fr="Gestion de Projet">Project Management</span>
+                                <span class="skill-item" data-en="Quality Control" data-fr="Contrôle Qualité">Quality Control</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4 data-en="Industry Standards" data-fr="Normes Industrielles">Industry Standards</h4>
+                            <div class="skill-items">
+                                <span class="skill-item" data-en="ANSI Standards" data-fr="Normes ANSI">ANSI Standards</span>
+                                <span class="skill-item" data-en="ISO Documentation" data-fr="Documentation ISO">ISO Documentation</span>
+                                <span class="skill-item" data-en="BIM Workflows" data-fr="Flux de Travail BIM">BIM Workflows</span>
+                                <span class="skill-item" data-en="CAD Standards" data-fr="Normes CAO">CAD Standards</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div class="modal" id="contact-modal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="closeContactModal">&times;</button>
+                <div class="modal-image-container">
+                    <div class="contact-hero">
+                        <img src="logo.svg" alt="DT-Plans Logo" class="modal-logo">
+                        <h2 data-en="Get In Touch" data-fr="Contactez-moi">Get In Touch</h2>
+                        <p data-en="Ready to bring your construction project to life?" data-fr="Prêt à donner vie à votre projet de construction ?">Ready to bring your construction project to life?</p>
+                    </div>
+                </div>
+            <div class="modal-scrollable-content">
+                <div class="modal-info">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span class="contact-icon">📧</span>
+                            <span class="contact-text">contact@dt-plans.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📱</span>
+                            <span class="contact-text" data-en="+1 (555) 123-4567" data-fr="+1 (555) 123-4567">+1 (555) 123-4567</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📍</span>
+                            <span class="contact-text" data-en="Montreal, QC, Canada" data-fr="Montréal, QC, Canada">Montreal, QC, Canada</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">🌐</span>
+                            <span class="contact-text">dt-plans.com</span>
+                        </div>
+                    </div>
+                    <div class="contact-cta">
+                        <p data-en="Let's discuss how I can help with your drafting needs. I'm available for consultations, project planning, and full drafting services." data-fr="Discutons de la façon dont je peux vous aider avec vos besoins en dessin. Je suis disponible pour des consultations, planification de projets et services de dessin complets.">Let's discuss how I can help with your drafting needs. I'm available for consultations, project planning, and full drafting services.</p>
+                        <button class="contact-btn" data-en="Start a Project" data-fr="Commencer un Projet">Start a Project</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
