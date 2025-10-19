@@ -692,6 +692,7 @@ h1, h2, h3, h4, h5, h6 {
     background: rgba(26, 26, 26, 0.8);
     backdrop-filter: blur(15px);
     border-radius: 0 0 8px 8px;
+    min-height: 300px;
 }
 
 .modal-image-container {
@@ -700,7 +701,7 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     background: rgba(0, 0, 0, 0.6);
     padding: 0;
-    height: 400px;
+    height: 250px;
     width: 100%;
     flex-shrink: 0;
     border-radius: 8px 8px 0 0 !important;
@@ -710,7 +711,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .modal-image {
     width: 100%;
-    height: 400px;
+    height: 250px;
     object-fit: cover;
     object-position: center;
     border-radius: 8px 8px 0 0 !important;
@@ -1144,13 +1145,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Unified Modal Design - Match Project Modals */
-.modal-image-container {
-    position: relative;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(15px);
-    border-radius: 8px 8px 0 0 !important;
-    overflow: hidden;
-}
 
 .modal-scrollable-content {
     background: rgba(26, 26, 26, 0.8);
