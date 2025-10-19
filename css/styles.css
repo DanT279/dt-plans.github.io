@@ -446,6 +446,26 @@ h1, h2, h3, h4, h5, h6 {
 
 /* About modal now uses unified modal structure */
 
+/* About text should match project modal description */
+.about-text p {
+    color: #c0c0c0;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    font-size: 0.81rem;
+    font-weight: 300;
+    letter-spacing: 0;
+}
+
+/* Skills and Contact modals should also match project modal text */
+.skills-grid,
+.contact-info {
+    color: #c0c0c0;
+    line-height: 1.6;
+    font-size: 0.81rem;
+    font-weight: 300;
+    letter-spacing: 0;
+}
+
 /* About Stats Section */
 .about-stats {
     display: grid;
