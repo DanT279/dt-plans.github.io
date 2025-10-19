@@ -1044,4 +1044,9 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateY(0);
 }
 
+/* Prevent body scroll when modal is open */
+body.modal-open {
+    overflow: hidden !important;
+}
+
 /* Portfolio items are visible by default */

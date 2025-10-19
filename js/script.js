@@ -280,12 +280,14 @@ function openModal(item) {
     
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
+    document.body.classList.add('modal-open');
 }
 
 // Close modal
 function closeModalHandler() {
     modal.classList.remove('active');
     document.body.style.overflow = 'auto';
+    document.body.classList.remove('modal-open');
 }
 
 // Center image in gallery
@@ -364,6 +366,7 @@ function closeAllModals() {
     contactModal.classList.remove('active');
     modal.classList.remove('active');
     document.body.style.overflow = 'auto';
+    document.body.classList.remove('modal-open');
 }
 
 // About modal functions
@@ -371,7 +374,8 @@ function openAboutModal() {
     // Close any other open modals first
     closeAllModals();
     aboutModal.classList.add('active');
-    // Don't hide body overflow to keep header accessible
+    document.body.style.overflow = 'hidden';
+    document.body.classList.add('modal-open');
 }
 
 function closeAboutModal() {
@@ -384,7 +388,8 @@ function openSkillsModal() {
     // Close any other open modals first
     closeAllModals();
     skillsModal.classList.add('active');
-    // Don't hide body overflow to keep header accessible
+    document.body.style.overflow = 'hidden';
+    document.body.classList.add('modal-open');
 }
 
 function closeSkillsModal() {
@@ -397,7 +402,8 @@ function openContactModal() {
     // Close any other open modals first
     closeAllModals();
     contactModal.classList.add('active');
-    // Don't hide body overflow to keep header accessible
+    document.body.style.overflow = 'hidden';
+    document.body.classList.add('modal-open');
 }
 
 function closeContactModal() {
