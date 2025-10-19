@@ -470,8 +470,8 @@ h1, h2, h3, h4, h5, h6 {
 .about-content {
     background: #2a2a2a;
     border-radius: 12px;
-    max-width: 700px;
-    width: 85%;
+    max-width: 350px; /* Reduced from 700px to 350px - half the width */
+    width: 60%; /* Reduced from 85% to 60% for consistency */
     max-height: 85vh;
     overflow-y: auto;
     position: relative;
@@ -646,8 +646,8 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
     background: transparent;
     border-radius: 8px !important;
-    max-width: 900px;
-    width: 90%;
+    max-width: 450px; /* Reduced from 900px to 450px - half the width */
+    width: 60%; /* Reduced from 90% to 60% for better proportions */
     max-height: calc(100vh - 120px); /* Account for header space */
     margin-top: 100px; /* Push content below header */
     box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
@@ -710,7 +710,7 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     background: rgba(0, 0, 0, 0.6);
     padding: 0;
-    height: 10rem; /* 120px equivalent - much smaller for more text space */
+    height: 12rem; /* 144px equivalent - slightly taller for narrower modal */
     width: 100%;
     flex-shrink: 0;
     border-radius: 8px 8px 0 0 !important;
@@ -720,7 +720,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .modal-image {
     width: 100%;
-    height: 10rem; /* 120px equivalent - much smaller for more text space */
+    height: 12rem; /* 144px equivalent - slightly taller for narrower modal */
     object-fit: cover;
     object-position: center;
     border-radius: 8px 8px 0 0 !important;
