@@ -279,26 +279,17 @@ function openModal(item) {
     updateGalleryNavigation();
     
     modal.classList.add('active');
-    // Store current scroll position
-    const scrollY = window.scrollY;
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${scrollY}px`;
-    document.body.style.width = '100%';
-    document.body.style.overflow = 'hidden';
     document.body.classList.add('modal-open');
+    // Add scroll listener to redirect scroll to modal content
+    addModalScrollListener();
 }
 
 // Close modal
 function closeModalHandler() {
     modal.classList.remove('active');
-    // Restore scroll position
-    const scrollY = document.body.style.top;
-    document.body.style.position = '';
-    document.body.style.top = '';
-    document.body.style.width = '';
-    document.body.style.overflow = 'auto';
     document.body.classList.remove('modal-open');
-    window.scrollTo(0, parseInt(scrollY || '0') * -1);
+    // Remove scroll listener
+    removeModalScrollListener();
 }
 
 // Center image in gallery
@@ -369,6 +360,41 @@ function smoothScrollTo(element, target, duration) {
     requestAnimationFrame(animateScroll);
 }
 
+// Modal scroll management
+let modalScrollListener = null;
+
+function addModalScrollListener() {
+    if (modalScrollListener) return; // Already added
+    
+    modalScrollListener = function(e) {
+        e.preventDefault();
+        
+        // Find the active modal
+        const activeModal = document.querySelector('.modal.active, .about-modal.active, .skills-modal.active, .contact-modal.active');
+        if (!activeModal) return;
+        
+        // Find the scrollable content area
+        const scrollableContent = activeModal.querySelector('.modal-scrollable-content, .about-content, .skills-content, .contact-content');
+        if (!scrollableContent) return;
+        
+        // Apply scroll to the modal content
+        const delta = e.deltaY || e.detail || e.wheelDelta;
+        scrollableContent.scrollTop += delta;
+    };
+    
+    // Add event listener with passive: false to allow preventDefault
+    document.addEventListener('wheel', modalScrollListener, { passive: false });
+    document.addEventListener('DOMMouseScroll', modalScrollListener, { passive: false }); // Firefox
+}
+
+function removeModalScrollListener() {
+    if (modalScrollListener) {
+        document.removeEventListener('wheel', modalScrollListener);
+        document.removeEventListener('DOMMouseScroll', modalScrollListener);
+        modalScrollListener = null;
+    }
+}
+
 // Modal management functions
 function closeAllModals() {
     // Close all modals
@@ -376,16 +402,9 @@ function closeAllModals() {
     skillsModal.classList.remove('active');
     contactModal.classList.remove('active');
     modal.classList.remove('active');
-    // Restore scroll position
-    const scrollY = document.body.style.top;
-    document.body.style.position = '';
-    document.body.style.top = '';
-    document.body.style.width = '';
-    document.body.style.overflow = 'auto';
     document.body.classList.remove('modal-open');
-    if (scrollY) {
-        window.scrollTo(0, parseInt(scrollY) * -1);
-    }
+    // Remove scroll listener
+    removeModalScrollListener();
 }
 
 // About modal functions
@@ -393,25 +412,16 @@ function openAboutModal() {
     // Close any other open modals first
     closeAllModals();
     aboutModal.classList.add('active');
-    // Store current scroll position
-    const scrollY = window.scrollY;
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${scrollY}px`;
-    document.body.style.width = '100%';
-    document.body.style.overflow = 'hidden';
     document.body.classList.add('modal-open');
+    // Add scroll listener to redirect scroll to modal content
+    addModalScrollListener();
 }
 
 function closeAboutModal() {
     aboutModal.classList.remove('active');
-    // Restore scroll position
-    const scrollY = document.body.style.top;
-    document.body.style.position = '';
-    document.body.style.top = '';
-    document.body.style.width = '';
-    document.body.style.overflow = 'auto';
     document.body.classList.remove('modal-open');
-    window.scrollTo(0, parseInt(scrollY || '0') * -1);
+    // Remove scroll listener
+    removeModalScrollListener();
 }
 
 // Skills modal functions
@@ -419,25 +429,16 @@ function openSkillsModal() {
     // Close any other open modals first
     closeAllModals();
     skillsModal.classList.add('active');
-    // Store current scroll position
-    const scrollY = window.scrollY;
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${scrollY}px`;
-    document.body.style.width = '100%';
-    document.body.style.overflow = 'hidden';
     document.body.classList.add('modal-open');
+    // Add scroll listener to redirect scroll to modal content
+    addModalScrollListener();
 }
 
 function closeSkillsModal() {
     skillsModal.classList.remove('active');
-    // Restore scroll position
-    const scrollY = document.body.style.top;
-    document.body.style.position = '';
-    document.body.style.top = '';
-    document.body.style.width = '';
-    document.body.style.overflow = 'auto';
     document.body.classList.remove('modal-open');
-    window.scrollTo(0, parseInt(scrollY || '0') * -1);
+    // Remove scroll listener
+    removeModalScrollListener();
 }
 
 // Contact modal functions
@@ -445,25 +446,16 @@ function openContactModal() {
     // Close any other open modals first
     closeAllModals();
     contactModal.classList.add('active');
-    // Store current scroll position
-    const scrollY = window.scrollY;
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${scrollY}px`;
-    document.body.style.width = '100%';
-    document.body.style.overflow = 'hidden';
     document.body.classList.add('modal-open');
+    // Add scroll listener to redirect scroll to modal content
+    addModalScrollListener();
 }
 
 function closeContactModal() {
     contactModal.classList.remove('active');
-    // Restore scroll position
-    const scrollY = document.body.style.top;
-    document.body.style.position = '';
-    document.body.style.top = '';
-    document.body.style.width = '';
-    document.body.style.overflow = 'auto';
     document.body.classList.remove('modal-open');
-    window.scrollTo(0, parseInt(scrollY || '0') * -1);
+    // Remove scroll listener
+    removeModalScrollListener();
 }
 
 // Setup event listeners
