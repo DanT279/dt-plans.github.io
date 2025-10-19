@@ -594,7 +594,8 @@ h1, h2, h3, h4, h5, h6 {
     background: rgba(26, 26, 26, 0.8);
     backdrop-filter: blur(15px);
     border-radius: 0 0 8px 8px;
-    min-height: 400px;
+    min-height: 200px;
+    max-height: 400px;
     width: 100%;
 }
 
@@ -632,7 +633,7 @@ h1, h2, h3, h4, h5, h6 {
     overflow-y: auto;
     backdrop-filter: none;
     border-radius: 0;
-    max-height: 200px;
+    min-height: 0;
 }
 
 .modal-gallery-container {
@@ -933,9 +934,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Unified Modal Content Text */
-.about-text p,
-.skills-grid,
-.contact-info {
+.about-text p {
+    color: #c0c0c0;
+    line-height: 1.6;
+    font-size: 0.81rem;
+    font-weight: 300;
+    letter-spacing: 0;
+    margin-bottom: 2rem;
+}
+
+.skills-grid {
     color: #c0c0c0;
     line-height: 1.6;
     font-size: 0.81rem;
@@ -943,8 +951,12 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: 0;
 }
 
-.about-text p {
-    margin-bottom: 2rem;
+.contact-info {
+    color: #c0c0c0;
+    line-height: 1.6;
+    font-size: 0.81rem;
+    font-weight: 300;
+    letter-spacing: 0;
 }
 
 .skill-category h4 {
@@ -1002,6 +1014,78 @@ h1, h2, h3, h4, h5, h6 {
     color: #d4d4d4;
     font-size: 0.9rem;
     font-weight: 400;
+}
+
+/* About Stats Section */
+.about-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(245, 245, 245, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(245, 245, 245, 0.1);
+    transition: all 0.3s ease;
+}
+
+.stat:hover {
+    background: rgba(245, 245, 245, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #f5f5f5;
+    margin-bottom: 0.5rem;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.8rem;
+    color: #c0c0c0;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Clean padding for About, Skills, and Contact modals (no gallery) */
+#about-modal .modal-info,
+#skills-modal .modal-info,
+#contact-modal .modal-info {
+    padding: 1rem 2rem 2rem 2rem;
+    background: transparent;
+    flex: 1;
+    overflow-y: auto;
+    backdrop-filter: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+/* Ensure About, Skills, and Contact modals don't have gallery containers */
+#about-modal .modal-scrollable-content,
+#skills-modal .modal-scrollable-content,
+#contact-modal .modal-scrollable-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: rgba(26, 26, 26, 0.8);
+    backdrop-filter: blur(15px);
+    border-radius: 0 0 8px 8px;
+    min-height: 200px;
+    max-height: 400px;
+    width: 100%;
 }
 
 /* Duplicate styles removed - using unified styles above */
