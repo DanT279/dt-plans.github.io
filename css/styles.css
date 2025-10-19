@@ -709,25 +709,25 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .modal-info {
-    padding: 2rem 2rem 0 2rem;
+    padding: 1.5rem 2rem 0.5rem 2rem;
     background: transparent;
     flex: 1;
     overflow-y: auto;
     backdrop-filter: none;
     border-radius: 0;
-    max-height: 250px;
+    max-height: 200px;
 }
 
 .modal-gallery-container {
     position: relative;
     margin: 0;
-    padding: 1rem 2rem 2rem 2rem;
+    padding: 0.5rem 2rem 1rem 2rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     flex-shrink: 0;
     background: transparent;
     backdrop-filter: none;
     border-radius: 0 0 8px 8px;
-    min-height: 100px;
+    min-height: 80px;
     width: 100%;
 }
 
@@ -738,7 +738,7 @@ h1, h2, h3, h4, h5, h6 {
     overflow-y: hidden;
     scrollbar-width: none;
     padding: 0;
-    min-height: 80px;
+    min-height: 60px;
     align-items: center;
 }
 
