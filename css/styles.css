@@ -39,6 +39,17 @@ body {
 
 @media only screen and (min-width: 1024px) {
     html { font-size: 12px; } /* Desktop - 75% scaling */
+    
+    /* Ensure desktop modals use the reduced width */
+    .modal-content {
+        max-width: 450px !important;
+        width: 60% !important;
+    }
+    
+    .about-content {
+        max-width: 350px !important;
+        width: 60% !important;
+    }
 }
 
 @media only screen and (min-width: 1920px) {
@@ -986,6 +997,7 @@ h1, h2, h3, h4, h5, h6 {
     .modal-content {
         width: 98%;
         margin: 1% auto;
+        max-width: 450px; /* Keep the reduced width even on mobile */
     }
     
     .modal-header,
