@@ -15,6 +15,7 @@ body {
     color: #f5f5f5;
     line-height: 1.6;
     overflow-x: hidden;
+    font-size: 1rem; /* Reset to 1rem since we're using transform now */
     
     /* Zoom out by 25% - Scale to 75% */
     transform: scale(0.75);
