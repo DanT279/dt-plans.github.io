@@ -9,6 +9,11 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Dynamic layout variables */
+:root {
+    --header-height: 80px; /* default, updated dynamically via JS */
+}
+
 body {
     font-family: 'Work Sans', sans-serif;
     background: #1a1a1a;
@@ -125,7 +130,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Main content */
 .main {
-    margin-top: 80px;
+    margin-top: var(--header-height, 80px);
 }
 
 /* Smooth scrolling handled by JavaScript */
@@ -586,7 +591,7 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     width: 100%;
     height: 100%; /* Full height */
-    z-index: 3000;
+    z-index: 5000; /* Above header */
 }
 
 .modal.active {
@@ -603,6 +608,7 @@ h1, h2, h3, h4, h5, h6 {
     height: 100%;
     background: rgba(26, 26, 26, 0.6);
     backdrop-filter: blur(20px);
+    z-index: 1;
 }
 
 .modal-content {
@@ -611,14 +617,16 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 8px !important;
     max-width: 900px;
     width: 90%;
-    max-height: calc(100vh - 120px); /* Account for header space */
-    margin-top: 100px; /* Push content below header */
+    /* Let content size independently of header, spacing handled by margins per breakpoint */
+    margin: 0;
+    max-height: calc(100vh - 4rem);
     box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
     backdrop-filter: none;
     border: none;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    z-index: 2;
 }
 
 .modal-close {

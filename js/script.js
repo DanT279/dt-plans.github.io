@@ -371,7 +371,8 @@ function openAboutModal() {
     // Close any other open modals first
     closeAllModals();
     aboutModal.classList.add('active');
-    // Don't hide body overflow to keep header accessible
+    // Block background scroll while modal is open
+    document.body.style.overflow = 'hidden';
 }
 
 function closeAboutModal() {
@@ -384,7 +385,8 @@ function openSkillsModal() {
     // Close any other open modals first
     closeAllModals();
     skillsModal.classList.add('active');
-    // Don't hide body overflow to keep header accessible
+    // Block background scroll while modal is open
+    document.body.style.overflow = 'hidden';
 }
 
 function closeSkillsModal() {
@@ -397,7 +399,8 @@ function openContactModal() {
     // Close any other open modals first
     closeAllModals();
     contactModal.classList.add('active');
-    // Don't hide body overflow to keep header accessible
+    // Block background scroll while modal is open
+    document.body.style.overflow = 'hidden';
 }
 
 function closeContactModal() {
@@ -513,7 +516,7 @@ function setupEventListeners() {
     // Close skills modal when clicking backdrop
     if (skillsModal) {
         skillsModal.addEventListener('click', (e) => {
-            if (e.target === skillsModal) {
+            if (e.target.classList && e.target.classList.contains('modal-backdrop')) {
                 closeSkillsModal();
             }
         });
@@ -534,7 +537,7 @@ function setupEventListeners() {
     // Close contact modal when clicking backdrop
     if (contactModal) {
         contactModal.addEventListener('click', (e) => {
-            if (e.target === contactModal) {
+            if (e.target.classList && e.target.classList.contains('modal-backdrop')) {
                 closeContactModal();
             }
         });
@@ -543,7 +546,7 @@ function setupEventListeners() {
     // Close about modal when clicking backdrop
     if (aboutModal) {
         aboutModal.addEventListener('click', (e) => {
-            if (e.target === aboutModal) {
+            if (e.target.classList && e.target.classList.contains('modal-backdrop')) {
                 closeAboutModal();
             }
         });

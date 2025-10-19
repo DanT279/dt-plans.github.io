@@ -14,6 +14,7 @@ class ResponsiveManager {
     init() {
         this.setupEventListeners();
         this.optimizeForDevice();
+        this.updateHeaderOffset();
     }
     
     getCurrentBreakpoint() {
@@ -86,6 +87,9 @@ class ResponsiveManager {
         
         // Update modal positioning
         this.updateModalPositioning();
+
+        // Update header-based layout spacing
+        this.updateHeaderOffset();
     }
     
     handleOrientationChange() {
@@ -94,6 +98,7 @@ class ResponsiveManager {
             this.updateGalleryLayout();
             this.updateModalPositioning();
             this.optimizeForDevice();
+            this.updateHeaderOffset();
         }, 300);
     }
     
@@ -340,6 +345,12 @@ class ResponsiveManager {
             modal.style.margin = '3rem';
             modal.style.maxHeight = '80vh';
         }
+    }
+
+    updateHeaderOffset() {
+        const header = document.querySelector('.header');
+        const headerHeight = header ? header.offsetHeight : 80;
+        document.documentElement.style.setProperty('--header-height', `${headerHeight}px`);
     }
     
     scrollGalleryLeft() {
