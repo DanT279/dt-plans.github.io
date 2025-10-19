@@ -7,6 +7,10 @@
 
 html {
     scroll-behavior: smooth;
+    transform: scale(0.75);
+    transform-origin: top left;
+    width: 133.33%; /* Compensate for the scale to prevent horizontal scroll */
+    height: 133.33%;
 }
 
 body {
