@@ -7,11 +7,14 @@
 
 html {
     scroll-behavior: smooth;
-    /* Universal 75% scaling using CSS custom properties */
-    --scale-factor: 0.75;
-    font-size: calc(1rem * var(--scale-factor));
 }
 
+/* =========================================
+   RESPONSIVE ZOOM APPROACH
+   Works WITH existing mobile.css and tablet.css
+   ========================================= */
+
+/* Default - no zoom by default */
 body {
     font-family: 'Work Sans', sans-serif;
     background: #1a1a1a;
@@ -19,6 +22,21 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     font-size: 1rem;
+    zoom: 1; /* No zoom by default */
+}
+
+/* Only zoom on desktop screens */
+@media only screen and (min-width: 1024px) {
+    body {
+        zoom: 0.75; /* 25% zoom out on desktop only */
+    }
+}
+
+/* Larger screens - maybe less zoom needed */
+@media only screen and (min-width: 1920px) {
+    body {
+        zoom: 0.85; /* Only 15% zoom out on very large screens */
+    }
 }
 
 /* Typography */
