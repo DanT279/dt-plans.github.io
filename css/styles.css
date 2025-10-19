@@ -708,19 +708,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .modal-info {
-    padding: 1rem 2rem 0.25rem 2rem;
+    padding: 1rem 2rem 1rem 2rem;
     background: transparent;
     flex: 1;
     overflow-y: auto;
     backdrop-filter: none;
     border-radius: 0;
-    max-height: 150px;
+    max-height: 200px;
 }
 
 .modal-gallery-container {
     position: relative;
     margin: 0;
-    padding: 0.25rem 2rem 0.5rem 2rem;
+    padding: 1rem 2rem 0.5rem 2rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     flex-shrink: 0;
     background: transparent;
