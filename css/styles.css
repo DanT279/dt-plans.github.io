@@ -1047,9 +1047,6 @@ h1, h2, h3, h4, h5, h6 {
 /* Prevent body scroll when modal is open */
 body.modal-open {
     overflow: hidden !important;
-    position: fixed !important;
-    width: 100% !important;
-    height: 100% !important;
 }
 
 /* Portfolio items are visible by default */

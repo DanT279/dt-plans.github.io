@@ -279,6 +279,11 @@ function openModal(item) {
     updateGalleryNavigation();
     
     modal.classList.add('active');
+    // Store current scroll position
+    const scrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = '100%';
     document.body.style.overflow = 'hidden';
     document.body.classList.add('modal-open');
 }
@@ -286,8 +291,14 @@ function openModal(item) {
 // Close modal
 function closeModalHandler() {
     modal.classList.remove('active');
+    // Restore scroll position
+    const scrollY = document.body.style.top;
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
     document.body.style.overflow = 'auto';
     document.body.classList.remove('modal-open');
+    window.scrollTo(0, parseInt(scrollY || '0') * -1);
 }
 
 // Center image in gallery
@@ -365,8 +376,16 @@ function closeAllModals() {
     skillsModal.classList.remove('active');
     contactModal.classList.remove('active');
     modal.classList.remove('active');
+    // Restore scroll position
+    const scrollY = document.body.style.top;
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
     document.body.style.overflow = 'auto';
     document.body.classList.remove('modal-open');
+    if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY) * -1);
+    }
 }
 
 // About modal functions
@@ -374,13 +393,25 @@ function openAboutModal() {
     // Close any other open modals first
     closeAllModals();
     aboutModal.classList.add('active');
+    // Store current scroll position
+    const scrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = '100%';
     document.body.style.overflow = 'hidden';
     document.body.classList.add('modal-open');
 }
 
 function closeAboutModal() {
     aboutModal.classList.remove('active');
+    // Restore scroll position
+    const scrollY = document.body.style.top;
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
     document.body.style.overflow = 'auto';
+    document.body.classList.remove('modal-open');
+    window.scrollTo(0, parseInt(scrollY || '0') * -1);
 }
 
 // Skills modal functions
@@ -388,13 +419,25 @@ function openSkillsModal() {
     // Close any other open modals first
     closeAllModals();
     skillsModal.classList.add('active');
+    // Store current scroll position
+    const scrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = '100%';
     document.body.style.overflow = 'hidden';
     document.body.classList.add('modal-open');
 }
 
 function closeSkillsModal() {
     skillsModal.classList.remove('active');
+    // Restore scroll position
+    const scrollY = document.body.style.top;
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
     document.body.style.overflow = 'auto';
+    document.body.classList.remove('modal-open');
+    window.scrollTo(0, parseInt(scrollY || '0') * -1);
 }
 
 // Contact modal functions
@@ -402,13 +445,25 @@ function openContactModal() {
     // Close any other open modals first
     closeAllModals();
     contactModal.classList.add('active');
+    // Store current scroll position
+    const scrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = '100%';
     document.body.style.overflow = 'hidden';
     document.body.classList.add('modal-open');
 }
 
 function closeContactModal() {
     contactModal.classList.remove('active');
+    // Restore scroll position
+    const scrollY = document.body.style.top;
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
     document.body.style.overflow = 'auto';
+    document.body.classList.remove('modal-open');
+    window.scrollTo(0, parseInt(scrollY || '0') * -1);
 }
 
 // Setup event listeners
