@@ -42,9 +42,20 @@ body {
     
     /* Ensure desktop modals use the reduced width */
     .modal-content {
-        max-width: 450px !important;
-        width: 60% !important;
-    }
+		position: relative;
+		background: transparent;
+		border-radius: 8px !important;
+		max-width: 450px;
+		width: 60%;
+		max-height: calc(85vh - 60px);
+		margin-top: 50px;
+		box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+		backdrop-filter: none;
+		border: none;
+		display: flex;
+		flex-direction: column;
+		overflow: hidden;
+	}
     
     .about-content {
         max-width: 350px !important;
