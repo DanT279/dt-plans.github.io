@@ -73,10 +73,10 @@
     
     /* Header Tablet Portrait */
     .header {
-        padding: 1.5rem 0;
+        padding: 1rem 0;
     }
     
-    .container {
+    .header .container {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
