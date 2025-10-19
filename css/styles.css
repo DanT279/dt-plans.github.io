@@ -440,7 +440,89 @@ h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
 }
 
-/* About Modal - Now uses unified modal structure */
+/* About Modal - Hidden by default */
+/* About Modal now uses unified modal design */
+
+.about-content {
+    background: #2a2a2a;
+    border-radius: 12px;
+    width: fit-content;
+    max-width: 90vw;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Subtle scroll indicator for about modal */
+.about-content::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: linear-gradient(transparent, #2a2a2a);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.about-content:hover::after {
+    opacity: 1;
+}
+
+.about-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 2rem 1rem;
+    border-bottom: none;
+}
+
+.about-header h2 {
+    font-size: 2.5rem;
+    color: #f5f5f5;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+}
+
+.close-about {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #f5f5f5;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+}
+
+.close-about:hover {
+    color: #d4d4d4;
+    background: rgba(212, 212, 212, 0.2);
+    transform: scale(1.05);
+}
+
+.about-body {
+    padding: 2rem;
+}
+
+.about-text p {
+    margin-bottom: 2rem;
+    color: #d4d4d4;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    font-weight: 300;
+    letter-spacing: 0.01em;
+}
 
 .skills-section {
     margin: 2rem 0;
@@ -761,7 +843,8 @@ h1, h2, h3, h4, h5, h6 {
 
 
 /* Hide scrollbars on modals for cleaner look */
-.modal-content::-webkit-scrollbar {
+.modal-content::-webkit-scrollbar,
+.about-content::-webkit-scrollbar {
     display: none;
 }
 
@@ -879,8 +962,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Modal Logo Styling */
 .modal-logo {
-    width: 120px;
-    height: 120px;
+    width: 80px;
+    height: 80px;
     margin-bottom: 1.5rem;
     opacity: 0.9;
     filter: brightness(1.1);
@@ -893,185 +976,42 @@ h1, h2, h3, h4, h5, h6 {
     filter: brightness(1.2);
 }
 
-/* Unified Modal Hero Sections */
+/* Modal Hero Sections - Unified with Project Modals */
 .skills-hero,
 .contact-hero,
 .about-hero {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     text-align: center;
-    padding: 2rem;
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: 8px 8px 0 0;
-    backdrop-filter: blur(15px);
-    min-height: 200px;
-    max-height: 400px;
+    padding: 3rem 2rem;
+    min-height: 300px;
+    background: transparent;
 }
 
 .skills-hero h2,
 .contact-hero h2,
 .about-hero h2 {
-    font-size: 1.45rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
     color: #f5f5f5;
-    font-weight: 300;
-    margin: 0 0 1rem 0;
-    letter-spacing: 0.02em;
-    line-height: 1.3;
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
 }
 
 .skills-hero p,
 .contact-hero p,
 .about-hero p {
-    color: #c0c0c0;
-    line-height: 1.6;
-    margin-bottom: 0;
-    font-size: 0.81rem;
-    font-weight: 300;
-    letter-spacing: 0;
-}
-
-/* Unified Modal Content Text */
-.about-text p {
-    color: #c0c0c0;
-    line-height: 1.6;
-    font-size: 0.81rem;
-    font-weight: 300;
-    letter-spacing: 0;
-    margin-bottom: 2rem;
-}
-
-.skills-grid {
-    color: #c0c0c0;
-    line-height: 1.6;
-    font-size: 0.81rem;
-    font-weight: 300;
-    letter-spacing: 0;
-}
-
-.contact-info {
-    color: #c0c0c0;
-    line-height: 1.6;
-    font-size: 0.81rem;
-    font-weight: 300;
-    letter-spacing: 0;
-}
-
-.skill-category h4 {
-    font-family: 'Space Grotesk', sans-serif;
-    color: #f5f5f5;
-    margin-bottom: 1rem;
+    font-family: 'Work Sans', sans-serif;
     font-size: 1.1rem;
-    font-weight: 600;
-}
-
-.skill-item {
-    display: inline-block;
-    background: rgba(245, 245, 245, 0.1);
     color: #d4d4d4;
-    padding: 0.5rem 1rem;
-    margin: 0.25rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 400;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(245, 245, 245, 0.2);
-}
-
-.skill-item:hover {
-    background: rgba(245, 245, 245, 0.2);
-    color: #f5f5f5;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.contact-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1.5rem;
-    padding: 1rem;
-    background: rgba(245, 245, 245, 0.05);
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(245, 245, 245, 0.1);
-}
-
-.contact-item:hover {
-    background: rgba(245, 245, 245, 0.1);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.contact-icon {
-    font-size: 1.5rem;
-    margin-right: 1rem;
-    opacity: 0.8;
-}
-
-.contact-text {
-    color: #d4d4d4;
-    font-size: 0.9rem;
+    max-width: 500px;
+    line-height: 1.6;
     font-weight: 400;
 }
-
-/* About Stats Section */
-.about-stats {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.stat {
-    text-align: center;
-    padding: 1rem;
-    background: rgba(245, 245, 245, 0.05);
-    border-radius: 8px;
-    border: 1px solid rgba(245, 245, 245, 0.1);
-    transition: all 0.3s ease;
-}
-
-.stat:hover {
-    background: rgba(245, 245, 245, 0.1);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.stat-number {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    color: #f5f5f5;
-    margin-bottom: 0.5rem;
-    font-family: 'Space Grotesk', sans-serif;
-}
-
-.stat-label {
-    display: block;
-    font-size: 0.8rem;
-    color: #c0c0c0;
-    font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-/* About, Skills, and Contact modals - Clean layout without gallery */
-#about-modal .modal-info,
-#skills-modal .modal-info,
-#contact-modal .modal-info {
-    padding: 1rem 2rem 2rem 2rem;
-    background: transparent;
-    flex: 1;
-    overflow-y: auto;
-    backdrop-filter: none;
-    border-radius: 0;
-    min-height: 0;
-}
-
-/* Duplicate styles removed - using unified styles above */
 
 /* Scroll to Top Button */
 .scroll-to-top {
