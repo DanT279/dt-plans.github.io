@@ -594,8 +594,7 @@ h1, h2, h3, h4, h5, h6 {
     background: rgba(26, 26, 26, 0.8);
     backdrop-filter: blur(15px);
     border-radius: 0 0 8px 8px;
-    min-height: 200px;
-    max-height: 400px;
+    min-height: 400px;
     width: 100%;
 }
 
@@ -633,7 +632,7 @@ h1, h2, h3, h4, h5, h6 {
     overflow-y: auto;
     backdrop-filter: none;
     border-radius: 0;
-    min-height: 0;
+    max-height: 200px;
 }
 
 .modal-gallery-container {
@@ -1059,20 +1058,7 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: 0.05em;
 }
 
-/* Clean padding for About, Skills, and Contact modals (no gallery) */
-#about-modal .modal-info,
-#skills-modal .modal-info,
-#contact-modal .modal-info {
-    padding: 1rem 2rem 2rem 2rem;
-    background: transparent;
-    flex: 1;
-    overflow-y: auto;
-    backdrop-filter: none;
-    border-radius: 0;
-    min-height: 0;
-}
-
-/* Ensure About, Skills, and Contact modals don't have gallery containers */
+/* About, Skills, and Contact modals - Different from project modals */
 #about-modal .modal-scrollable-content,
 #skills-modal .modal-scrollable-content,
 #contact-modal .modal-scrollable-content {
@@ -1086,6 +1072,18 @@ h1, h2, h3, h4, h5, h6 {
     min-height: 200px;
     max-height: 400px;
     width: 100%;
+}
+
+#about-modal .modal-info,
+#skills-modal .modal-info,
+#contact-modal .modal-info {
+    padding: 1rem 2rem 2rem 2rem;
+    background: transparent;
+    flex: 1;
+    overflow-y: auto;
+    backdrop-filter: none;
+    border-radius: 0;
+    min-height: 0;
 }
 
 /* Duplicate styles removed - using unified styles above */
