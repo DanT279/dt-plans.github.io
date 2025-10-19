@@ -15,10 +15,7 @@ body {
     color: #f5f5f5;
     line-height: 1.6;
     overflow-x: hidden;
-    transform: scale(0.75);
-    transform-origin: top left;
-    width: 133.33%; /* Compensate for the scale to prevent horizontal scroll */
-    height: 133.33%;
+    zoom: 0.75;
 }
 
 /* Typography */
