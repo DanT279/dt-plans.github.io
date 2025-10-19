@@ -678,6 +678,7 @@ h1, h2, h3, h4, h5, h6 {
     backdrop-filter: blur(15px);
     border-radius: 0 0 8px 8px;
     min-height: 400px;
+    width: 100%;
 }
 
 .modal-image-container {
@@ -686,15 +687,14 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     background: rgba(0, 0, 0, 0.6);
     padding: 0;
-    width: 100%;
+    width: fit-content;
     flex-shrink: 0;
     border-radius: 8px 8px 0 0;
     overflow: hidden;
     backdrop-filter: blur(15px);
-    /* Let the image determine the container size */
+    /* Let the image determine the container size exactly */
     height: auto;
-    min-height: 200px;
-    max-height: 400px;
+    margin: 0 auto;
 }
 
 .modal-image {
