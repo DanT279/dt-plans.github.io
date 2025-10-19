@@ -677,6 +677,7 @@ h1, h2, h3, h4, h5, h6 {
     backdrop-filter: blur(15px);
     border-radius: 0 0 8px 8px;
     min-height: 400px;
+    max-height: calc(90vh - 60px);
     width: 100%;
 }
 
