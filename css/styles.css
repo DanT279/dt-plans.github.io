@@ -1,50 +1,90 @@
-/* Reset and base styles */
-* {
+/* =========================================
+   COMPREHENSIVE CSS RESET & CROSS-BROWSER COMPATIBILITY
+   ========================================= */
+
+/* Universal box-sizing reset */
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* HTML base with cross-browser font scaling */
 html {
     scroll-behavior: smooth;
+    /* Cross-browser font scaling for 75% size */
+    font-size: 12px; /* Base 16px * 0.75 = 12px */
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
-/* =========================================
-   RESPONSIVE ZOOM APPROACH
-   Works WITH existing mobile.css and tablet.css
-   ========================================= */
-
-/* Default - no zoom by default */
+/* Body with cross-browser compatibility */
 body {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     background: #1a1a1a;
     color: #f5f5f5;
     line-height: 1.6;
     overflow-x: hidden;
     font-size: 1rem;
-    zoom: 1; /* No zoom by default */
+    /* Cross-browser font smoothing */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 
-/* Only zoom on desktop screens */
+/* =========================================
+   RESPONSIVE SCALING WITH CROSS-BROWSER SUPPORT
+   ========================================= */
+
+/* Mobile - no scaling, use mobile.css */
+@media only screen and (max-width: 767px) {
+    html {
+        font-size: 16px; /* Full size on mobile */
+    }
+}
+
+/* Tablet - no scaling, use tablet.css */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    html {
+        font-size: 16px; /* Full size on tablet */
+    }
+}
+
+/* Desktop - 75% scaling */
 @media only screen and (min-width: 1024px) {
-    body {
-        zoom: 0.75; /* 25% zoom out on desktop only */
+    html {
+        font-size: 12px; /* 75% of 16px = 12px */
     }
 }
 
-/* Larger screens - maybe less zoom needed */
+/* Large desktop - 85% scaling */
 @media only screen and (min-width: 1920px) {
-    body {
-        zoom: 0.85; /* Only 15% zoom out on very large screens */
+    html {
+        font-size: 13.6px; /* 85% of 16px = 13.6px */
     }
 }
 
-/* Typography */
+/* =========================================
+   CROSS-BROWSER TYPOGRAPHY & LAYOUT
+   ========================================= */
+
+/* Typography with cross-browser font stacks */
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-weight: 700;
     line-height: 1.2;
     margin: 0 0 1rem 0;
+    /* Cross-browser text rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Ensure all text uses rem units for proper scaling */
+p, span, div, a, li, td, th {
+    font-size: inherit;
+    line-height: inherit;
 }
 
 .container {
