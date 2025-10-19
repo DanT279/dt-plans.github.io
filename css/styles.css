@@ -42,9 +42,20 @@ body {
     
     /* Ensure desktop modals use the reduced width */
     .modal-content {
-        max-width: 450px !important;
-        width: 60% !important;
-    }
+		position: relative;
+		background: transparent;
+		border-radius: 8px !important;
+		max-width: 450px;
+		width: 60%;
+		max-height: calc(85vh - 60px);
+		margin-top: 50px;
+		box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+		backdrop-filter: none;
+		border: none;
+		display: flex;
+		flex-direction: column;
+		overflow: hidden;
+	}
     
     .about-content {
         max-width: 350px !important;
@@ -481,12 +492,12 @@ h1, h2, h3, h4, h5, h6 {
 .about-content {
     background: #2a2a2a;
     border-radius: 12px;
-    max-width: 175px; /* Halved from 350px to 175px */
-    width: 30%; /* Halved from 60% to 30% */
-    max-height: 42vh; /* Halved height */
+    max-width: 175px; /* Keep Edge's perfect width */
+    width: 30%; /* Keep Edge's perfect width */
+    max-height: 70vh; /* Increased height for more content */
     overflow-y: auto;
     position: relative;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4); /* Halved shadow */
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4); /* Keep Edge's perfect shadow */
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -657,11 +668,11 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
     background: transparent;
     border-radius: 8px !important;
-    max-width: 225px; /* Halved from 450px to 225px */
-    width: 30%; /* Halved from 60% to 30% */
-    max-height: calc(50vh - 60px); /* Halved height */
-    margin-top: 50px; /* Halved margin */
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4); /* Halved shadow */
+    max-width: 225px; /* Keep Edge's perfect width */
+    width: 30%; /* Keep Edge's perfect width */
+    max-height: calc(80vh - 60px); /* Increased height for more content */
+    margin-top: 50px; /* Keep Edge's perfect margin */
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4); /* Keep Edge's perfect shadow */
     backdrop-filter: none;
     border: none;
     display: flex;
