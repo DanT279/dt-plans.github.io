@@ -698,3 +698,35 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Portfolio items are visible by default - no animation needed
 });
+// Modal UX fixes: ensure consistent behavior on mobile/tablet
+document.addEventListener('DOMContentLoaded', () => {
+    const originalOpenAbout = openAboutModal;
+    openAboutModal = function() {
+        originalOpenAbout();
+        document.body.style.overflow = 'hidden';
+    };
+
+    const originalOpenSkills = openSkillsModal;
+    openSkillsModal = function() {
+        originalOpenSkills();
+        document.body.style.overflow = 'hidden';
+    };
+
+    const originalOpenContact = openContactModal;
+    openContactModal = function() {
+        originalOpenContact();
+        document.body.style.overflow = 'hidden';
+    };
+
+    // Close modals when tapping the dimmed backdrop
+    [aboutModal, skillsModal, contactModal].forEach((modalEl) => {
+        if (!modalEl) return;
+        modalEl.addEventListener('click', (e) => {
+            if (e.target.classList && e.target.classList.contains('modal-backdrop')) {
+                if (modalEl === aboutModal) closeAboutModal();
+                if (modalEl === skillsModal) closeSkillsModal();
+                if (modalEl === contactModal) closeContactModal();
+            }
+        });
+    });
+});
