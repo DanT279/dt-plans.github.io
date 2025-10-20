@@ -370,11 +370,11 @@ function addModalScrollListener() {
         e.preventDefault();
         
         // Find the active modal
-        const activeModal = document.querySelector('.modal.active, .about-modal.active, .skills-modal.active, .contact-modal.active');
+        const activeModal = document.querySelector('.modal.active');
         if (!activeModal) return;
         
-        // Find the scrollable content area
-        const scrollableContent = activeModal.querySelector('.modal-scrollable-content, .about-content, .skills-content, .contact-content');
+        // Find the scrollable content area - use the correct selector
+        const scrollableContent = activeModal.querySelector('.modal-scrollable-content');
         if (!scrollableContent) return;
         
         // Apply scroll to the modal content
