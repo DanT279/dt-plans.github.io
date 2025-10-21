@@ -641,8 +641,8 @@ function setupEventListeners() {
     
     if (heroBtnSecondary) {
         heroBtnSecondary.addEventListener('click', () => {
-            // Open about modal
-            openAboutModal();
+            // Open contact modal
+            openContactModal();
         });
     }
     
