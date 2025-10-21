@@ -147,6 +147,10 @@ const heroBtnSecondary = document.querySelector('.hero-btn.secondary');
 // Contact button element
 const contactBtn = document.querySelector('.contact-btn');
 
+// Mobile menu elements
+const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+const nav = document.querySelector('.nav');
+
 // Initialize the portfolio
 function initPortfolio() {
     renderPortfolio();
@@ -637,8 +641,8 @@ function setupEventListeners() {
     
     if (heroBtnSecondary) {
         heroBtnSecondary.addEventListener('click', () => {
-            // Open contact modal
-            openContactModal();
+            // Open about modal
+            openAboutModal();
         });
     }
     
@@ -712,6 +716,42 @@ function setupEventListeners() {
             }
         });
     });
+    
+    // Mobile menu functionality
+    if (mobileMenuToggle && nav) {
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenuToggle.classList.toggle('active');
+            nav.classList.toggle('active');
+            document.body.classList.toggle('nav-open');
+        });
+        
+        // Close mobile menu when clicking on nav links
+        nav.addEventListener('click', (e) => {
+            if (e.target.classList.contains('nav-link')) {
+                mobileMenuToggle.classList.remove('active');
+                nav.classList.remove('active');
+                document.body.classList.remove('nav-open');
+            }
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!nav.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+                mobileMenuToggle.classList.remove('active');
+                nav.classList.remove('active');
+                document.body.classList.remove('nav-open');
+            }
+        });
+        
+        // Close mobile menu on window resize if screen becomes larger
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                mobileMenuToggle.classList.remove('active');
+                nav.classList.remove('active');
+                document.body.classList.remove('nav-open');
+            }
+        });
+    }
 }
 
 // Add loading animation
