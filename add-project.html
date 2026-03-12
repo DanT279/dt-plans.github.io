@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DT-Plans - Add New Project</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a1a;
+            color: #f5f5f5;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(45, 45, 45, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid rgba(212, 212, 212, 0.1);
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #d4d4d4, #a0a0a0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: #a0a0a0;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #d4d4d4;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(30, 30, 30, 0.8);
+            border: 1px solid rgba(212, 212, 212, 0.2);
+            border-radius: 8px;
+            color: #f5f5f5;
+            font-size: 16px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #d4d4d4;
+            background: rgba(40, 40, 40, 0.9);
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .gallery-inputs {
+            border: 1px solid rgba(212, 212, 212, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+            background: rgba(25, 25, 25, 0.5);
+        }
+
+        .gallery-item {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+
+        .gallery-item input {
+            flex: 1;
+        }
+
+        .remove-gallery {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s ease;
+        }
+
+        .remove-gallery:hover {
+            background: #c82333;
+        }
+
+        .add-gallery {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+            transition: background 0.3s ease;
+        }
+
+        .add-gallery:hover {
+            background: #218838;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #d4d4d4, #a0a0a0);
+            color: #1a1a1a;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #e0e0e0, #b0b0b0);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #d4d4d4;
+            border: 1px solid rgba(212, 212, 212, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(212, 212, 212, 0.1);
+            border-color: #d4d4d4;
+        }
+
+        .output-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(25, 25, 25, 0.5);
+            border-radius: 8px;
+            border: 1px solid rgba(212, 212, 212, 0.2);
+        }
+
+        .output-section h3 {
+            margin-bottom: 15px;
+            color: #d4d4d4;
+        }
+
+        .json-output {
+            background: rgba(15, 15, 15, 0.8);
+            padding: 15px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-break: break-all;
+            border: 1px solid rgba(212, 212, 212, 0.1);
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .copy-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+            transition: background 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: #0056b3;
+        }
+
+        .fetch-error {
+            margin-top: 16px;
+            padding: 14px 18px;
+            background: rgba(220, 53, 69, 0.15);
+            border: 1px solid rgba(220, 53, 69, 0.4);
+            border-radius: 8px;
+            color: #f8a0a0;
+            font-size: 14px;
+        }
+
+        .fetch-error a {
+            color: #6ea8fe;
+        }
+
+        .instructions {
+            background: rgba(0, 123, 255, 0.1);
+            border: 1px solid rgba(0, 123, 255, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .instructions h3 {
+            color: #4dabf7;
+            margin-bottom: 10px;
+        }
+
+        .instructions ol {
+            margin-left: 20px;
+        }
+
+        .instructions li {
+            margin-bottom: 8px;
+            color: #a0a0a0;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #d4d4d4;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #f5f5f5;
+        }
+
+        .back-link::before {
+            content: "← ";
+            margin-right: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .btn-group {
+                flex-direction: column;
+            }
+
+            .gallery-item {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">Back to Portfolio</a>
+        
+        <h1>Add New Project</h1>
+        <p class="subtitle">Fill out the form below to generate JSON for your new project</p>
+
+        <div class="instructions">
+            <h3>📋 How to add a project</h3>
+            <p><strong>Easiest (when the site is served from a server):</strong></p>
+            <ol>
+                <li>Fill out the form below and add at least one gallery image.</li>
+                <li>Click <strong>"Add project &amp; download projects.json"</strong>.</li>
+                <li>Replace your repo’s <code>data/projects.json</code> with the downloaded file, then commit and push.</li>
+            </ol>
+            <p style="margin-top: 12px;"><strong>Manual (e.g. opening this page as a file):</strong></p>
+            <ol start="4">
+                <li>Click "Generate JSON", then "Copy to Clipboard".</li>
+                <li>Open <code>data/projects.json</code> and paste the new block into the <code>projects</code> array (after the last project, add a comma then paste).</li>
+                <li>Save and push.</li>
+            </ol>
+            <p style="margin-top: 10px; color: #a0a0a0; font-size: 0.95rem;">Tip: Run <code>npx http-server</code> in the project folder and open <code>/add-project.html</code> to use the download option.</p>
+        </div>
+
+        <form id="projectForm">
+            <div class="form-group">
+                <label for="title">Project Title (English) *</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+
+            <div class="form-group">
+                <label for="titleFr">Project Title (French) *</label>
+                <input type="text" id="titleFr" name="titleFr" required>
+            </div>
+
+            <div class="form-group">
+                <label for="category">Category (English) *</label>
+                <input type="text" id="category" name="category" required>
+            </div>
+
+            <div class="form-group">
+                <label for="categoryFr">Category (French) *</label>
+                <input type="text" id="categoryFr" name="categoryFr" required>
+            </div>
+
+            <div class="form-group">
+                <label for="image">Main Image Path *</label>
+                <input type="text" id="image" name="image" required placeholder="assets/images/project-main.jpg">
+                <small style="color: #a0a0a0; font-size: 14px; margin-top: 5px; display: block;">
+                    For local images: <code>assets/images/filename.jpg</code><br>
+                    For online images: <code>https://example.com/image.jpg</code>
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description (English) *</label>
+                <textarea id="description" name="description" required placeholder="Describe your project in detail..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="descriptionFr">Description (French) *</label>
+                <textarea id="descriptionFr" name="descriptionFr" required placeholder="Décrivez votre projet en détail..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Gallery Images *</label>
+                <div class="gallery-inputs">
+                    <div id="galleryContainer">
+                        <div class="gallery-item">
+                            <input type="text" name="gallery[]" required placeholder="assets/images/gallery1.jpg">
+                            <button type="button" class="remove-gallery" onclick="removeGalleryItem(this)" style="display: none;">Remove</button>
+                        </div>
+                    </div>
+                    <button type="button" class="add-gallery" onclick="addGalleryItem()">+ Add Gallery Image</button>
+                    <small style="color: #a0a0a0; font-size: 14px; margin-top: 10px; display: block;">
+                        Use local paths like <code>assets/images/filename.jpg</code> or full URLs
+                    </small>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="link">Project Link (Optional)</label>
+                <input type="url" id="link" name="link" placeholder="https://example.com/project">
+            </div>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary" id="btnAddAndDownload" onclick="addAndDownload()">Add project &amp; download projects.json</button>
+                <button type="button" class="btn btn-secondary" onclick="generateJSON()">Generate JSON only</button>
+                <button type="reset" class="btn btn-secondary">Reset Form</button>
+            </div>
+        </form>
+
+        <div id="fetchError" class="fetch-error" style="display: none;"></div>
+
+        <div id="outputSection" class="output-section" style="display: none;">
+            <h3>Generated JSON</h3>
+            <div id="jsonOutput" class="json-output"></div>
+            <button type="button" class="copy-btn" onclick="copyJSON()">Copy to Clipboard</button>
+        </div>
+    </div>
+
+    <script>
+        let galleryCount = 1;
+
+        function addGalleryItem() {
+            const container = document.getElementById('galleryContainer');
+            const newItem = document.createElement('div');
+            newItem.className = 'gallery-item';
+            newItem.innerHTML = `
+                <input type="text" name="gallery[]" required placeholder="assets/images/gallery${galleryCount + 1}.jpg">
+                <button type="button" class="remove-gallery" onclick="removeGalleryItem(this)">Remove</button>
+            `;
+            container.appendChild(newItem);
+            galleryCount++;
+
+            // Show remove buttons if there's more than one item
+            updateRemoveButtons();
+        }
+
+        function removeGalleryItem(button) {
+            const container = document.getElementById('galleryContainer');
+            if (container.children.length > 1) {
+                button.parentElement.remove();
+                galleryCount--;
+                updateRemoveButtons();
+            }
+        }
+
+        function updateRemoveButtons() {
+            const container = document.getElementById('galleryContainer');
+            const removeButtons = container.querySelectorAll('.remove-gallery');
+            
+            removeButtons.forEach(button => {
+                button.style.display = container.children.length > 1 ? 'block' : 'none';
+            });
+        }
+
+        function getProjectFromForm(nextId) {
+            const form = document.getElementById('projectForm');
+            const formData = new FormData(form);
+            const galleryUrls = Array.from(formData.getAll('gallery[]')).filter(url => url.trim() !== '');
+            if (galleryUrls.length === 0) return null;
+            const linkVal = (formData.get('link') || '').trim();
+            return {
+                id: nextId,
+                title: formData.get('title'),
+                titleFr: formData.get('titleFr'),
+                category: formData.get('category'),
+                categoryFr: formData.get('categoryFr'),
+                image: formData.get('image'),
+                description: formData.get('description'),
+                descriptionFr: formData.get('descriptionFr'),
+                gallery: galleryUrls,
+                link: linkVal || 'https://example.com/project'
+            };
+        }
+
+        function generateJSON() {
+            document.getElementById('fetchError').style.display = 'none';
+            const projectData = getProjectFromForm(Date.now());
+            if (!projectData) {
+                alert('Please add at least one gallery image.');
+                return;
+            }
+            const jsonOutput = document.getElementById('jsonOutput');
+            jsonOutput.textContent = JSON.stringify(projectData, null, 2);
+            const outputSection = document.getElementById('outputSection');
+            outputSection.style.display = 'block';
+            outputSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function addAndDownload() {
+            const errEl = document.getElementById('fetchError');
+            errEl.style.display = 'none';
+            errEl.textContent = '';
+            const btn = document.getElementById('btnAddAndDownload');
+            const project = getProjectFromForm(1);
+            if (!project) {
+                alert('Please fill required fields and add at least one gallery image.');
+                return;
+            }
+            const originalText = btn.textContent;
+            btn.disabled = true;
+            btn.textContent = 'Loading…';
+            fetch('data/projects.json')
+                .then(res => {
+                    if (!res.ok) throw new Error('Could not load projects.json');
+                    return res.json();
+                })
+                .then(data => {
+                    const projects = data.projects || [];
+                    const nextId = projects.length ? Math.max(...projects.map(p => p.id)) + 1 : 1;
+                    const newProject = getProjectFromForm(nextId);
+                    if (!newProject) return;
+                    projects.push(newProject);
+                    const blob = new Blob([JSON.stringify({ projects }, null, 2)], { type: 'application/json' });
+                    const a = document.createElement('a');
+                    a.href = URL.createObjectURL(blob);
+                    a.download = 'projects.json';
+                    a.click();
+                    URL.revokeObjectURL(a.href);
+                    btn.textContent = 'Downloaded! Replace data/projects.json and push.';
+                    setTimeout(() => { btn.textContent = originalText; btn.disabled = false; }, 3000);
+                })
+                .catch(() => {
+                    errEl.innerHTML = 'Could not load <code>data/projects.json</code>. Use this page from a local server (e.g. <code>npx http-server</code> in the project folder) or from your live site. Otherwise use <strong>Generate JSON only</strong> and paste into <code>data/projects.json</code> manually.';
+                    errEl.style.display = 'block';
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                });
+        }
+
+        function copyJSON() {
+            const jsonOutput = document.getElementById('jsonOutput');
+            const text = jsonOutput.textContent;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                const button = document.querySelector('.copy-btn');
+                const originalText = button.textContent;
+                button.textContent = 'Copied!';
+                button.style.background = '#28a745';
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = '#007bff';
+                }, 2000);
+            }).catch(() => {
+                alert('Failed to copy to clipboard. Please select and copy manually.');
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            updateRemoveButtons();
+        });
+    </script>
+</body>
+</html>

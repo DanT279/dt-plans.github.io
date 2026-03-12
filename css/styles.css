@@ -989,6 +989,22 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: 0;
 }
 
+/* Site footer (admin link) */
+.site-footer {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    margin-top: 2rem;
+}
+.site-footer .footer-add-project {
+    font-size: 0.85rem;
+    color: rgba(212, 212, 212, 0.5);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.site-footer .footer-add-project:hover {
+    color: rgba(212, 212, 212, 0.85);
+}
+
 /* Scroll to Top Button */
 .scroll-to-top {
     position: fixed;
