@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title data-en="Professional Portfolio - Construction Drafting" data-fr="Portfolio Professionnel - Dessin de Construction">Professional Portfolio - Construction Drafting</title>
-    <link rel="stylesheet" href="css/styles.css?v=29">
+    <link rel="stylesheet" href="css/styles.css?v=30">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <!-- Basic favicon -->
@@ -17,6 +17,7 @@
             <nav class="nav">
                 <a href="#home" class="nav-link active" data-en="Home" data-fr="Accueil">Home</a>
                 <a href="#work" class="nav-link" data-en="Projects" data-fr="Projets">Projects</a>
+                <a href="#tools" class="nav-link" data-en="Tools" data-fr="Outils">Tools</a>
                 <a href="#skills" class="nav-link" data-en="Skills" data-fr="Compétences">Skills</a>
                 <a href="#about" class="nav-link" data-en="About" data-fr="À propos">About</a>
                 <a href="#contact" class="nav-link" data-en="Contact" data-fr="Contact">Contact</a>
@@ -208,6 +209,32 @@
         </div>
     </div>
 
+    <!-- Tools / Calculators Modal -->
+    <div class="modal" id="tools-modal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content modal-content-wide">
+            <button class="modal-close" id="closeToolsModal">&times;</button>
+            <div class="modal-image-container">
+                <div class="skills-hero">
+                    <img src="logo.svg" alt="DT-Plans Logo" class="modal-logo">
+                    <h2 data-en="Site Calculators" data-fr="Calculateurs de Chantier">Site Calculators</h2>
+                    <p data-en="Fast field tools for conversions, roofs, tiles, stairs, slope and more." data-fr="Outils rapides pour conversions, toitures, tuiles, escaliers, pente et plus.">Fast field tools for conversions, roofs, tiles, stairs, slope and more.</p>
+                </div>
+            </div>
+            <div class="modal-scrollable-content">
+                <div class="modal-info">
+                    <iframe
+                        id="calculatorFrame"
+                        class="calculator-frame"
+                        title="DT-Plans calculators"
+                        loading="lazy"
+                        referrerpolicy="no-referrer"
+                    ></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Contact Modal -->
     <div class="modal" id="contact-modal">
         <div class="modal-backdrop"></div>
@@ -228,12 +255,8 @@
                             <span class="contact-text">contact@dt-plans.com</span>
                         </div>
                         <div class="contact-item">
-                            <span class="contact-icon">📱</span>
-                            <span class="contact-text" data-en="+1 (555) 123-4567" data-fr="+1 (555) 123-4567">+1 (555) 123-4567</span>
-                        </div>
-                        <div class="contact-item">
                             <span class="contact-icon">📍</span>
-                            <span class="contact-text" data-en="Montreal, QC, Canada" data-fr="Montréal, QC, Canada">Montreal, QC, Canada</span>
+                            <span class="contact-text" data-en="Near Rennes, Brittany, France" data-fr="Près de Rennes, Bretagne, France">Near Rennes, Brittany, France</span>
                         </div>
                         <div class="contact-item">
                             <span class="contact-icon">🌐</span>
