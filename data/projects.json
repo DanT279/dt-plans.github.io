@@ -107,48 +107,6 @@
         "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=300&fit=crop"
       ],
       "link": "https://example.com/construction-docs"
-    },
-    {
-      "id": 7,
-      "title": "Modern House Project",
-      "titleFr": "Projet de Maison Moderne",
-      "category": "Residential Design",
-      "categoryFr": "Design Résidentiel",
-      "image": "assets/images/project1-house/main.jpg",
-      "description": "This project demonstrates the subfolder organization method. **Project Scope:** Modern residential home design with clean lines and efficient space utilization. **Challenges:** Maximizing natural light while maintaining privacy. **Solution:** Strategic window placement and open floor plan design. **Results:** Created a functional and aesthetically pleasing family home.",
-      "descriptionFr": "Ce projet démontre la méthode d'organisation par sous-dossiers. **Portée du Projet :** Conception de maison résidentielle moderne avec des lignes épurées et une utilisation efficace de l'espace. **Défis :** Maximiser la lumière naturelle tout en maintenant l'intimité. **Solution :** Placement stratégique des fenêtres et conception de plan d'étage ouvert. **Résultats :** Créé une maison familiale fonctionnelle et esthétiquement plaisante.",
-      "gallery": [
-        "assets/images/project1-house/gallery-1.jpg"
-      ],
-      "link": "https://example.com/house-project"
-    },
-    {
-      "id": 8,
-      "title": "Office Building Design",
-      "titleFr": "Conception d'Immeuble de Bureaux",
-      "category": "Commercial Architecture",
-      "categoryFr": "Architecture Commerciale",
-      "image": "assets/images/project2-office/main.jpg",
-      "description": "Another example using subfolder organization. **Project Scope:** 5-story commercial office building with modern amenities. **Challenges:** Creating flexible workspace layouts for various business needs. **Solution:** Modular design approach with adaptable floor plans. **Results:** Delivered a versatile commercial space that meets diverse tenant requirements.",
-      "descriptionFr": "Un autre exemple utilisant l'organisation par sous-dossiers. **Portée du Projet :** Immeuble de bureaux commercial de 5 étages avec équipements modernes. **Défis :** Créer des aménagements d'espace de travail flexibles pour divers besoins commerciaux. **Solution :** Approche de conception modulaire avec plans d'étage adaptables. **Résultats :** Livré un espace commercial polyvalent qui répond aux exigences diverses des locataires.",
-      "gallery": [
-        "assets/images/project2-office/main.jpg"
-      ],
-      "link": "https://example.com/office-project"
-    },
-	  {
-	    "id": 9,
-      "title": "Cabin in the Woods",
-      "titleFr": "Cabane dans les Bois",
-      "category": "Residential",
-      "categoryFr": "Residentielle",
-      "image": "https://landifornia-lodge.com/wp-content/uploads/2023/12/1-photo-scaled.jpg",
-      "description": "A nice liitle cabin",
-      "descriptionFr": "Un jolie petite cabane",
-      "gallery": [
-        "assets\\images\\Cabane\\images.jpg"
-      ],
-      "link": "https://example.com/project"
     }
   ]
 }
