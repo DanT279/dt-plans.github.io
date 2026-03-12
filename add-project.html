@@ -294,20 +294,16 @@
         <p class="subtitle">Fill out the form below to generate JSON for your new project</p>
 
         <div class="instructions">
-            <h3>📋 How to add a project</h3>
-            <p><strong>Easiest (when the site is served from a server):</strong></p>
+            <h3>📋 Recommended: folder-based project</h3>
             <ol>
-                <li>Fill out the form below and add at least one gallery image.</li>
-                <li>Click <strong>"Add project &amp; download projects.json"</strong>.</li>
-                <li>Replace your repo’s <code>data/projects.json</code> with the downloaded file, then commit and push.</li>
+                <li>Copy the <code>projects/_template</code> folder and rename it (e.g. <code>sunroom-2024</code>). That’s your project <strong>slug</strong> (no spaces).</li>
+                <li>Fill out the form below. For <strong>Main Image</strong> and <strong>Gallery</strong>, use filenames relative to the project folder, e.g. <code>images/cover.jpg</code>, <code>images/photo2.jpg</code>.</li>
+                <li>Click <strong>"Download project.json for folder"</strong>, enter the slug, then save the downloaded <code>project.json</code> into <code>projects/<em>&lt;slug&gt;</em>/</code>.</li>
+                <li>Put your image files in <code>projects/<em>&lt;slug&gt;</em>/images/</code>.</li>
+                <li>Add the slug to <code>data/projects-index.json</code> (e.g. <code>["sunroom-2024"]</code>).</li>
+                <li>Push the new folder and updated <code>projects-index.json</code> to GitHub. You do <strong>not</strong> edit <code>data/projects.json</code>.</li>
             </ol>
-            <p style="margin-top: 12px;"><strong>Manual (e.g. opening this page as a file):</strong></p>
-            <ol start="4">
-                <li>Click "Generate JSON", then "Copy to Clipboard".</li>
-                <li>Open <code>data/projects.json</code> and paste the new block into the <code>projects</code> array (after the last project, add a comma then paste).</li>
-                <li>Save and push.</li>
-            </ol>
-            <p style="margin-top: 10px; color: #a0a0a0; font-size: 0.95rem;">Tip: Run <code>npx http-server</code> in the project folder and open <code>/add-project.html</code> to use the download option.</p>
+            <p style="margin-top: 12px; color: #a0a0a0; font-size: 0.95rem;"><strong>Alternative:</strong> Use "Add project &amp; download projects.json" to update the single JSON file (replace <code>data/projects.json</code>) if you prefer the old workflow.</p>
         </div>
 
         <form id="projectForm">
@@ -333,10 +329,9 @@
 
             <div class="form-group">
                 <label for="image">Main Image Path *</label>
-                <input type="text" id="image" name="image" required placeholder="assets/images/project-main.jpg">
+                <input type="text" id="image" name="image" required placeholder="images/cover.jpg or https://...">
                 <small style="color: #a0a0a0; font-size: 14px; margin-top: 5px; display: block;">
-                    For local images: <code>assets/images/filename.jpg</code><br>
-                    For online images: <code>https://example.com/image.jpg</code>
+                    Folder project: <code>images/cover.jpg</code>. Legacy: <code>assets/images/...</code> or full URL.
                 </small>
             </div>
 
@@ -361,7 +356,7 @@
                     </div>
                     <button type="button" class="add-gallery" onclick="addGalleryItem()">+ Add Gallery Image</button>
                     <small style="color: #a0a0a0; font-size: 14px; margin-top: 10px; display: block;">
-                        Use local paths like <code>assets/images/filename.jpg</code> or full URLs
+                        Folder project: <code>images/photo1.jpg</code>, <code>images/photo2.jpg</code>. Legacy: full paths or URLs.
                     </small>
                 </div>
             </div>
@@ -371,14 +366,23 @@
                 <input type="url" id="link" name="link" placeholder="https://example.com/project">
             </div>
 
+            <div class="form-group">
+                <label for="projectSlug">Project slug (folder name, for folder workflow)</label>
+                <input type="text" id="projectSlug" name="projectSlug" placeholder="my-project-2024" pattern="[a-zA-Z0-9_-]+" style="max-width: 280px;">
+                <small style="color: #a0a0a0; font-size: 14px; margin-top: 5px; display: block;">No spaces. Same name as the folder under <code>projects/</code>.</small>
+            </div>
+
             <div class="btn-group">
-                <button type="button" class="btn btn-primary" id="btnAddAndDownload" onclick="addAndDownload()">Add project &amp; download projects.json</button>
+                <button type="button" class="btn btn-primary" id="btnDownloadFolder" onclick="downloadFolderProject()">Download project.json for folder</button>
+                <button type="button" class="btn btn-secondary" id="btnAddAndDownload" onclick="addAndDownload()">Add project &amp; download projects.json</button>
                 <button type="button" class="btn btn-secondary" onclick="generateJSON()">Generate JSON only</button>
                 <button type="reset" class="btn btn-secondary">Reset Form</button>
             </div>
         </form>
 
         <div id="fetchError" class="fetch-error" style="display: none;"></div>
+
+        <div id="folderInstructions" class="output-section fetch-error" style="display: none; background: rgba(0,123,255,0.08); border-color: rgba(0,123,255,0.3); color: #c0c0c0;"></div>
 
         <div id="outputSection" class="output-section" style="display: none;">
             <h3>Generated JSON</h3>
@@ -455,6 +459,43 @@
             const outputSection = document.getElementById('outputSection');
             outputSection.style.display = 'block';
             outputSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function downloadFolderProject() {
+            document.getElementById('fetchError').style.display = 'none';
+            const slug = (document.getElementById('projectSlug').value || '').trim().replace(/\s+/g, '-').replace(/[^a-zA-Z0-9_-]/g, '');
+            if (!slug) {
+                alert('Enter a project slug (folder name), e.g. my-project-2024');
+                return;
+            }
+            const form = document.getElementById('projectForm');
+            const formData = new FormData(form);
+            const galleryUrls = Array.from(formData.getAll('gallery[]')).filter(url => url.trim() !== '');
+            if (galleryUrls.length === 0) {
+                alert('Please add at least one gallery image.');
+                return;
+            }
+            const linkVal = (formData.get('link') || '').trim();
+            const project = {
+                title: formData.get('title'),
+                titleFr: formData.get('titleFr'),
+                category: formData.get('category'),
+                categoryFr: formData.get('categoryFr'),
+                image: formData.get('image'),
+                description: formData.get('description'),
+                descriptionFr: formData.get('descriptionFr'),
+                gallery: galleryUrls,
+                link: linkVal || ''
+            };
+            const blob = new Blob([JSON.stringify(project, null, 2)], { type: 'application/json' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'project.json';
+            a.click();
+            URL.revokeObjectURL(a.href);
+            const instructions = document.getElementById('folderInstructions');
+            instructions.innerHTML = '<strong>Next steps:</strong><br>1. Save this file as <code>projects/' + slug + '/project.json</code><br>2. Put your images in <code>projects/' + slug + '/images/</code><br>3. Add <code>"' + slug + '"</code> to the array in <code>data/projects-index.json</code><br>4. Push the folder and updated index to GitHub.';
+            instructions.style.display = 'block';
         }
 
         function addAndDownload() {

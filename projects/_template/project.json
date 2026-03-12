@@ -1,0 +1,14 @@
+{
+  "title": "Project Title (English)",
+  "titleFr": "Titre du Projet (Français)",
+  "category": "Category (English)",
+  "categoryFr": "Catégorie (Français)",
+  "image": "images/cover.jpg",
+  "description": "Describe your project in English. You can use **bold** for emphasis.",
+  "descriptionFr": "Décrivez votre projet en français.",
+  "gallery": [
+    "images/cover.jpg",
+    "images/photo2.jpg"
+  ],
+  "link": ""
+}

@@ -48,22 +48,44 @@ const contactBtn = document.querySelector('.contact-btn');
 const mobileMenuToggle = document.getElementById('mobileMenuToggle');
 const nav = document.querySelector('.nav');
 
-// Load portfolio data from JSON file
+// Load portfolio data: legacy data/projects.json + folder-based projects from projects/<slug>/project.json
 async function loadPortfolioData() {
+    const legacy = [];
     try {
-        const response = await fetch('data/projects.json');
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+        const res = await fetch('data/projects.json');
+        if (res.ok) {
+            const data = await res.json();
+            if (Array.isArray(data.projects)) legacy.push(...data.projects);
         }
-        const data = await response.json();
-        portfolioData = data.projects;
-        return true;
-    } catch (error) {
-        console.error('Error loading portfolio data:', error);
-        // Fallback to empty array if JSON fails to load
-        portfolioData = [];
-        return false;
+    } catch (e) {
+        console.warn('Could not load data/projects.json', e);
     }
+    const fromFolders = [];
+    try {
+        const indexRes = await fetch('data/projects-index.json');
+        if (!indexRes.ok) throw new Error('No index');
+        const slugs = await indexRes.json();
+        if (!Array.isArray(slugs)) throw new Error('Invalid index');
+        const base = 'projects/';
+        for (let i = 0; i < slugs.length; i++) {
+            const slug = slugs[i];
+            if (!slug || typeof slug !== 'string') continue;
+            try {
+                const prjRes = await fetch(`${base}${encodeURIComponent(slug)}/project.json`);
+                if (!prjRes.ok) continue;
+                const prj = await prjRes.json();
+                const prefix = base + slug + '/';
+                if (prj.image) prj.image = prefix + prj.image.replace(/^\/+/, '');
+                if (Array.isArray(prj.gallery)) prj.gallery = prj.gallery.map(p => prefix + p.replace(/^\/+/, ''));
+                prj.id = 'folder-' + slug;
+                fromFolders.push(prj);
+            } catch (_) {}
+        }
+    } catch (_) {
+        // No projects-index or empty: use only legacy
+    }
+    portfolioData = legacy.concat(fromFolders);
+    return portfolioData.length > 0;
 }
 
 // Initialize the portfolio
