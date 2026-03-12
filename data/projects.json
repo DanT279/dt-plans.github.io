@@ -1,0 +1,140 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "Residential House Plans",
+      "titleFr": "Plans de Maison Résidentielle",
+      "category": "Architectural Drafting",
+      "categoryFr": "Dessin Architectural",
+      "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500&h=300&fit=crop",
+      "description": "**Project Scope:** 2,500 sq ft modern residential home with attached garage and basement development. **Challenges:** Tight lot constraints (30' x 100') requiring creative space optimization and compliance with setback requirements. **Solution:** Developed 3D Revit model with parametric families, coordinated MEP systems using Navisworks, and created detailed construction drawings with 15 sheets including structural details. **Results:** Delivered complete permit-ready package 2 weeks ahead of schedule, enabling contractor to break ground immediately. Client saved $15K in change orders due to detailed coordination drawings.",
+      "descriptionFr": "**Portée du Projet :** Maison résidentielle moderne de 2 500 pi² avec garage attenant et développement de sous-sol. **Défis :** Contraintes de terrain serrées (30' x 100') nécessitant une optimisation créative de l'espace et le respect des exigences de recul. **Solution :** Développé un modèle Revit 3D avec familles paramétriques, coordonné les systèmes MEP avec Navisworks, et créé des plans de construction détaillés avec 15 feuilles incluant les détails structurels. **Résultats :** Livré un package complet prêt pour permis 2 semaines avant l'échéance, permettant au contracteur de commencer immédiatement. Le client a économisé 15K$ en modifications grâce aux plans de coordination détaillés.",
+      "gallery": [
+        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=500&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=500&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=500&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=500&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=500&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=500&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=500&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=500&h=300&fit=crop"
+      ],
+      "link": "https://example.com/residential-plans"
+    },
+    {
+      "id": 2,
+      "title": "Commercial Office Building",
+      "titleFr": "Immeuble de Bureaux Commercial",
+      "category": "Commercial Design",
+      "categoryFr": "Design Commercial",
+      "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500&h=300&fit=crop",
+      "description": "**Project Scope:** 5-story commercial office building with 12,000 sq ft of office space and ground-floor retail. **Challenges:** Complex zoning requirements, accessibility compliance (ADA), and coordination between 5 different trades. **Solution:** Created comprehensive AutoCAD drawings with layer standards, developed detailed MEP coordination using Revit, and implemented clash detection protocols. **Results:** Successfully obtained building permit on first submission, reduced construction time by 3 weeks through detailed coordination, and achieved 95% first-time installation accuracy for MEP systems.",
+      "descriptionFr": "**Portée du Projet :** Immeuble de bureaux commercial de 5 étages avec 12 000 pi² d'espace de bureaux et commerce au rez-de-chaussée. **Défis :** Exigences de zonage complexes, conformité d'accessibilité (ADA), et coordination entre 5 corps de métier différents. **Solution :** Créé des plans AutoCAD complets avec standards de calques, développé une coordination MEP détaillée avec Revit, et implémenté des protocoles de détection de conflits. **Résultats :** Obtenu avec succès le permis de construction dès la première soumission, réduit le temps de construction de 3 semaines grâce à la coordination détaillée, et atteint 95% de précision d'installation du premier coup pour les systèmes MEP.",
+      "gallery": [
+        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=500&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=500&h=300&fit=crop"
+      ],
+      "link": "https://example.com/commercial-building"
+    },
+    {
+      "id": 3,
+      "title": "Structural Steel Detailing",
+      "titleFr": "Détail d'Acier Structurel",
+      "category": "Structural Engineering",
+      "categoryFr": "Ingénierie Structurelle",
+      "image": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=300&fit=crop",
+      "description": "Precise structural steel detailing for industrial warehouse construction. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.",
+      "descriptionFr": "Détail précis d'acier structurel pour la construction d'entrepôt industriel. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.",
+      "gallery": [
+        "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=300&fit=crop"
+      ],
+      "link": "https://example.com/steel-detailing"
+    },
+    {
+      "id": 4,
+      "title": "MEP Systems Design",
+      "titleFr": "Conception de Systèmes MEP",
+      "category": "MEP Engineering",
+      "categoryFr": "Ingénierie MEP",
+      "image": "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=500&h=300&fit=crop",
+      "description": "Comprehensive MEP (Mechanical, Electrical, Plumbing) system design for healthcare facility. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+      "descriptionFr": "Conception complète de systèmes MEP (Mécanique, Électrique, Plomberie) pour installation de soins de santé. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+      "gallery": [
+        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=500&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=500&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=500&h=300&fit=crop"
+      ],
+      "link": "https://example.com/mep-design"
+    },
+    {
+      "id": 5,
+      "title": "3D Building Model",
+      "titleFr": "Modèle 3D de Bâtiment",
+      "category": "3D Modeling",
+      "categoryFr": "Modélisation 3D",
+      "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=300&fit=crop",
+      "description": "Detailed 3D building model created in Revit for client presentation and construction coordination. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.",
+      "descriptionFr": "Modèle 3D de bâtiment détaillé créé dans Revit pour présentation client et coordination de construction. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.",
+      "gallery": [
+        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=300&fit=crop"
+      ],
+      "link": "https://example.com/3d-model"
+    },
+    {
+      "id": 6,
+      "title": "Construction Documentation",
+      "titleFr": "Documentation de Construction",
+      "category": "Project Documentation",
+      "categoryFr": "Documentation de Projet",
+      "image": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=300&fit=crop",
+      "description": "Complete construction documentation package including specifications, details, and construction notes. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+      "descriptionFr": "Ensemble complet de documentation de construction incluant spécifications, détails et notes de construction. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+      "gallery": [
+        "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=300&fit=crop"
+      ],
+      "link": "https://example.com/construction-docs"
+    },
+    {
+      "id": 7,
+      "title": "Modern House Project",
+      "titleFr": "Projet de Maison Moderne",
+      "category": "Residential Design",
+      "categoryFr": "Design Résidentiel",
+      "image": "assets/images/project1-house/main.jpg",
+      "description": "This project demonstrates the subfolder organization method. **Project Scope:** Modern residential home design with clean lines and efficient space utilization. **Challenges:** Maximizing natural light while maintaining privacy. **Solution:** Strategic window placement and open floor plan design. **Results:** Created a functional and aesthetically pleasing family home.",
+      "descriptionFr": "Ce projet démontre la méthode d'organisation par sous-dossiers. **Portée du Projet :** Conception de maison résidentielle moderne avec des lignes épurées et une utilisation efficace de l'espace. **Défis :** Maximiser la lumière naturelle tout en maintenant l'intimité. **Solution :** Placement stratégique des fenêtres et conception de plan d'étage ouvert. **Résultats :** Créé une maison familiale fonctionnelle et esthétiquement plaisante.",
+      "gallery": [
+        "assets/images/project1-house/gallery-1.jpg"
+      ],
+      "link": "https://example.com/house-project"
+    },
+    {
+      "id": 8,
+      "title": "Office Building Design",
+      "titleFr": "Conception d'Immeuble de Bureaux",
+      "category": "Commercial Architecture",
+      "categoryFr": "Architecture Commerciale",
+      "image": "assets/images/project2-office/main.jpg",
+      "description": "Another example using subfolder organization. **Project Scope:** 5-story commercial office building with modern amenities. **Challenges:** Creating flexible workspace layouts for various business needs. **Solution:** Modular design approach with adaptable floor plans. **Results:** Delivered a versatile commercial space that meets diverse tenant requirements.",
+      "descriptionFr": "Un autre exemple utilisant l'organisation par sous-dossiers. **Portée du Projet :** Immeuble de bureaux commercial de 5 étages avec équipements modernes. **Défis :** Créer des aménagements d'espace de travail flexibles pour divers besoins commerciaux. **Solution :** Approche de conception modulaire avec plans d'étage adaptables. **Résultats :** Livré un espace commercial polyvalent qui répond aux exigences diverses des locataires.",
+      "gallery": [
+        "assets/images/project2-office/main.jpg"
+      ],
+      "link": "https://example.com/office-project"
+    }
+  ]
+}

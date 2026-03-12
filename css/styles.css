@@ -595,6 +595,18 @@ h1, h2, h3, h4, h5, h6 {
     overflow: hidden;
 }
 
+.modal-content.modal-content-wide {
+    width: min(1100px, 96vw);
+}
+
+.calculator-frame {
+    width: 100%;
+    height: min(72vh, 900px);
+    border: 1px solid rgba(245, 245, 245, 0.12);
+    border-radius: 10px;
+    background: #1a1a1a;
+}
+
 .modal-close {
     position: absolute;
     top: 1rem;

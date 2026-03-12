@@ -1,0 +1,1853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Site Calculators — EN</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#1a1a1a;--panel:rgba(245,245,245,0.03);--border:rgba(245,245,245,0.12);--accent:#d4d4d4;
+  --accent-dim:rgba(212,212,212,0.10);--text:#f5f5f5;--muted:#a0a0a0;
+  --label:#c0c0c0;--white:#f5f5f5;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'Work Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;min-height:100vh;padding:22px 14px 60px;}
+header{text-align:center;margin-bottom:36px;}
+header .tag{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;font-size:10px;letter-spacing:.25em;color:var(--muted);margin-bottom:6px;}
+header h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(24px,5vw,40px);font-weight:700;letter-spacing:.06em;color:var(--white);text-transform:uppercase;}
+header .sub{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;font-size:11px;color:var(--muted);margin-top:6px;letter-spacing:.15em;}
+
+/* NAV */
+.nav{display:flex;flex-wrap:wrap;gap:4px;max-width:1100px;margin:0 auto 28px;justify-content:center;}
+.nav-btn{background:var(--panel);border:1px solid var(--border);color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:8px 14px;cursor:pointer;transition:all .15s;}
+.nav-btn.active{background:var(--accent-dim);border-color:var(--accent);color:var(--accent);}
+.nav-btn:hover:not(.active){color:var(--text);border-color:var(--muted);}
+
+/* Small action buttons */
+.btn-mini{background:var(--bg);border:1px solid var(--border);color:var(--text);font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:6px 10px;cursor:pointer;transition:all .15s;}
+.btn-mini:hover{border-color:var(--muted);}
+.btn-mini.primary{background:var(--accent-dim);border-color:rgba(212,212,212,.35);color:var(--accent);}
+.btn-mini.primary:hover{border-color:var(--accent);}
+
+/* SECTIONS */
+.section{display:none;max-width:1100px;margin:0 auto;}
+.section.visible{display:block;}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
+
+/* CARD */
+.card{background:var(--panel);border:1px solid var(--border);border-top:3px solid var(--accent);padding:24px 20px 20px;}
+.card-id{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;font-size:9px;letter-spacing:.3em;color:var(--muted);margin-bottom:4px;}
+.card h2{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--white);margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border);}
+.card h3{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--label);margin:16px 0 10px;}
+
+/* FIELDS */
+.field{margin-bottom:14px;}
+label{display:block;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--label);margin-bottom:5px;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
+input[type=number],select{width:100%;background:rgba(26,26,26,0.6);border:1px solid var(--border);color:var(--white);font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;font-size:16px;padding:9px 12px;outline:none;transition:border-color .15s,background .15s;-moz-appearance:textfield;}
+input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;}
+input[type=number]:focus,select:focus{border-color:var(--accent);background:rgba(0,191,191,.04);}
+select{font-size:14px;cursor:pointer;}
+select option{background:var(--panel);}
+/* Dropdown section headings (Land Area) */
+#land-from option[disabled]{color:var(--accent);text-transform:uppercase;letter-spacing:.2em;font-size:10px;}
+.unit-hint{font-size:10px;color:var(--muted);font-family:'Share Tech Mono',monospace;margin-top:3px;letter-spacing:.05em;}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+
+/* TABS */
+.tabs{display:flex;gap:2px;margin-bottom:18px;}
+.tab{flex:1;background:rgba(26,26,26,0.6);border:1px solid var(--border);color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:7px 4px;cursor:pointer;text-align:center;transition:all .15s;}
+.tab.active{background:var(--accent-dim);border-color:var(--accent);color:var(--accent);}
+.tab:hover:not(.active){color:var(--text);}
+.tab-pane{display:none;}.tab-pane.visible{display:block;}
+
+/* RESULTS */
+.results{background:var(--bg);border:1px solid var(--border);padding:14px;margin-top:16px;}
+.rrow{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1px solid var(--border);}
+.rrow:last-child{border-bottom:none;}
+.rlabel{font-size:10px;letter-spacing:.12em;color:var(--label);text-transform:uppercase;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
+.rval{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;font-size:18px;color:var(--accent);}
+.rval .u{font-size:10px;color:var(--muted);margin-left:3px;}
+.rval.big{font-size:28px;}
+
+/* PITCH TAG */
+.pitch-tag{margin-top:12px;background:var(--accent-dim);border:1px solid rgba(212,212,212,.25);padding:10px 14px;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;font-size:12px;color:var(--text);letter-spacing:.04em;line-height:1.5;}
+.pitch-tag strong{color:var(--accent);}
+
+/* SVG diagram */
+.diagram{display:flex;justify-content:center;margin:16px 0;}
+svg.diag{width:100%;max-width:260px;height:auto;}
+
+/* DIVIDER */
+.divider{height:1px;background:var(--border);margin:18px 0;}
+
+/* INFO BOX */
+.info{background:rgba(245,245,245,0.04);border-left:2px solid var(--accent);padding:10px 14px;font-size:12px;color:var(--text);line-height:1.6;margin-top:14px;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
+
+footer{text-align:center;margin-top:40px;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;font-size:10px;letter-spacing:.2em;color:var(--muted);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="tag">// DT-Plans · Field Tools v2.0</div>
+  <h1>Site Calculators</h1>
+  <div class="sub">Converter · Roofs · Tiles · Stairs · Slope · Land · Materials · Site · Project</div>
+</header>
+
+
+<nav class="nav">
+  <button class="nav-btn active" onclick="showSection('convert', event)">⇄ Converter</button>
+  <button class="nav-btn" onclick="showSection('roofs', event)">⌂ Roof Calcs</button>
+  <button class="nav-btn" onclick="showSection('tiles', event)">▦ Tiles</button>
+  <button class="nav-btn" onclick="showSection('stairs', event)">↑ Stairs</button>
+  <button class="nav-btn" onclick="showSection('slope', event)">∠ Slope / 3-4-5</button>
+  <button class="nav-btn" onclick="showSection('land', event)">⬛ Land Area</button>
+  <button class="nav-btn" onclick="showSection('materials', event)">⚒ Materials</button>
+  <button class="nav-btn" onclick="showSection('site', event)">◎ Site / Layout</button>
+  <button class="nav-btn" onclick="showSection('project', event)">£ Project</button>
+</nav>
+
+<!-- ══════════════════ CONVERTER ══════════════════ -->
+<div class="section visible" id="sec-convert">
+  <div class="grid">
+    <div class="card">
+      <div class="card-id">// calc-01</div>
+      <h2 id="cv-heading">Imperial → Metric</h2>
+      <div style="display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap;">
+        <button class="btn-mini primary" id="cv-dir-imp" onclick="setCvDir('imp')">⇒ Imperial → Metric</button>
+        <button class="btn-mini" id="cv-dir-met" onclick="setCvDir('met')">⇐ Metric → Imperial</button>
+      </div>
+      <div class="tabs">
+        <div class="tab active" onclick="cvTab('length',this)">Length</div>
+        <div class="tab" onclick="cvTab('area',this)">Area</div>
+        <div class="tab" onclick="cvTab('volume',this)">Volume</div>
+      </div>
+
+      <!-- LENGTH -->
+      <div class="tab-pane visible" id="cv-length">
+        <div id="cv-length-imp">
+          <div class="row2">
+            <div class="field"><label>Feet</label><input type="number" id="cv-ft" placeholder="0" step="any" oninput="doLength()"></div>
+            <div class="field"><label>Inches</label><input type="number" id="cv-in" placeholder="0" step="any" oninput="doLength()"></div>
+          </div>
+          <div class="results">
+            <div class="rrow"><span class="rlabel">Metres</span><span class="rval" id="o-m">—<span class="u">m</span></span></div>
+            <div class="rrow"><span class="rlabel">Centimetres</span><span class="rval" id="o-cm">—<span class="u">cm</span></span></div>
+            <div class="rrow"><span class="rlabel">Millimetres</span><span class="rval" id="o-mm">—<span class="u">mm</span></span></div>
+          </div>
+        </div>
+        <div id="cv-length-met" style="display:none">
+          <div class="field"><label>Metres</label><input type="number" id="cv-m" placeholder="0" step="any" oninput="doLengthRev()"></div>
+          <div class="results">
+            <div class="rrow"><span class="rlabel">Feet (decimal)</span><span class="rval" id="o-ft">—<span class="u">ft</span></span></div>
+            <div class="rrow"><span class="rlabel">Feet + Inches</span><span class="rval" id="o-ftin">—</span></div>
+            <div class="rrow"><span class="rlabel">Inches</span><span class="rval" id="o-in">—<span class="u">in</span></span></div>
+            <div class="rrow"><span class="rlabel">Yards</span><span class="rval" id="o-yd">—<span class="u">yd</span></span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AREA -->
+      <div class="tab-pane" id="cv-area">
+        <div id="cv-area-imp">
+          <div class="field"><label>Square Feet</label><input type="number" id="cv-sqft" placeholder="0" step="any" oninput="doArea()"></div>
+          <div class="results">
+            <div class="rrow"><span class="rlabel">Square Metres</span><span class="rval" id="o-sqm">—<span class="u">m²</span></span></div>
+            <div class="rrow"><span class="rlabel">Square Centimetres</span><span class="rval" id="o-sqcm">—<span class="u">cm²</span></span></div>
+          </div>
+        </div>
+        <div id="cv-area-met" style="display:none">
+          <div class="field"><label>Square Metres</label><input type="number" id="cv-sqm-in" placeholder="0" step="any" oninput="doAreaRev()"></div>
+          <div class="results">
+            <div class="rrow"><span class="rlabel">Square Feet</span><span class="rval" id="o-sqft">—<span class="u">ft²</span></span></div>
+            <div class="rrow"><span class="rlabel">Square Yards</span><span class="rval" id="o-sqyd">—<span class="u">yd²</span></span></div>
+            <div class="rrow"><span class="rlabel">Square Inches</span><span class="rval" id="o-sqin2">—<span class="u">in²</span></span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VOLUME -->
+      <div class="tab-pane" id="cv-volume">
+        <div id="cv-volume-imp">
+          <div class="field"><label>Cubic Feet</label><input type="number" id="cv-cuft" placeholder="0" step="any" oninput="doVolume()"></div>
+          <div class="results">
+            <div class="rrow"><span class="rlabel">Cubic Metres</span><span class="rval" id="o-cum">—<span class="u">m³</span></span></div>
+            <div class="rrow"><span class="rlabel">Litres</span><span class="rval" id="o-lit">—<span class="u">L</span></span></div>
+          </div>
+        </div>
+        <div id="cv-volume-met" style="display:none">
+          <div class="tabs" style="margin-bottom:12px;">
+            <div class="tab active" onclick="cvVolMetTab('m3',this)">m³</div>
+            <div class="tab" onclick="cvVolMetTab('lit',this)">Litres</div>
+          </div>
+          <div id="cv-vol-m3"><div class="field"><label>Cubic Metres</label><input type="number" id="cv-cum-in" placeholder="0" step="any" oninput="doVolumeRev('m3')"></div></div>
+          <div id="cv-vol-lit" style="display:none"><div class="field"><label>Litres</label><input type="number" id="cv-lit-in" placeholder="0" step="any" oninput="doVolumeRev('lit')"></div></div>
+          <div class="results">
+            <div class="rrow"><span class="rlabel">Cubic Feet</span><span class="rval" id="o-cuft">—<span class="u">ft³</span></span></div>
+            <div class="rrow"><span class="rlabel">Cubic Inches</span><span class="rval" id="o-cuin">—<span class="u">in³</span></span></div>
+            <div class="rrow"><span class="rlabel">US Gallons</span><span class="rval" id="o-usgal">—<span class="u">US gal</span></span></div>
+            <div class="rrow"><span class="rlabel">UK Gallons</span><span class="rval" id="o-ukgal">—<span class="u">UK gal</span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-id">// quick-ref</div>
+      <h2>Quick Reference</h2>
+      <div class="results">
+        <div class="rrow"><span class="rlabel">1 foot</span><span class="rval" style="font-size:14px">304.8 mm</span></div>
+        <div class="rrow"><span class="rlabel">1 inch</span><span class="rval" style="font-size:14px">25.4 mm</span></div>
+        <div class="rrow"><span class="rlabel">1 yard</span><span class="rval" style="font-size:14px">914.4 mm</span></div>
+        <div class="rrow"><span class="rlabel">1 sq ft</span><span class="rval" style="font-size:14px">0.0929 m²</span></div>
+        <div class="rrow"><span class="rlabel">1 sq yd</span><span class="rval" style="font-size:14px">0.8361 m²</span></div>
+        <div class="rrow"><span class="rlabel">1 cu ft</span><span class="rval" style="font-size:14px">28.317 L</span></div>
+        <div class="rrow"><span class="rlabel">1 mile</span><span class="rval" style="font-size:14px">1.6093 km</span></div>
+        <div class="rrow"><span class="rlabel">1 acre</span><span class="rval" style="font-size:14px">4046.9 m²</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════ ROOFS ══════════════════ -->
+<div class="section" id="sec-roofs">
+  <div class="tabs" style="max-width:700px;margin:0 auto 20px;">
+    <div class="tab active" onclick="roofTab('mono',this)">Mono-pitch</div>
+    <div class="tab" onclick="roofTab('gable',this)">Gable</div>
+    <div class="tab" onclick="roofTab('hip',this)">Hip</div>
+    <div class="tab" onclick="roofTab('mansard',this)">Mansard</div>
+    <div class="tab" onclick="roofTab('gambrel',this)">Gambrel</div>
+  </div>
+
+  <!-- MONO -->
+  <div class="tab-pane visible" id="rf-mono">
+    <div class="grid">
+      <div class="card">
+        <div class="card-id">// roof-01</div>
+        <h2>Mono-Pitch (Shed)</h2>
+        <div class="info">Single slope. Enter the horizontal run and vertical rise — all other values calculated via Pythagoras.</div>
+        <div class="divider"></div>
+        <div class="field"><label>Horizontal Run (m)</label><input type="number" id="mo-run" placeholder="4.5" step="any" oninput="calcMono()"></div>
+        <div class="field"><label>Rise (m)</label><input type="number" id="mo-rise" placeholder="1.2" step="any" oninput="calcMono()"></div>
+        <div class="field"><label>Building Width (m) <span style="color:var(--muted)">for coverage</span></label><input type="number" id="mo-width" placeholder="6" step="any" oninput="calcMono()"></div>
+        <div class="results">
+          <div class="rrow"><span class="rlabel">Pitch Angle</span><span class="rval" id="mo-ang">—<span class="u">°</span></span></div>
+          <div class="rrow"><span class="rlabel">Rafter Length</span><span class="rval" id="mo-raf">—<span class="u">m</span></span></div>
+          <div class="rrow"><span class="rlabel">Slope %</span><span class="rval" id="mo-pct">—<span class="u">%</span></span></div>
+          <div class="rrow"><span class="rlabel">Roof Area</span><span class="rval" id="mo-area">—<span class="u">m²</span></span></div>
+        </div>
+        <div class="pitch-tag" id="mo-tag" style="display:none"></div>
+      </div>
+      <div class="card" style="display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:200px;">
+        <svg viewBox="0 0 260 160" style="width:100%;max-width:260px;">
+          <line x1="20" y1="130" x2="240" y2="130" stroke="#3a3a36" stroke-width="1.5"/>
+          <line x1="20" y1="130" x2="20" y2="50" stroke="#3a3a36" stroke-width="1" stroke-dasharray="4,3"/>
+          <line x1="20" y1="50" x2="240" y2="130" stroke="#00bfbf" stroke-width="2.5"/>
+          <line x1="240" y1="50" x2="240" y2="130" stroke="#3a3a36" stroke-width="1" stroke-dasharray="4,3"/>
+          <rect x="20" y="118" width="12" height="12" stroke="#3a3a36" stroke-width="1" fill="none"/>
+          <text x="130" y="148" fill="#666660" font-family="Share Tech Mono,monospace" font-size="10" text-anchor="middle">RUN</text>
+          <text x="8" y="93" fill="#666660" font-family="Share Tech Mono,monospace" font-size="10" text-anchor="middle">RISE</text>
+          <text x="120" y="82" fill="#00bfbf" font-family="Share Tech Mono,monospace" font-size="10" transform="rotate(-20,120,82)">RAFTER</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- GABLE -->
+  <div class="tab-pane" id="rf-gable">
+    <div class="grid">
+      <div class="card">
+        <div class="card-id">// roof-02</div>
+        <h2>Gable (Dual Pitch)</h2>
+        <div class="info">Symmetrical two-slope roof. Run = half the building width (ridge to eave). Enter once — both sides are mirrored.</div>
+        <div class="divider"></div>
+        <div class="field"><label>Half-span / Run (m)</label><input type="number" id="gb-run" placeholder="3.5" step="any" oninput="calcGable()"></div>
+        <div class="field"><label>Ridge Height / Rise (m)</label><input type="number" id="gb-rise" placeholder="1.8" step="any" oninput="calcGable()"></div>
+        <div class="field"><label>Ridge Length (m)</label><input type="number" id="gb-len" placeholder="8" step="any" oninput="calcGable()"></div>
+        <div class="results">
+          <div class="rrow"><span class="rlabel">Pitch Angle</span><span class="rval" id="gb-ang">—<span class="u">°</span></span></div>
+          <div class="rrow"><span class="rlabel">Rafter Length</span><span class="rval" id="gb-raf">—<span class="u">m</span></span></div>
+          <div class="rrow"><span class="rlabel">Slope %</span><span class="rval" id="gb-pct">—<span class="u">%</span></span></div>
+          <div class="rrow"><span class="rlabel">Total Roof Area (both slopes)</span><span class="rval" id="gb-area">—<span class="u">m²</span></span></div>
+          <div class="rrow"><span class="rlabel">Rafter count (600mm centres)</span><span class="rval" id="gb-cnt">—</span></div>
+        </div>
+        <div class="pitch-tag" id="gb-tag" style="display:none"></div>
+      </div>
+      <div class="card" style="display:flex;flex-direction:column;justify-content:center;align-items:center;">
+        <svg viewBox="0 0 260 160" style="width:100%;max-width:260px;">
+          <line x1="20" y1="130" x2="240" y2="130" stroke="#3a3a36" stroke-width="1.5"/>
+          <line x1="20" y1="130" x2="130" y2="40" stroke="#00bfbf" stroke-width="2.5"/>
+          <line x1="240" y1="130" x2="130" y2="40" stroke="#00bfbf" stroke-width="2.5"/>
+          <line x1="130" y1="130" x2="130" y2="40" stroke="#3a3a36" stroke-width="1" stroke-dasharray="4,3"/>
+          <rect x="118" y="118" width="12" height="12" stroke="#3a3a36" stroke-width="1" fill="none"/>
+          <text x="130" y="20" fill="#00bfbf" font-family="Share Tech Mono,monospace" font-size="10" text-anchor="middle">RIDGE</text>
+          <text x="75" y="100" fill="#00bfbf" font-family="Share Tech Mono,monospace" font-size="9">RAFTER</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- HIP -->
+  <div class="tab-pane" id="rf-hip">
+    <div class="grid">
+      <div class="card">
+        <div class="card-id">// roof-03</div>
+        <h2>Hip Roof</h2>
+        <div class="info">Four slopes meeting at a ridge. Enter the building footprint and ridge height. Hip rafters run diagonally from each corner.</div>
+        <div class="divider"></div>
+        <div class="field"><label>Building Length (m)</label><input type="number" id="hp-len" placeholder="10" step="any" oninput="calcHip()"></div>
+        <div class="field"><label>Building Width (m)</label><input type="number" id="hp-wid" placeholder="6" step="any" oninput="calcHip()"></div>
+        <div class="field"><label>Ridge Height / Rise (m)</label><input type="number" id="hp-rise" placeholder="2" step="any" oninput="calcHip()"></div>
+        <div class="results">
+          <div class="rrow"><span class="rlabel">Pitch Angle</span><span class="rval" id="hp-ang">—<span class="u">°</span></span></div>
+          <div class="rrow"><span class="rlabel">Common Rafter Length</span><span class="rval" id="hp-craf">—<span class="u">m</span></span></div>
+          <div class="rrow"><span class="rlabel">Hip Rafter Length</span><span class="rval" id="hp-hraf">—<span class="u">m</span></span></div>
+          <div class="rrow"><span class="rlabel">Ridge Length</span><span class="rval" id="hp-rid">—<span class="u">m</span></span></div>
+          <div class="rrow"><span class="rlabel">Total Roof Area</span><span class="rval" id="hp-area">—<span class="u">m²</span></span></div>
+          <div class="rrow"><span class="rlabel">Slope %</span><span class="rval" id="hp-pct">—<span class="u">%</span></span></div>
+        </div>
+        <div class="pitch-tag" id="hp-tag" style="display:none"></div>
+      </div>
+      <div class="card" style="display:flex;flex-direction:column;justify-content:center;align-items:center;">
+        <svg viewBox="0 0 260 180" style="width:100%;max-width:260px;">
+          <!-- footprint -->
+          <rect x="30" y="90" width="200" height="70" stroke="#3a3a36" stroke-width="1" fill="none" stroke-dasharray="4,3"/>
+          <!-- ridge -->
+          <line x1="80" y1="30" x2="180" y2="30" stroke="#00bfbf" stroke-width="2.5"/>
+          <!-- slopes (lines from corners to ridge ends) -->
+          <line x1="30" y1="90" x2="80" y2="30" stroke="#00bfbf" stroke-width="1.5"/>
+          <line x1="230" y1="90" x2="180" y2="30" stroke="#00bfbf" stroke-width="1.5"/>
+          <line x1="30" y1="160" x2="80" y2="30" stroke="#00bfbf" stroke-width="1.5"/>
+          <line x1="230" y1="160" x2="180" y2="30" stroke="#00bfbf" stroke-width="1.5"/>
+          <!-- gable lines -->
+          <line x1="30" y1="90" x2="230" y2="90" stroke="#00bfbf" stroke-width="1" opacity=".4"/>
+          <line x1="30" y1="160" x2="230" y2="160" stroke="#00bfbf" stroke-width="1" opacity=".4"/>
+          <text x="130" y="22" fill="#00bfbf" font-family="Share Tech Mono,monospace" font-size="9" text-anchor="middle">RIDGE</text>
+          <text x="48" y="58" fill="#666660" font-family="Share Tech Mono,monospace" font-size="8">HIP</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- MANSARD -->
+  <div class="tab-pane" id="rf-mansard">
+    <div class="grid">
+      <div class="card">
+        <div class="card-id">// roof-04</div>
+        <h2>Mansard Roof</h2>
+        <div class="info">Two slopes each side: steep lower slope, shallower upper slope. Common in Haussmann and French residential architecture.</div>
+        <div class="divider"></div>
+        <h3>Lower Slope</h3>
+        <div class="row2">
+          <div class="field"><label>Run (m)</label><input type="number" id="ms-lrun" placeholder="1.5" step="any" oninput="calcMansard()"></div>
+          <div class="field"><label>Rise (m)</label><input type="number" id="ms-lrise" placeholder="3" step="any" oninput="calcMansard()"></div>
+        </div>
+        <h3>Upper Slope</h3>
+        <div class="row2">
+          <div class="field"><label>Run (m)</label><input type="number" id="ms-urun" placeholder="3" step="any" oninput="calcMansard()"></div>
+          <div class="field"><label>Rise (m)</label><input type="number" id="ms-urise" placeholder="1" step="any" oninput="calcMansard()"></div>
+        </div>
+        <div class="field"><label>Ridge Length (m)</label><input type="number" id="ms-rlen" placeholder="8" step="any" oninput="calcMansard()"></div>
+        <div class="results">
+          <div class="rrow"><span class="rlabel">Lower Slope Angle</span><span class="rval" id="ms-lang">—<span class="u">°</span></span></div>
+          <div class="rrow"><span class="rlabel">Lower Rafter Length</span><span class="rval" id="ms-lraf">—<span class="u">m</span></span></div>
+          <div class="rrow"><span class="rlabel">Upper Slope Angle</span><span class="rval" id="ms-uang">—<span class="u">°</span></span></div>
+          <div class="rrow"><span class="rlabel">Upper Rafter Length</span><span class="rval" id="ms-uraf">—<span class="u">m</span></span></div>
+          <div class="rrow"><span class="rlabel">Total Roof Area (one side)</span><span class="rval" id="ms-area">—<span class="u">m²</span></span></div>
+        </div>
+      </div>
+      <div class="card" style="display:flex;flex-direction:column;justify-content:center;align-items:center;">
+        <svg viewBox="0 0 260 160" style="width:100%;max-width:260px;">
+          <!-- eave -->
+          <line x1="10" y1="140" x2="250" y2="140" stroke="#3a3a36" stroke-width="1.5"/>
+          <!-- lower slopes (steep) -->
+          <line x1="10" y1="140" x2="50" y2="60" stroke="#00bfbf" stroke-width="2.5"/>
+          <line x1="250" y1="140" x2="210" y2="60" stroke="#00bfbf" stroke-width="2.5"/>
+          <!-- upper slopes (shallow) -->
+          <line x1="50" y1="60" x2="130" y2="30" stroke="#00bfbf" stroke-width="2"/>
+          <line x1="210" y1="60" x2="130" y2="30" stroke="#00bfbf" stroke-width="2"/>
+          <!-- break line -->
+          <line x1="50" y1="60" x2="210" y2="60" stroke="#3a3a36" stroke-width="1" stroke-dasharray="3,3"/>
+          <text x="30" y="110" fill="#666660" font-family="Share Tech Mono,monospace" font-size="8">LOWER</text>
+          <text x="65" y="48" fill="#666660" font-family="Share Tech Mono,monospace" font-size="8">UPPER</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- GAMBREL -->
+  <div class="tab-pane" id="rf-gambrel">
+    <div class="grid">
+      <div class="card">
+        <div class="card-id">// roof-05</div>
+        <h2>Gambrel (Barn) Roof</h2>
+        <div class="info">Like a mansard but with gable ends instead of four slopes. Upper slope is shallow, lower slope is steep — maximises loft space.</div>
+        <div class="divider"></div>
+        <h3>Lower Slope (steeper)</h3>
+        <div class="row2">
+          <div class="field"><label>Run (m)</label><input type="number" id="gm-lrun" placeholder="1.5" step="any" oninput="calcGambrel()"></div>
+          <div class="field"><label>Rise (m)</label><input type="number" id="gm-lrise" placeholder="2.5" step="any" oninput="calcGambrel()"></div>
+        </div>
+        <h3>Upper Slope (shallower)</h3>
+        <div class="row2">
+          <div class="field"><label>Run (m)</label><input type="number" id="gm-urun" placeholder="2.5" step="any" oninput="calcGambrel()"></div>
+          <div class="field"><label>Rise (m)</label><input type="number" id="gm-urise" placeholder="1" step="any" oninput="calcGambrel()"></div>
+        </div>
+        <div class="field"><label>Building Length (m)</label><input type="number" id="gm-blen" placeholder="10" step="any" oninput="calcGambrel()"></div>
+        <div class="results">
+          <div class="rrow"><span class="rlabel">Lower Slope Angle</span><span class="rval" id="gm-lang">—<span class="u">°</span></span></div>
+          <div class="rrow"><span class="rlabel">Lower Rafter</span><span class="rval" id="gm-lraf">—<span class="u">m</span></span></div>
+          <div class="rrow"><span class="rlabel">Upper Slope Angle</span><span class="rval" id="gm-uang">—<span class="u">°</span></span></div>
+          <div class="rrow"><span class="rlabel">Upper Rafter</span><span class="rval" id="gm-uraf">—<span class="u">m</span></span></div>
+          <div class="rrow"><span class="rlabel">Total Roof Area (both sides)</span><span class="rval" id="gm-area">—<span class="u">m²</span></span></div>
+        </div>
+      </div>
+      <div class="card" style="display:flex;flex-direction:column;justify-content:center;align-items:center;">
+        <svg viewBox="0 0 260 160" style="width:100%;max-width:260px;">
+          <line x1="10" y1="140" x2="250" y2="140" stroke="#3a3a36" stroke-width="1.5"/>
+          <line x1="10" y1="140" x2="60" y2="70" stroke="#00bfbf" stroke-width="2.5"/>
+          <line x1="250" y1="140" x2="200" y2="70" stroke="#00bfbf" stroke-width="2.5"/>
+          <line x1="60" y1="70" x2="130" y2="30" stroke="#00bfbf" stroke-width="2"/>
+          <line x1="200" y1="70" x2="130" y2="30" stroke="#00bfbf" stroke-width="2"/>
+          <line x1="60" y1="70" x2="200" y2="70" stroke="#3a3a36" stroke-width="1" stroke-dasharray="3,3"/>
+          <text x="130" y="22" fill="#00bfbf" font-family="Share Tech Mono,monospace" font-size="9" text-anchor="middle">RIDGE</text>
+          <text x="26" y="112" fill="#666660" font-family="Share Tech Mono,monospace" font-size="8">STEEP</text>
+          <text x="80" y="56" fill="#666660" font-family="Share Tech Mono,monospace" font-size="8">SHALLOW</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ TILES ══════════════════ -->
+<div class="section" id="sec-tiles">
+  <div class="grid">
+    <div class="card">
+      <div class="card-id">// calc-06</div>
+      <h2>Tile Estimator</h2>
+      <div class="info">Enter your roof area, tile coverage, and waste allowance. Covers flat, interlocking, and natural slate sizing.</div>
+      <div class="divider"></div>
+      <div class="field"><label>Roof Area (m²)</label><input type="number" id="tl-area" placeholder="45" step="any" oninput="calcTiles()"></div>
+      <div class="field">
+        <label>Tile Type / Coverage</label>
+        <select id="tl-type" onchange="calcTiles()">
+          <option value="0.06">Concrete interlocking — ~0.06 m²/tile</option>
+          <option value="0.045">Plain clay tile — ~0.045 m²/tile</option>
+          <option value="0.03">Natural slate (500×250) — ~0.03 m²/tile</option>
+          <option value="0.05">Fibre-cement slate — ~0.05 m²/tile</option>
+          <option value="custom">Custom coverage…</option>
+        </select>
+      </div>
+      <div class="field" id="tl-custom-wrap" style="display:none">
+        <label>Custom Coverage (m² per tile)</label>
+        <input type="number" id="tl-custom" placeholder="0.05" step="any" oninput="calcTiles()">
+      </div>
+      <div class="field">
+        <label>Waste / Cut Allowance</label>
+        <select id="tl-waste" onchange="calcTiles()">
+          <option value="0.05">5% — simple rectangle</option>
+          <option value="0.10" selected>10% — standard (hips, valleys)</option>
+          <option value="0.15">15% — complex / diagonal lay</option>
+          <option value="0.20">20% — high complexity</option>
+        </select>
+      </div>
+      <div class="results">
+        <div class="rrow"><span class="rlabel">Net Tiles Required</span><span class="rval" id="tl-net">—</span></div>
+        <div class="rrow"><span class="rlabel">With Waste</span><span class="rval big" id="tl-gross">—</span></div>
+        <div class="rrow"><span class="rlabel">Round up to full pack of 10</span><span class="rval" id="tl-pack">—</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-id">// ref</div>
+      <h2>Tile Reference</h2>
+      <div class="results">
+        <div class="rrow"><span class="rlabel">Concrete interlocking</span><span class="rval" style="font-size:13px">~16–17/m²</span></div>
+        <div class="rrow"><span class="rlabel">Plain clay tile</span><span class="rval" style="font-size:13px">~60/m²</span></div>
+        <div class="rrow"><span class="rlabel">Natural slate 500×250</span><span class="rval" style="font-size:13px">~33/m²</span></div>
+        <div class="rrow"><span class="rlabel">Fibre-cement slate</span><span class="rval" style="font-size:13px">~20/m²</span></div>
+      </div>
+      <div class="info" style="margin-top:16px">Always add ridge tiles separately — typically 3–4 per linear metre of ridge. Valley tiles or lead flashing are additional.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ STAIRS ══════════════════ -->
+<div class="section" id="sec-stairs">
+  <div class="grid">
+    <div class="card">
+      <div class="card-id">// calc-07</div>
+      <h2>Stair Calculator</h2>
+      <div class="info">Based on NF P01-012 / Blondel's formula: <strong>2R + G = 630mm</strong>. Rise R: 150–200mm. Going G: 220–320mm.</div>
+      <div class="divider"></div>
+      <div class="field"><label>Floor-to-Floor Height (mm)</label><input type="number" id="st-h" placeholder="2700" step="1" oninput="calcStairs()"></div>
+      <div class="field"><label>Preferred Rise (mm) <span style="color:var(--muted)">leave blank to auto-calculate</span></label><input type="number" id="st-r" placeholder="" step="1" oninput="calcStairs()"></div>
+      <div class="field"><label>Available Stair Length (mm) <span style="color:var(--muted)">optional</span></label><input type="number" id="st-l" placeholder="" step="1" oninput="calcStairs()"></div>
+      <div class="results">
+        <div class="rrow"><span class="rlabel">Number of Risers</span><span class="rval big" id="st-n">—</span></div>
+        <div class="rrow"><span class="rlabel">Actual Rise (R)</span><span class="rval" id="st-ar">—<span class="u">mm</span></span></div>
+        <div class="rrow"><span class="rlabel">Recommended Going (G)</span><span class="rval" id="st-g">—<span class="u">mm</span></span></div>
+        <div class="rrow"><span class="rlabel">2R + G (Blondel check)</span><span class="rval" id="st-bl">—<span class="u">mm</span></span></div>
+        <div class="rrow"><span class="rlabel">Total Run Required</span><span class="rval" id="st-run">—<span class="u">mm</span></span></div>
+        <div class="rrow"><span class="rlabel">Stringer Length</span><span class="rval" id="st-str">—<span class="u">mm</span></span></div>
+      </div>
+      <div class="pitch-tag" id="st-warn" style="display:none"></div>
+    </div>
+    <div class="card">
+      <div class="card-id">// nf-ref</div>
+      <h2>NF P01-012 Limits</h2>
+      <div class="results">
+        <div class="rrow"><span class="rlabel">Min Rise (R)</span><span class="rval" style="font-size:14px">150 mm</span></div>
+        <div class="rrow"><span class="rlabel">Max Rise (R)</span><span class="rval" style="font-size:14px">200 mm</span></div>
+        <div class="rrow"><span class="rlabel">Min Going (G)</span><span class="rval" style="font-size:14px">220 mm</span></div>
+        <div class="rrow"><span class="rlabel">Max Going (G)</span><span class="rval" style="font-size:14px">320 mm</span></div>
+        <div class="rrow"><span class="rlabel">Blondel (2R+G)</span><span class="rval" style="font-size:14px">590–650 mm</span></div>
+        <div class="rrow"><span class="rlabel">Min clear width</span><span class="rval" style="font-size:14px">900 mm</span></div>
+        <div class="rrow"><span class="rlabel">Min headroom</span><span class="rval" style="font-size:14px">1900 mm</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ SLOPE / 3-4-5 ══════════════════ -->
+<div class="section" id="sec-slope">
+  <div class="grid-3">
+    <!-- SLOPE CONVERTER -->
+    <div class="card">
+      <div class="card-id">// calc-08</div>
+      <h2>Slope Converter</h2>
+      <div class="info">Enter any one value — degrees, percentage, or ratio (1:n) — and the others are calculated.</div>
+      <div class="divider"></div>
+      <div class="field"><label>Degrees (°)</label><input type="number" id="sl-deg" placeholder="0" step="any" oninput="slopeFrom('deg')"></div>
+      <div class="field"><label>Percentage (%)</label><input type="number" id="sl-pct" placeholder="0" step="any" oninput="slopeFrom('pct')"></div>
+      <div class="field"><label>Ratio (1 : n)</label><input type="number" id="sl-rat" placeholder="0" step="any" oninput="slopeFrom('rat')"></div>
+      <div class="results">
+        <div class="rrow"><span class="rlabel">Degrees</span><span class="rval" id="sl-odeg">—<span class="u">°</span></span></div>
+        <div class="rrow"><span class="rlabel">Percentage</span><span class="rval" id="sl-opct">—<span class="u">%</span></span></div>
+        <div class="rrow"><span class="rlabel">Ratio (1:n)</span><span class="rval" id="sl-arat">1 : —</span></div>
+        <div class="rrow"><span class="rlabel">mm per metre</span><span class="rval" id="sl-mm">—<span class="u">mm/m</span></span></div>
+      </div>
+      <div class="pitch-tag" id="sl-tag" style="display:none"></div>
+    </div>
+
+    <!-- 3-4-5 -->
+    <div class="card">
+      <div class="card-id">// calc-09</div>
+      <h2>3-4-5 Right Angle</h2>
+      <div class="info">Enter your base unit (e.g. 1m, 0.5m, 300mm). The tool gives you the three measurements to square any corner on site.</div>
+      <div class="divider"></div>
+      <div class="field"><label>Base Unit (any consistent unit)</label><input type="number" id="tt-unit" placeholder="1" step="any" oninput="calc345()"></div>
+      <div class="field">
+        <label>Multiplier</label>
+        <select id="tt-mult" onchange="calc345()">
+          <option value="1">3-4-5 (standard)</option>
+          <option value="2">6-8-10</option>
+          <option value="3">9-12-15</option>
+          <option value="5">15-20-25</option>
+        </select>
+      </div>
+      <div class="results">
+        <div class="rrow"><span class="rlabel">Side A (3×)</span><span class="rval big" id="tt-a">—</span></div>
+        <div class="rrow"><span class="rlabel">Side B (4×)</span><span class="rval big" id="tt-b">—</span></div>
+        <div class="rrow"><span class="rlabel">Diagonal / Hypotenuse (5×)</span><span class="rval big" id="tt-c">—</span></div>
+      </div>
+      <div class="info" style="margin-top:14px">Measure A along one wall, B along the other — if the diagonal = C, the corner is perfectly square (90°).</div>
+    </div>
+
+    <!-- PYTHAGORAS -->
+    <div class="card">
+      <div class="card-id">// calc-10</div>
+      <h2>Pythagoras</h2>
+      <div class="info">Enter any two sides — the third is calculated. Leave the unknown field blank.</div>
+      <div class="divider"></div>
+      <div class="field"><label>Side A</label><input type="number" id="py-a" placeholder="" step="any" oninput="calcPyth()"></div>
+      <div class="field"><label>Side B</label><input type="number" id="py-b" placeholder="" step="any" oninput="calcPyth()"></div>
+      <div class="field"><label>Hypotenuse C</label><input type="number" id="py-c" placeholder="" step="any" oninput="calcPyth()"></div>
+      <div class="results">
+        <div class="rrow"><span class="rlabel">Result</span><span class="rval big" id="py-res">—</span></div>
+        <div class="rrow"><span class="rlabel">Angle at A</span><span class="rval" id="py-angA">—<span class="u">°</span></span></div>
+        <div class="rrow"><span class="rlabel">Angle at B</span><span class="rval" id="py-angB">—<span class="u">°</span></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ LAND AREA ══════════════════ -->
+<div class="section" id="sec-land">
+  <div class="grid">
+    <div class="card">
+      <div class="card-id">// calc-11</div>
+      <h2>Land Area Converter</h2>
+      <div class="info">Covers UK, Ireland, France and US land units. Enter any value, select its unit — everything else calculates instantly. Useful for cadastre documents, planning applications, and site briefs.</div>
+      <div class="divider"></div>
+      <div class="field">
+        <label>Value</label>
+        <input type="number" id="land-val" placeholder="0" step="any" oninput="calcLand()">
+      </div>
+      <div class="field">
+        <label>Unit (from)</label>
+        <select id="land-from" onchange="calcLand()">
+          <option disabled>── Metric ──</option>
+          <option value="m2">Square Metres (m²)</option>
+          <option value="are">Ares (a) — 100 m²</option>
+          <option value="hectare">Hectares (ha) — 10,000 m²</option>
+          <option value="sqkm">Square Kilometres (km²)</option>
+          <option disabled>── UK / Ireland ──</option>
+          <option value="sqft">Square Feet (ft²)</option>
+          <option value="sqyd">Square Yards (yd²)</option>
+          <option value="rood">Roods — ¼ acre</option>
+          <option value="acre">Acres (ac)</option>
+          <option value="sqmi">Square Miles (mi²)</option>
+          <option disabled>── US ──</option>
+          <option value="section">US Section (1 sq mile)</option>
+        </select>
+      </div>
+
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+        <button type="button" class="btn-mini" onclick="landClear()">Clear</button>
+        <button type="button" class="btn-mini primary" onclick="copyLand()">Copy conversions</button>
+      </div>
+
+      <!-- m² hero display -->
+      <div class="rrow" id="land-m2-row" style="display:none;margin-top:16px;background:var(--accent-dim);border:1px solid rgba(0,191,191,.25);padding:12px 14px;">
+        <span class="rlabel">= Square Metres</span>
+        <span class="rval big" id="land-m2-display">—</span>
+      </div>
+
+      <div class="results" style="margin-top:12px" id="land-results">
+        <div class="rrow"><span class="rlabel" style="color:var(--muted);font-size:9px;letter-spacing:.2em">Enter a value above to see conversions</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-id">// reference</div>
+      <h2>Land Units Reference</h2>
+      <div class="results">
+        <div class="rrow"><span class="rlabel">1 Acre</span><span class="rval" style="font-size:13px">4,047 m²</span></div>
+        <div class="rrow"><span class="rlabel">1 Rood</span><span class="rval" style="font-size:13px">1,012 m² (¼ acre)</span></div>
+        <div class="rrow"><span class="rlabel">1 Hectare</span><span class="rval" style="font-size:13px">10,000 m²</span></div>
+        <div class="rrow"><span class="rlabel">1 Are</span><span class="rval" style="font-size:13px">100 m²</span></div>
+        <div class="rrow"><span class="rlabel">1 Centiare</span><span class="rval" style="font-size:13px">1 m²</span></div>
+        <div class="rrow"><span class="rlabel">1 sq mile / Section</span><span class="rval" style="font-size:13px">259 ha</span></div>
+        <div class="rrow"><span class="rlabel">1 sq mile</span><span class="rval" style="font-size:13px">640 acres</span></div>
+        <div class="rrow"><span class="rlabel">1 Hectare</span><span class="rval" style="font-size:13px">2.471 acres</span></div>
+        <div class="rrow"><span class="rlabel">1 Acre</span><span class="rval" style="font-size:13px">0.4047 ha</span></div>
+      </div>
+      <div class="info" style="margin-top:14px">
+        French cadastre documents use <strong>ha / a / ca</strong> (hectares, ares, centiares). A plot shown as <strong>0ha 12a 50ca</strong> = 1,250 m². Irish deeds often still quote <strong>acres, roods and perches</strong> (1 perch = 1/40 acre).
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>DT-Plans · Site Calculators v3.0 · 2026</footer>
+
+<!-- ══════════════════ CONVERTER ADDITIONS (injected via JS setCvDir) ══════════════════ -->
+<!-- These panes live inside the converter card but are added here as a reference — the card HTML in sec-convert already has the imp panes; we add met panes dynamically below via the setCvDir toggle. The actual met HTML is inline in the card above. -->
+
+<!-- ══════════════════ MATERIALS ══════════════════ -->
+<div class="section" id="sec-materials">
+  <div class="tabs" style="max-width:900px;margin:0 auto 20px;">
+    <div class="tab active" onclick="matTab('concrete',this)">Concrete</div>
+    <div class="tab" onclick="matTab('screed',this)">Screed</div>
+    <div class="tab" onclick="matTab('paint',this)">Paint / Enduit</div>
+    <div class="tab" onclick="matTab('brick',this)">Brick / Block</div>
+    <div class="tab" onclick="matTab('wall',this)">Wall Volume</div>
+    <div class="tab" onclick="matTab('foundation',this)">Foundations</div>
+  </div>
+
+  <!-- CONCRETE -->
+  <div class="tab-pane visible" id="mt-concrete">
+    <div class="grid">
+      <div class="card">
+        <div class="card-id">// mat-01</div>
+        <h2>Concrete Mix</h2>
+        <div class="info">Site-mix ratios by weight. For ready-mix, use the volume output directly. W/C ratio assumed ~0.5.</div>
+        <div class="divider"></div>
+        <div class="field">
+          <label>Concrete Class</label>
+          <select id="conc-class" onchange="calcConcrete()">
+            <option value="C15">C15 — lean mix, blinding</option>
+            <option value="C20">C20 — general purpose</option>
+            <option value="C25" selected>C25 — standard structural</option>
+            <option value="C30">C30 — reinforced structures</option>
+            <option value="C35">C35 — heavy duty</option>
+            <option value="C40">C40 — high performance</option>
+          </select>
+        </div>
+        <div class="field"><label>Volume Required (m³)</label><input type="number" id="conc-vol" placeholder="1.5" step="any" oninput="calcConcrete()"></div>
+        <div class="results">
+          <div class="rrow"><span class="rlabel">Cement</span><span class="rval" id="o-conc-cement">—<span class="u">kg</span></span></div>
+          <div class="rrow"><span class="rlabel">Sand</span><span class="rval" id="o-conc-sand">—<span class="u">kg</span></span></div>
+          <div class="rrow"><span class="rlabel">Aggregate</span><span class="rval" id="o-conc-agg">—<span class="u">kg</span></span></div>
+          <div class="rrow"><span class="rlabel">Water</span><span class="rval" id="o-conc-water">—<span class="u">L</span></span></div>
+          <div class="rrow"><span class="rlabel">25kg bags cement</span><span class="rval" id="o-conc-bags25">—</span></div>
+          <div class="rrow"><span class="rlabel">50kg bags cement</span><span class="rval" id="o-conc-bags50">—</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-id">// ref</div>
+        <h2>Mix Reference</h2>
+        <div class="results">
+          <div class="rrow"><span class="rlabel">C15 (1:3:6)</span><span class="rval" style="font-size:13px">240 kg/m³</span></div>
+          <div class="rrow"><span class="rlabel">C20 (1:2.5:5)</span><span class="rval" style="font-size:13px">280 kg/m³</span></div>
+          <div class="rrow"><span class="rlabel">C25 (1:2:4)</span><span class="rval" style="font-size:13px">320 kg/m³</span></div>
+          <div class="rrow"><span class="rlabel">C30 (1:1.5:3)</span><span class="rval" style="font-size:13px">370 kg/m³</span></div>
+          <div class="rrow"><span class="rlabel">C35 (1:1.25:2.5)</span><span class="rval" style="font-size:13px">400 kg/m³</span></div>
+          <div class="rrow"><span class="rlabel">C40 (1:1:2)</span><span class="rval" style="font-size:13px">450 kg/m³</span></div>
+        </div>
+        <div class="info" style="margin-top:14px">Ratios are cement:sand:aggregate by weight. Always add admixtures to the water before mixing. For exposed or waterproof concrete, specify to your supplier.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCREED -->
+  <div class="tab-pane" id="mt-screed">
+    <div class="grid">
+      <div class="card">
+        <div class="card-id">// mat-02</div>
+        <h2>Screed Volume</h2>
+        <div class="info">Sand:cement screed, approx 1800 kg/m³. Typical thickness: 50–75mm structural, 25–40mm bonded.</div>
+        <div class="divider"></div>
+        <div class="field"><label>Floor Area (m²)</label><input type="number" id="scr-area" placeholder="25" step="any" oninput="calcScreed()"></div>
+        <div class="field"><label>Screed Thickness (mm)</label><input type="number" id="scr-thk" placeholder="65" step="any" oninput="calcScreed()"></div>
+        <div class="results">
+          <div class="rrow"><span class="rlabel">Volume</span><span class="rval" id="o-scr-vol">—<span class="u">m³</span></span></div>
+          <div class="rrow"><span class="rlabel">Bagged (25kg)</span><span class="rval" id="o-scr-bags">—</span></div>
+          <div class="rrow"><span class="rlabel">Ready-mix order</span><span class="rval" id="o-scr-mix">—</span></div>
+          <div class="rrow"><span class="rlabel">Approx weight</span><span class="rval" id="o-scr-weight">—<span class="u">kg</span></span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-id">// ref</div>
+        <h2>Screed Reference</h2>
+        <div class="results">
+          <div class="rrow"><span class="rlabel">Unbonded / floating</span><span class="rval" style="font-size:13px">≥ 65 mm</span></div>
+          <div class="rrow"><span class="rlabel">Bonded screed</span><span class="rval" style="font-size:13px">25–40 mm</span></div>
+          <div class="rrow"><span class="rlabel">UFH (liquid)</span><span class="rval" style="font-size:13px">≥ 30mm above pipe</span></div>
+          <div class="rrow"><span class="rlabel">Mix ratio</span><span class="rval" style="font-size:13px">1:3–4 (c:s)</span></div>
+          <div class="rrow"><span class="rlabel">Density</span><span class="rval" style="font-size:13px">~1800 kg/m³</span></div>
+          <div class="rrow"><span class="rlabel">Coverage 25kg bag</span><span class="rval" style="font-size:13px">~0.014 m³</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAINT -->
+  <div class="tab-pane" id="mt-paint">
+    <div class="grid">
+      <div class="card">
+        <div class="card-id">// mat-03</div>
+        <h2>Paint / Enduit Coverage</h2>
+        <div class="info">Enter the area, product yield (m²/L from the tin), number of coats, and waste allowance.</div>
+        <div class="divider"></div>
+        <div class="field"><label>Surface Area (m²)</label><input type="number" id="pnt-area" placeholder="60" step="any" oninput="calcPaint()"></div>
+        <div class="field"><label>Product Yield (m²/L)</label><input type="number" id="pnt-yield" placeholder="10" step="any" oninput="calcPaint()"></div>
+        <div class="field">
+          <label>Number of Coats</label>
+          <select id="pnt-coats" onchange="calcPaint()">
+            <option value="1">1 coat</option>
+            <option value="2" selected>2 coats</option>
+            <option value="3">3 coats</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Waste Allowance</label>
+          <select id="pnt-waste" onchange="calcPaint()">
+            <option value="0.05">5% — flat, even surfaces</option>
+            <option value="0.10" selected>10% — standard</option>
+            <option value="0.15">15% — textured / cut-in heavy</option>
+          </select>
+        </div>
+        <div class="results">
+          <div class="rrow"><span class="rlabel">Net Litres</span><span class="rval" id="o-pnt-net">—<span class="u">L</span></span></div>
+          <div class="rrow"><span class="rlabel">With Waste</span><span class="rval" id="o-pnt-gross">—<span class="u">L</span></span></div>
+          <div class="rrow"><span class="rlabel">Order in 1L tins</span><span class="rval" id="o-pnt-1l">—</span></div>
+          <div class="rrow"><span class="rlabel">Order in 5L tins</span><span class="rval" id="o-pnt-5l">—</span></div>
+          <div class="rrow"><span class="rlabel">Order in 10L tins</span><span class="rval" id="o-pnt-10l">—</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-id">// ref</div>
+        <h2>Coverage Reference</h2>
+        <div class="results">
+          <div class="rrow"><span class="rlabel">Masonry paint</span><span class="rval" style="font-size:13px">5–8 m²/L</span></div>
+          <div class="rrow"><span class="rlabel">Emulsion (walls)</span><span class="rval" style="font-size:13px">10–12 m²/L</span></div>
+          <div class="rrow"><span class="rlabel">Gloss / satin</span><span class="rval" style="font-size:13px">12–16 m²/L</span></div>
+          <div class="rrow"><span class="rlabel">Primer</span><span class="rval" style="font-size:13px">8–10 m²/L</span></div>
+          <div class="rrow"><span class="rlabel">Enduit de façade</span><span class="rval" style="font-size:13px">1–2 m²/L</span></div>
+          <div class="rrow"><span class="rlabel">Stain / lasure</span><span class="rval" style="font-size:13px">6–10 m²/L</span></div>
+        </div>
+        <div class="info" style="margin-top:14px">Always check the tin — yields vary significantly. Porous or rough surfaces consume 20–30% more. First coat on bare plaster or timber typically uses 30% more.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BRICK -->
+  <div class="tab-pane" id="mt-brick">
+    <div class="grid">
+      <div class="card">
+        <div class="card-id">// mat-04</div>
+        <h2>Brick / Block Count</h2>
+        <div class="info">Enter the brick/block face dimensions and joint thickness to get units per m², then scale to your wall area.</div>
+        <div class="divider"></div>
+        <div class="row2">
+          <div class="field"><label>Brick Length (mm)</label><input type="number" id="brk-l" placeholder="215" step="1" oninput="calcBrick()"></div>
+          <div class="field"><label>Brick Height (mm)</label><input type="number" id="brk-h" placeholder="65" step="1" oninput="calcBrick()"></div>
+        </div>
+        <div class="field"><label>Joint Thickness (mm)</label><input type="number" id="brk-joint" placeholder="10" step="1" oninput="calcBrick()"></div>
+        <div class="field"><label>Wall Area (m²)</label><input type="number" id="brk-area" placeholder="20" step="any" oninput="calcBrick()"></div>
+        <div class="field">
+          <label>Waste Allowance</label>
+          <select id="brk-waste" onchange="calcBrick()">
+            <option value="0.05" selected>5% — straight runs</option>
+            <option value="0.10">10% — standard (openings/cuts)</option>
+            <option value="0.15">15% — complex / arches</option>
+          </select>
+        </div>
+        <div class="results">
+          <div class="rrow"><span class="rlabel">Units per m²</span><span class="rval" id="o-brk-per-m2">—</span></div>
+          <div class="rrow"><span class="rlabel">Net count</span><span class="rval" id="o-brk-net">—</span></div>
+          <div class="rrow"><span class="rlabel">With waste</span><span class="rval" id="o-brk-gross">—</span></div>
+          <div class="rrow"><span class="rlabel">Mortar volume</span><span class="rval" id="o-brk-mortar">—</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-id">// ref</div>
+        <h2>Standard Sizes</h2>
+        <div class="results">
+          <div class="rrow"><span class="rlabel">UK Brick (215×65)</span><span class="rval" style="font-size:13px">~60/m²</span></div>
+          <div class="rrow"><span class="rlabel">Modular (190×90)</span><span class="rval" style="font-size:13px">~45/m²</span></div>
+          <div class="rrow"><span class="rlabel">Thermoblock 200×200</span><span class="rval" style="font-size:13px">~25/m²</span></div>
+          <div class="rrow"><span class="rlabel">Block 440×215</span><span class="rval" style="font-size:13px">~10/m²</span></div>
+          <div class="rrow"><span class="rlabel">Parpaing 500×200</span><span class="rval" style="font-size:13px">~9/m²</span></div>
+          <div class="rrow"><span class="rlabel">Brique Monomur 375</span><span class="rval" style="font-size:13px">~8/m²</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WALL VOLUME -->
+  <div class="tab-pane" id="mt-wall">
+    <div class="grid">
+      <div class="card">
+        <div class="card-id">// mat-05</div>
+        <h2>Wall Volume</h2>
+        <div class="info">Gross wall volume minus opening volumes (doors, windows). Result gives net m³ of masonry or concrete for ordering.</div>
+        <div class="divider"></div>
+        <div class="row2">
+          <div class="field"><label>Wall Length (m)</label><input type="number" id="wv-l" placeholder="8" step="any" oninput="calcWallVol()"></div>
+          <div class="field"><label>Wall Height (m)</label><input type="number" id="wv-h" placeholder="2.7" step="any" oninput="calcWallVol()"></div>
+        </div>
+        <div class="field"><label>Wall Thickness (m)</label><input type="number" id="wv-t" placeholder="0.2" step="any" oninput="calcWallVol()"></div>
+        <div class="field"><label>Total Opening Volume (m³) <span style="color:var(--muted)">doors + windows</span></label><input type="number" id="wv-op" placeholder="0" step="any" oninput="calcWallVol()"></div>
+        <div class="results">
+          <div class="rrow"><span class="rlabel">Gross Wall Area</span><span class="rval" id="o-wv-area">—<span class="u">m²</span></span></div>
+          <div class="rrow"><span class="rlabel">Gross Volume</span><span class="rval" id="o-wv-gross">—<span class="u">m³</span></span></div>
+          <div class="rrow"><span class="rlabel">Opening Deduction</span><span class="rval" id="o-wv-open">—<span class="u">m³</span></span></div>
+          <div class="rrow"><span class="rlabel">Net Volume</span><span class="rval big" id="o-wv-net">—<span class="u">m³</span></span></div>
+        </div>
+      </div>
+      <div class="card" style="display:flex;flex-direction:column;justify-content:center;">
+        <div class="info">To calculate opening volume: multiply each opening width × height × wall thickness, then sum and enter the total above.<br><br>Example: door 0.9m × 2.1m × 0.2m wall = 0.378 m³. Two windows 1.2m × 1.0m × 0.2m = 0.48 m³. Total = 0.858 m³.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOUNDATION -->
+  <div class="tab-pane" id="mt-foundation">
+    <div class="grid">
+      <div class="card">
+        <div class="card-id">// mat-06</div>
+        <h2>Foundation Volume</h2>
+        <div class="info">Strip, pad, or trench foundations. Enter single footing dimensions and quantity for totals.</div>
+        <div class="divider"></div>
+        <div class="row2">
+          <div class="field"><label>Length (m)</label><input type="number" id="fn-l" placeholder="5" step="any" oninput="calcFoundation()"></div>
+          <div class="field"><label>Width (m)</label><input type="number" id="fn-w" placeholder="0.6" step="any" oninput="calcFoundation()"></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label>Depth (m)</label><input type="number" id="fn-d" placeholder="0.3" step="any" oninput="calcFoundation()"></div>
+          <div class="field"><label>Quantity (nr)</label><input type="number" id="fn-qty" placeholder="1" step="1" oninput="calcFoundation()"></div>
+        </div>
+        <div class="results">
+          <div class="rrow"><span class="rlabel">Single Volume</span><span class="rval" id="o-fn-single">—<span class="u">m³</span></span></div>
+          <div class="rrow"><span class="rlabel">Total Concrete</span><span class="rval big" id="o-fn-total">—<span class="u">m³</span></span></div>
+          <div class="rrow"><span class="rlabel">Excavation (+15%)</span><span class="rval" id="o-fn-excav">—<span class="u">m³</span></span></div>
+          <div class="rrow"><span class="rlabel">Approx weight</span><span class="rval" id="o-fn-weight">—</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-id">// ref</div>
+        <h2>Foundation Reference</h2>
+        <div class="results">
+          <div class="rrow"><span class="rlabel">Min depth (frost)</span><span class="rval" style="font-size:13px">≥ 0.5m (FR)</span></div>
+          <div class="rrow"><span class="rlabel">Strip min width</span><span class="rval" style="font-size:13px">≥ 2× wall width</span></div>
+          <div class="rrow"><span class="rlabel">Concrete density</span><span class="rval" style="font-size:13px">2400 kg/m³</span></div>
+          <div class="rrow"><span class="rlabel">Overdig allowance</span><span class="rval" style="font-size:13px">+15% typical</span></div>
+          <div class="rrow"><span class="rlabel">Min cover (RC)</span><span class="rval" style="font-size:13px">40–50 mm</span></div>
+        </div>
+        <div class="info" style="margin-top:14px">Always check local DTU and soil survey before finalising foundation depths. Clay soils in France may require deeper foundations due to retrait-gonflement.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ SITE / LAYOUT ══════════════════ -->
+<div class="section" id="sec-site">
+  <div class="grid-3">
+
+    <!-- CIRCLE -->
+    <div class="card">
+      <div class="card-id">// site-01</div>
+      <h2>Circle / Arc</h2>
+      <div class="info">Enter radius, diameter, or circumference — all other values calculated. Add an angle for arc and sector.</div>
+      <div class="divider"></div>
+      <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;">
+        <label style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text);cursor:pointer;"><input type="radio" name="circ-src" value="r" checked onchange="calcCircle()" style="width:auto;"> Radius</label>
+        <label style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text);cursor:pointer;"><input type="radio" name="circ-src" value="d" onchange="calcCircle()" style="width:auto;"> Diameter</label>
+        <label style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text);cursor:pointer;"><input type="radio" name="circ-src" value="c" onchange="calcCircle()" style="width:auto;"> Circumference</label>
+      </div>
+      <div class="field"><label>Radius (m)</label><input type="number" id="circ-r" placeholder="0" step="any" oninput="calcCircle()"></div>
+      <div class="field"><label>Diameter (m)</label><input type="number" id="circ-d" placeholder="0" step="any" oninput="calcCircle()"></div>
+      <div class="field"><label>Circumference (m)</label><input type="number" id="circ-c" placeholder="0" step="any" oninput="calcCircle()"></div>
+      <div class="divider"></div>
+      <div class="field"><label>Arc Angle (°) <span style="color:var(--muted)">optional</span></label><input type="number" id="circ-arc-ang" placeholder="90" step="any" oninput="calcCircle()"></div>
+      <div class="results">
+        <div class="rrow"><span class="rlabel">Radius</span><span class="rval" id="o-circ-r">—<span class="u">m</span></span></div>
+        <div class="rrow"><span class="rlabel">Diameter</span><span class="rval" id="o-circ-d">—<span class="u">m</span></span></div>
+        <div class="rrow"><span class="rlabel">Circumference</span><span class="rval" id="o-circ-c">—<span class="u">m</span></span></div>
+        <div class="rrow"><span class="rlabel">Area</span><span class="rval" id="o-circ-area">—<span class="u">m²</span></span></div>
+        <div class="rrow"><span class="rlabel">Arc Length</span><span class="rval" id="o-circ-arc">—<span class="u">m</span></span></div>
+        <div class="rrow"><span class="rlabel">Sector Area</span><span class="rval" id="o-circ-sector">—<span class="u">m²</span></span></div>
+        <div class="rrow"><span class="rlabel">Chord Length</span><span class="rval" id="o-circ-chord">—<span class="u">m</span></span></div>
+      </div>
+    </div>
+
+    <!-- CUT & FILL -->
+    <div class="card">
+      <div class="card-id">// site-02</div>
+      <h2>Cut &amp; Fill</h2>
+      <div class="info">Average End Area method. Enter two cross-section areas and the distance between them.</div>
+      <div class="divider"></div>
+      <div class="field"><label>Cross-section Area 1 (m²)</label><input type="number" id="cf-a1" placeholder="3.5" step="any" oninput="calcCutFill()"></div>
+      <div class="field"><label>Cross-section Area 2 (m²)</label><input type="number" id="cf-a2" placeholder="4.2" step="any" oninput="calcCutFill()"></div>
+      <div class="field"><label>Distance Between Sections (m)</label><input type="number" id="cf-l" placeholder="10" step="any" oninput="calcCutFill()"></div>
+      <div class="field"><label>Swell Factor (%)</label><input type="number" id="cf-swell" placeholder="25" step="1" oninput="calcCutFill()"></div>
+      <div class="field"><label>Compaction Factor (%)</label><input type="number" id="cf-comp" placeholder="90" step="1" oninput="calcCutFill()"></div>
+      <div class="results">
+        <div class="rrow"><span class="rlabel">In-situ Volume</span><span class="rval big" id="o-cf-vol">—<span class="u">m³</span></span></div>
+        <div class="rrow"><span class="rlabel">Loose (excavated)</span><span class="rval" id="o-cf-loose">—</span></div>
+        <div class="rrow"><span class="rlabel">Compacted fill</span><span class="rval" id="o-cf-compact">—</span></div>
+        <div class="rrow"><span class="rlabel">Truck loads</span><span class="rval" id="o-cf-trucks">—</span></div>
+      </div>
+      <div class="info" style="margin-top:14px">Typical swell: sand 10–15%, clay 25–35%, rock 30–40%. Compaction factor varies — always confirm with geotechnical report.</div>
+    </div>
+
+    <!-- TEMP / WEIGHT / PRESSURE -->
+    <div class="card">
+      <div class="card-id">// site-03</div>
+      <h2>Temp · Weight · Pressure</h2>
+      <div class="tabs" style="margin-bottom:14px;">
+        <div class="tab active" onclick="siteTab('temp',this)">Temp</div>
+        <div class="tab" onclick="siteTab('weight',this)">Weight</div>
+        <div class="tab" onclick="siteTab('pressure',this)">Pressure</div>
+      </div>
+
+      <!-- TEMP -->
+      <div class="tab-pane visible" id="sw-temp">
+        <div class="field"><label>Celsius (°C)</label><input type="number" id="cv-tempc" placeholder="0" step="any" oninput="doTemp('c')"></div>
+        <div class="results" style="margin-bottom:14px;">
+          <div class="rrow"><span class="rlabel">Fahrenheit</span><span class="rval" id="o-tempf">—<span class="u">°F</span></span></div>
+          <div class="rrow"><span class="rlabel">Kelvin</span><span class="rval" id="o-tempk">—<span class="u">K</span></span></div>
+        </div>
+        <div class="field"><label>Fahrenheit (°F)</label><input type="number" id="cv-tempf" placeholder="32" step="any" oninput="doTemp('f')"></div>
+        <div class="results">
+          <div class="rrow"><span class="rlabel">Celsius</span><span class="rval" id="o-tempc">—<span class="u">°C</span></span></div>
+          <div class="rrow"><span class="rlabel">Kelvin</span><span class="rval" id="o-tempk2">—<span class="u">K</span></span></div>
+        </div>
+      </div>
+
+      <!-- WEIGHT -->
+      <div class="tab-pane" id="sw-weight">
+        <div class="field"><label>Kilograms (kg)</label><input type="number" id="cv-kg" placeholder="0" step="any" oninput="doWeight('kg')"></div>
+        <div class="field"><label>Pounds (lb)</label><input type="number" id="cv-lb" placeholder="0" step="any" oninput="doWeight('lb')"></div>
+        <div class="field"><label>UK Tons</label><input type="number" id="cv-ton-uk" placeholder="0" step="any" oninput="doWeight('ton_uk')"></div>
+        <div class="field"><label>US Tons (short)</label><input type="number" id="cv-ton-us" placeholder="0" step="any" oninput="doWeight('ton_us')"></div>
+        <div class="results">
+          <div class="rrow"><span class="rlabel">kg</span><span class="rval" id="o-kg">—</span></div>
+          <div class="rrow"><span class="rlabel">Metric tonne</span><span class="rval" id="o-tonne">—<span class="u">t</span></span></div>
+          <div class="rrow"><span class="rlabel">lb</span><span class="rval" id="o-lb">—</span></div>
+          <div class="rrow"><span class="rlabel">oz</span><span class="rval" id="o-oz">—</span></div>
+          <div class="rrow"><span class="rlabel">UK ton</span><span class="rval" id="o-ton-uk">—</span></div>
+          <div class="rrow"><span class="rlabel">US ton</span><span class="rval" id="o-ton-us">—</span></div>
+        </div>
+      </div>
+
+      <!-- PRESSURE -->
+      <div class="tab-pane" id="sw-pressure">
+        <div class="field"><label>Bar</label><input type="number" id="cv-bar" placeholder="0" step="any" oninput="doPressure('bar')"></div>
+        <div class="field"><label>PSI</label><input type="number" id="cv-psi" placeholder="0" step="any" oninput="doPressure('psi')"></div>
+        <div class="field"><label>kPa</label><input type="number" id="cv-kpa" placeholder="0" step="any" oninput="doPressure('kpa')"></div>
+        <div class="results">
+          <div class="rrow"><span class="rlabel">bar</span><span class="rval" id="o-bar">—</span></div>
+          <div class="rrow"><span class="rlabel">psi</span><span class="rval" id="o-psi">—</span></div>
+          <div class="rrow"><span class="rlabel">kPa</span><span class="rval" id="o-kpa">—</span></div>
+          <div class="rrow"><span class="rlabel">MPa</span><span class="rval" id="o-mpa">—</span></div>
+          <div class="rrow"><span class="rlabel">atm</span><span class="rval" id="o-atm">—</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ PROJECT ══════════════════ -->
+<div class="section" id="sec-project">
+  <div class="grid">
+
+    <!-- VAT -->
+    <div class="card">
+      <div class="card-id">// proj-01</div>
+      <h2>VAT Calculator</h2>
+      <div class="tabs">
+        <div class="tab active" onclick="vatTab('add',this)">Add VAT</div>
+        <div class="tab" onclick="vatTab('extract',this)">Extract VAT</div>
+      </div>
+      <div class="tab-pane visible" id="vt-add">
+        <div class="field"><label>Net Amount (HT)</label><input type="number" id="vat-net" placeholder="1000" step="any" oninput="calcVAT()"></div>
+        <div class="field">
+          <label>VAT Rate</label>
+          <select id="vat-rate" onchange="calcVAT()">
+            <option value="20" selected>20% — standard (FR/UK)</option>
+            <option value="10">10% — reduced (FR travaux)</option>
+            <option value="5.5">5.5% — reduced (FR rénovation énergie)</option>
+            <option value="2.1">2.1% — super-reduced (FR)</option>
+            <option value="0">0% — exempt / zero-rated</option>
+            <option value="23">23% — Ireland standard</option>
+            <option value="13.5">13.5% — Ireland reduced</option>
+          </select>
+        </div>
+        <div class="results">
+          <div class="rrow"><span class="rlabel">VAT Amount</span><span class="rval" id="o-vat-amt">—<span class="u">€</span></span></div>
+          <div class="rrow"><span class="rlabel">Gross (TTC)</span><span class="rval big" id="o-vat-gross">—<span class="u">€</span></span></div>
+        </div>
+        <div class="info" style="margin-top:14px">French renovation at 10% (travaux) or 5.5% (energy improvement) applies to works on dwellings >2 years old. Always confirm eligibility with your client.</div>
+      </div>
+      <div class="tab-pane" id="vt-extract">
+        <div class="field"><label>Gross Amount (TTC)</label><input type="number" id="vat-gross-in" placeholder="1200" step="any" oninput="calcVATRev()"></div>
+        <div class="field">
+          <label>VAT Rate</label>
+          <select id="vat-rate2" onchange="calcVATRev()">
+            <option value="20" selected>20% — standard</option>
+            <option value="10">10% — reduced</option>
+            <option value="5.5">5.5% — super-reduced</option>
+            <option value="23">23% — Ireland standard</option>
+            <option value="13.5">13.5% — Ireland reduced</option>
+          </select>
+        </div>
+        <div class="results">
+          <div class="rrow"><span class="rlabel">Net (HT)</span><span class="rval big" id="o-vat-net2">—<span class="u">€</span></span></div>
+          <div class="rrow"><span class="rlabel">VAT Content</span><span class="rval" id="o-vat-amt2">—<span class="u">€</span></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PERCENTAGE -->
+    <div class="card">
+      <div class="card-id">// proj-02</div>
+      <h2>Percentage Calculator</h2>
+      <div class="info">Select the type of calculation, enter the two values.</div>
+      <div class="divider"></div>
+      <div class="field">
+        <label>Calculation Type</label>
+        <select id="pct-src" onchange="updatePctLabels()">
+          <option value="of">A% of B</option>
+          <option value="what">A is what % of B</option>
+          <option value="markup">B + A% markup → sell price</option>
+          <option value="margin">Sell price for A% gross margin on B cost</option>
+          <option value="change">% change from A to B</option>
+        </select>
+      </div>
+      <div class="row2">
+        <div class="field"><label id="pct-la">A</label><input type="number" id="pct-a" placeholder="0" step="any" oninput="calcPct()"></div>
+        <div class="field"><label id="pct-lb">B</label><input type="number" id="pct-b" placeholder="0" step="any" oninput="calcPct()"></div>
+      </div>
+      <div class="results">
+        <div class="rrow"><span class="rlabel">Result</span><span class="rval big" id="o-pct-res">—</span></div>
+      </div>
+    </div>
+
+    <!-- COST BREAKDOWN -->
+    <div class="card" style="grid-column:1/-1;">
+      <div class="card-id">// proj-03</div>
+      <h2>Cost Breakdown</h2>
+      <div class="info">Build a multi-line quantity take-off. Click + Add Line to add items — description, quantity, unit, and rate. Totals update live.</div>
+      <div class="divider"></div>
+      <!-- Header row -->
+      <div style="display:grid;grid-template-columns:2fr 1fr 80px 1fr 1fr 32px;gap:6px;margin-bottom:8px;">
+        <span class="rlabel">Description</span>
+        <span class="rlabel">Qty</span>
+        <span class="rlabel">Unit</span>
+        <span class="rlabel">Rate (€)</span>
+        <span class="rlabel">Total</span>
+        <span></span>
+      </div>
+      <div id="cost-rows"></div>
+      <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
+        <button class="btn-mini primary" onclick="addCostRow()">+ Add Line</button>
+        <button class="btn-mini" onclick="clearCostRows()">Clear All</button>
+      </div>
+      <div class="divider"></div>
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px;">
+        <span class="rlabel">VAT Rate</span>
+        <select id="cost-vat" onchange="renderCostRows()" style="width:auto;font-size:13px;padding:6px 10px;">
+          <option value="20">20%</option><option value="10">10%</option>
+          <option value="5.5">5.5%</option><option value="0">0%</option>
+        </select>
+      </div>
+      <div class="results">
+        <div class="rrow"><span class="rlabel">Total HT</span><span class="rval big" id="cost-total">0.00 €</span></div>
+        <div class="rrow"><span class="rlabel">VAT</span><span class="rval" id="cost-vat-amt">0.00 €</span></div>
+        <div class="rrow"><span class="rlabel">Total TTC</span><span class="rval big" id="cost-ttc">0.00 €</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+// ── NAV ──────────────────────────────────────────────────────────────────────
+function showSection(id, ev){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('visible'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  const sec = document.getElementById('sec-'+id);
+  if(sec) sec.classList.add('visible');
+  if(ev && ev.target) ev.target.classList.add('active');
+
+  // UX: focus first usable control in the active section
+  if(sec){
+    const firstField = sec.querySelector('input, select, button');
+    if(firstField) setTimeout(()=>firstField.focus({ preventScroll: true }), 0);
+  }
+}
+
+// ── TABS (generic) ────────────────────────────────────────────────────────────
+function cvTab(id,el){
+  el.closest('.card').querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  el.closest('.card').querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('visible'));
+  document.getElementById('cv-'+id).classList.add('visible');
+}
+function roofTab(id,el){
+  document.querySelectorAll('#sec-roofs .tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('#sec-roofs .tab-pane').forEach(p=>p.classList.remove('visible'));
+  document.getElementById('rf-'+id).classList.add('visible');
+}
+
+// ── HELPERS ───────────────────────────────────────────────────────────────────
+const f=(v,d=2)=>isNaN(v)||v===null?'—':parseFloat(v.toFixed(d)).toString();
+const deg2rad=d=>d*Math.PI/180;
+const rad2deg=r=>r*180/Math.PI;
+function pitchDesc(a){
+  if(a<5) return '<strong>Flat / Near-flat</strong> — membrane or standing seam required';
+  if(a<15) return '<strong>Low pitch</strong> — minimum 2 underlays recommended';
+  if(a<25) return '<strong>Moderate pitch</strong> — standard tiling range';
+  if(a<35) return '<strong>Steep pitch</strong> — good runoff, check tile spec';
+  if(a<50) return '<strong>Very steep</strong> — battening & safety critical';
+  return '<strong>Extreme pitch</strong> — specialist installation required';
+}
+function setVal(id,html){document.getElementById(id).innerHTML=html;}
+function showTag(id,html){const el=document.getElementById(id);if(el){el.innerHTML=html;el.style.display='block';}}
+function hideTag(id){const el=document.getElementById(id);if(el)el.style.display='none';}
+
+// ── CONVERTER ────────────────────────────────────────────────────────────────
+function doLength(){
+  const ft=+document.getElementById('cv-ft').value||0;
+  const ins=+document.getElementById('cv-in').value||0;
+  const m=(ft*12+ins)*0.0254;
+  setVal('o-m',f(m,4)+'<span class="u">m</span>');
+  setVal('o-cm',f(m*100,2)+'<span class="u">cm</span>');
+  setVal('o-mm',f(m*1000,1)+'<span class="u">mm</span>');
+}
+function doArea(){
+  const s=+document.getElementById('cv-sqft').value||0;
+  const m=s*0.092903;
+  setVal('o-sqm',f(m,4)+'<span class="u">m²</span>');
+  setVal('o-sqcm',f(m*10000,1)+'<span class="u">cm²</span>');
+}
+function doVolume(){
+  const v=+document.getElementById('cv-cuft').value||0;
+  const m=v*0.0283168;
+  setVal('o-cum',f(m,5)+'<span class="u">m³</span>');
+  setVal('o-lit',f(m*1000,2)+'<span class="u">L</span>');
+}
+
+// ── MONO ─────────────────────────────────────────────────────────────────────
+function calcMono(){
+  const run=+document.getElementById('mo-run').value;
+  const rise=+document.getElementById('mo-rise').value;
+  const w=+document.getElementById('mo-width').value;
+  if(!run||!rise){hideTag('mo-tag');return;}
+  const hyp=Math.sqrt(run*run+rise*rise);
+  const ang=rad2deg(Math.atan2(rise,run));
+  const pct=(rise/run)*100;
+  const area=w?hyp*w:null;
+  setVal('mo-ang',f(ang,1)+'<span class="u">°</span>');
+  setVal('mo-raf',f(hyp,3)+'<span class="u">m</span>');
+  setVal('mo-pct',f(pct,1)+'<span class="u">%</span>');
+  setVal('mo-area',area?f(area,2)+'<span class="u">m²</span>':'enter width');
+  showTag('mo-tag',pitchDesc(ang));
+}
+
+// ── GABLE ─────────────────────────────────────────────────────────────────────
+function calcGable(){
+  const run=+document.getElementById('gb-run').value;
+  const rise=+document.getElementById('gb-rise').value;
+  const len=+document.getElementById('gb-len').value;
+  if(!run||!rise){hideTag('gb-tag');return;}
+  const hyp=Math.sqrt(run*run+rise*rise);
+  const ang=rad2deg(Math.atan2(rise,run));
+  const pct=(rise/run)*100;
+  const area=len?2*hyp*len:null;
+  const cnt=len?Math.ceil((len/0.6)+1)*2:null;
+  setVal('gb-ang',f(ang,1)+'<span class="u">°</span>');
+  setVal('gb-raf',f(hyp,3)+'<span class="u">m</span>');
+  setVal('gb-pct',f(pct,1)+'<span class="u">%</span>');
+  setVal('gb-area',area?f(area,2)+'<span class="u">m²</span>':'enter ridge length');
+  setVal('gb-cnt',cnt?cnt+' rafters':'enter ridge length');
+  showTag('gb-tag',pitchDesc(ang));
+}
+
+// ── HIP ───────────────────────────────────────────────────────────────────────
+function calcHip(){
+  const L=+document.getElementById('hp-len').value;
+  const W=+document.getElementById('hp-wid').value;
+  const rise=+document.getElementById('hp-rise').value;
+  if(!L||!W||!rise){hideTag('hp-tag');return;}
+  const halfW=W/2;
+  const commonRun=halfW;
+  const commonRaf=Math.sqrt(commonRun*commonRun+rise*rise);
+  const ang=rad2deg(Math.atan2(rise,commonRun));
+  const pct=(rise/commonRun)*100;
+  const ridgeLen=Math.max(0,L-W); // ridge = length - width for a standard hip
+  // hip rafter runs from corner diagonally: horizontal distance = sqrt(halfW² + halfW²) if square, but for rectangle:
+  const hipHoriz=Math.sqrt(halfW*halfW+halfW*halfW); // corner to ridge end (45°)
+  const hipRaf=Math.sqrt(hipHoriz*hipHoriz+rise*rise);
+  // total area = footprint area (approximation for a hip roof)
+  const area=L*W; // plan area ≈ roof area adjustment via pitch factor
+  const slopeFactor=commonRaf/commonRun;
+  const roofArea=area*slopeFactor;
+  setVal('hp-ang',f(ang,1)+'<span class="u">°</span>');
+  setVal('hp-craf',f(commonRaf,3)+'<span class="u">m</span>');
+  setVal('hp-hraf',f(hipRaf,3)+'<span class="u">m</span>');
+  setVal('hp-rid',f(ridgeLen,2)+'<span class="u">m</span>');
+  setVal('hp-area',f(roofArea,2)+'<span class="u">m²</span>');
+  setVal('hp-pct',f(pct,1)+'<span class="u">%</span>');
+  showTag('hp-tag',pitchDesc(ang));
+}
+
+// ── MANSARD ───────────────────────────────────────────────────────────────────
+function calcMansard(){
+  const lr=+document.getElementById('ms-lrun').value;
+  const lri=+document.getElementById('ms-lrise').value;
+  const ur=+document.getElementById('ms-urun').value;
+  const uri=+document.getElementById('ms-urise').value;
+  const rlen=+document.getElementById('ms-rlen').value;
+  if(!lr||!lri){return;}
+  const lhyp=Math.sqrt(lr*lr+lri*lri);
+  const lang=rad2deg(Math.atan2(lri,lr));
+  setVal('ms-lang',f(lang,1)+'<span class="u">°</span>');
+  setVal('ms-lraf',f(lhyp,3)+'<span class="u">m</span>');
+  if(ur&&uri){
+    const uhyp=Math.sqrt(ur*ur+uri*uri);
+    const uang=rad2deg(Math.atan2(uri,ur));
+    setVal('ms-uang',f(uang,1)+'<span class="u">°</span>');
+    setVal('ms-uraf',f(uhyp,3)+'<span class="u">m</span>');
+    if(rlen){
+      const area=(lhyp+uhyp)*rlen;
+      setVal('ms-area',f(area,2)+'<span class="u">m²</span>');
+    }
+  }
+}
+
+// ── GAMBREL ───────────────────────────────────────────────────────────────────
+function calcGambrel(){
+  const lr=+document.getElementById('gm-lrun').value;
+  const lri=+document.getElementById('gm-lrise').value;
+  const ur=+document.getElementById('gm-urun').value;
+  const uri=+document.getElementById('gm-urise').value;
+  const blen=+document.getElementById('gm-blen').value;
+  if(!lr||!lri) return;
+  const lhyp=Math.sqrt(lr*lr+lri*lri);
+  const lang=rad2deg(Math.atan2(lri,lr));
+  setVal('gm-lang',f(lang,1)+'<span class="u">°</span>');
+  setVal('gm-lraf',f(lhyp,3)+'<span class="u">m</span>');
+  if(ur&&uri){
+    const uhyp=Math.sqrt(ur*ur+uri*uri);
+    const uang=rad2deg(Math.atan2(uri,ur));
+    setVal('gm-uang',f(uang,1)+'<span class="u">°</span>');
+    setVal('gm-uraf',f(uhyp,3)+'<span class="u">m</span>');
+    if(blen){
+      const area=2*(lhyp+uhyp)*blen;
+      setVal('gm-area',f(area,2)+'<span class="u">m²</span>');
+    }
+  }
+}
+
+// ── TILES ─────────────────────────────────────────────────────────────────────
+document.getElementById('tl-type').addEventListener('change',function(){
+  document.getElementById('tl-custom-wrap').style.display=this.value==='custom'?'block':'none';
+  calcTiles();
+});
+function calcTiles(){
+  const area=+document.getElementById('tl-area').value;
+  const typeEl=document.getElementById('tl-type');
+  const cov=typeEl.value==='custom'?(+document.getElementById('tl-custom').value):+typeEl.value;
+  const waste=+document.getElementById('tl-waste').value;
+  if(!area||!cov) return;
+  const net=Math.ceil(area/cov);
+  const gross=Math.ceil(net*(1+waste));
+  const pack=Math.ceil(gross/10)*10;
+  setVal('tl-net',net+' tiles');
+  setVal('tl-gross','<span class="big">'+gross+'</span> tiles');
+  setVal('tl-pack',pack+' tiles');
+}
+
+// ── STAIRS ───────────────────────────────────────────────────────────────────
+function calcStairs(){
+  const H=+document.getElementById('st-h').value;
+  const prefR=+document.getElementById('st-r').value;
+  if(!H) return;
+  let n,R;
+  if(prefR>=150&&prefR<=200){
+    n=Math.round(H/prefR);
+    R=H/n;
+  } else {
+    n=Math.round(H/175);
+    R=H/n;
+    if(R<150)n--;else if(R>200)n++;
+    R=H/n;
+  }
+  const G=630-(2*R);
+  const run=(n-1)*G;
+  const stringer=Math.sqrt(run*run+H*H);
+  const blondel=2*R+G;
+  setVal('st-n','<span class="big">'+n+'</span>');
+  setVal('st-ar',f(R,1)+'<span class="u">mm</span>');
+  setVal('st-g',f(G,1)+'<span class="u">mm</span>');
+  setVal('st-bl',f(blondel,1)+'<span class="u">mm</span>');
+  setVal('st-run',f(run,0)+'<span class="u">mm</span>');
+  setVal('st-str',f(stringer,0)+'<span class="u">mm</span>');
+  let warn='';
+  const ok=R>=150&&R<=200&&G>=220&&G<=320&&blondel>=590&&blondel<=650;
+  if(!ok){
+    warn='<strong>⚠ Check values:</strong> ';
+    if(R<150||R>200) warn+='Rise out of range (150–200mm). ';
+    if(G<220||G>320) warn+='Going out of range (220–320mm). ';
+    if(blondel<590||blondel>650) warn+='Blondel check (590–650mm) failed.';
+    showTag('st-warn',warn);
+  } else {
+    showTag('st-warn','<strong>✓ All values within NF P01-012 limits.</strong>');
+  }
+}
+
+// ── SLOPE CONVERTER ───────────────────────────────────────────────────────────
+let _slopeUpdating=false;
+function slopeFrom(source){
+  if(_slopeUpdating) return;
+  _slopeUpdating=true;
+  let deg=NaN;
+  if(source==='deg') deg=+document.getElementById('sl-deg').value;
+  else if(source==='pct') deg=rad2deg(Math.atan(+document.getElementById('sl-pct').value/100));
+  else if(source==='rat') deg=rad2deg(Math.atan(1/(+document.getElementById('sl-rat').value)));
+  if(!isNaN(deg)&&deg>0){
+    const pct=Math.tan(deg2rad(deg))*100;
+    const rat=1/Math.tan(deg2rad(deg));
+    const mmpm=pct*10;
+    document.getElementById('sl-deg').value=source==='deg'?document.getElementById('sl-deg').value:f(deg,3);
+    document.getElementById('sl-pct').value=source==='pct'?document.getElementById('sl-pct').value:f(pct,3);
+    document.getElementById('sl-rat').value=source==='rat'?document.getElementById('sl-rat').value:f(rat,3);
+    setVal('sl-odeg',f(deg,3)+'<span class="u">°</span>');
+    setVal('sl-opct',f(pct,3)+'<span class="u">%</span>');
+    setVal('sl-arat','1 : '+f(rat,2));
+    setVal('sl-mm',f(mmpm,1)+'<span class="u">mm/m</span>');
+    showTag('sl-tag',pitchDesc(deg));
+  }
+  _slopeUpdating=false;
+}
+
+// ── 3-4-5 ─────────────────────────────────────────────────────────────────────
+function calc345(){
+  const unit=+document.getElementById('tt-unit').value||1;
+  const mult=+document.getElementById('tt-mult').value;
+  const a=3*mult*unit, b=4*mult*unit, c=5*mult*unit;
+  setVal('tt-a',f(a,4));
+  setVal('tt-b',f(b,4));
+  setVal('tt-c',f(c,4));
+}
+
+// ── PYTHAGORAS ────────────────────────────────────────────────────────────────
+function calcPyth(){
+  const a=document.getElementById('py-a').value;
+  const b=document.getElementById('py-b').value;
+  const c=document.getElementById('py-c').value;
+  const A=a===''?null:+a, B=b===''?null:+b, C=c===''?null:+c;
+  let res=null, rA=null, rB=null;
+  if(A&&B&&!C){ res=Math.sqrt(A*A+B*B); rA=rad2deg(Math.atan2(A,B)); rB=rad2deg(Math.atan2(B,A)); }
+  else if(A&&C&&!B){ res=Math.sqrt(C*C-A*A); rA=rad2deg(Math.asin(A/C)); rB=90-rA; }
+  else if(B&&C&&!A){ res=Math.sqrt(C*C-B*B); rB=rad2deg(Math.asin(B/C)); rA=90-rB; }
+  setVal('py-res',res?f(res,4):'—');
+  setVal('py-angA',rA?f(rA,2)+'<span class="u">°</span>':'—');
+  setVal('py-angB',rB?f(rB,2)+'<span class="u">°</span>':'—');
+}
+
+// init
+calc345();
+
+// ── LAND AREA ─────────────────────────────────────────────────────────────────
+// All conversion factors → m²
+const LAND = {
+  'm2':        { factor: 1,             label: 'Square Metres',    unit: 'm²' },
+  'sqft':      { factor: 0.09290304,    label: 'Square Feet',      unit: 'ft²' },
+  'sqyd':      { factor: 0.83612736,    label: 'Square Yards',     unit: 'yd²' },
+  'sqmi':      { factor: 2589988.11,    label: 'Square Miles',     unit: 'mi²' },
+  'acre':      { factor: 4046.8564224,  label: 'Acres (UK/US)',    unit: 'ac' },
+  'rood':      { factor: 1011.7141056,  label: 'Roods',            unit: 'ro' },
+  'are':       { factor: 100,           label: 'Ares',             unit: 'a' },
+  'hectare':   { factor: 10000,         label: 'Hectares',         unit: 'ha' },
+  'sqkm':      { factor: 1000000,       label: 'Square Kilometres', unit: 'km²' },
+  'section':   { factor: 2589988.11,    label: 'US Sections (1 sq mile)', unit: 'sec' },
+};
+
+function calcLand(){
+  const srcKey = document.getElementById('land-from').value;
+  const val = parseFloat(document.getElementById('land-val').value);
+  if(isNaN(val)||val<0) { clearLand(); return; }
+  // Persist for convenience (refresh-safe)
+  localStorage.setItem('land.from', srcKey);
+  localStorage.setItem('land.val', document.getElementById('land-val').value);
+  const m2 = val * LAND[srcKey].factor;
+  const tbody = document.getElementById('land-results');
+  tbody.innerHTML = '';
+  Object.entries(LAND).forEach(([key,info])=>{
+    if(key===srcKey) return;
+    const converted = m2 / info.factor;
+    // smart decimal places
+    let dp = 4;
+    if(converted >= 1000) dp = 2;
+    if(converted >= 100000) dp = 1;
+    if(converted < 0.0001) dp = 8;
+    const tr = document.createElement('div');
+    tr.className = 'rrow';
+    tr.innerHTML = `<span class="rlabel">${info.label}</span><span class="rval" style="font-size:16px">${parseFloat(converted.toFixed(dp)).toLocaleString('en-GB')} <span class="u">${info.unit}</span></span>`;
+    tbody.appendChild(tr);
+  });
+  // Also show m² prominently if not already source
+  const m2el = document.getElementById('land-m2-display');
+  if(srcKey !== 'm2'){
+    m2el.textContent = parseFloat(m2.toFixed(2)).toLocaleString('en-GB') + ' m²';
+    document.getElementById('land-m2-row').style.display='flex';
+  } else {
+    document.getElementById('land-m2-row').style.display='none';
+  }
+}
+
+function clearLand(){
+  document.getElementById('land-results').innerHTML='';
+  document.getElementById('land-m2-row').style.display='none';
+}
+
+function landClear(){
+  const valEl = document.getElementById('land-val');
+  const fromEl = document.getElementById('land-from');
+  if(valEl) valEl.value = '';
+  if(fromEl) fromEl.value = 'm2';
+  localStorage.removeItem('land.val');
+  localStorage.removeItem('land.from');
+
+  const results = document.getElementById('land-results');
+  if(results){
+    results.innerHTML = '<div class="rrow"><span class="rlabel" style="color:var(--muted);font-size:9px;letter-spacing:.2em">Enter a value above to see conversions</span></div>';
+  }
+  document.getElementById('land-m2-row').style.display='none';
+}
+
+async function copyLand(){
+  const srcKey = document.getElementById('land-from').value;
+  const val = parseFloat(document.getElementById('land-val').value);
+  if(isNaN(val) || val < 0) return;
+
+  const m2 = val * LAND[srcKey].factor;
+  const src = LAND[srcKey];
+
+  const lines = [];
+  lines.push('Land area conversions');
+  lines.push(`From: ${val.toLocaleString('en-GB')} ${src.unit} (${src.label})`);
+  lines.push(`= ${m2.toLocaleString('en-GB', { maximumFractionDigits: 2 })} m²`);
+  lines.push('');
+  Object.entries(LAND).forEach(([key, info]) => {
+    if(key === srcKey) return;
+    const converted = m2 / info.factor;
+    const formatted = converted.toLocaleString('en-GB', { maximumFractionDigits: 8 });
+    lines.push(`${info.label}: ${formatted} ${info.unit}`);
+  });
+
+  const text = lines.join('\n');
+  try{
+    await navigator.clipboard.writeText(text);
+  } catch {
+    window.prompt('Copy conversions:', text);
+  }
+}
+
+function restoreLand(){
+  const from = localStorage.getItem('land.from');
+  const val = localStorage.getItem('land.val');
+  const fromEl = document.getElementById('land-from');
+  const valEl = document.getElementById('land-val');
+
+  if(fromEl && from && LAND[from]) fromEl.value = from;
+  if(valEl && val !== null) valEl.value = val;
+  if(valEl && valEl.value !== '') calcLand();
+}
+
+// ── TAB HELPERS ──────────────────────────────────────────────────────────────
+function matTab(id,el){
+  document.querySelectorAll('#sec-materials > .tabs .tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('#sec-materials .tab-pane').forEach(p=>p.classList.remove('visible'));
+  document.getElementById('mt-'+id).classList.add('visible');
+}
+function siteTab(id,el){
+  el.closest('.tabs').querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  el.closest('.card').querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('visible'));
+  document.getElementById('sw-'+id).classList.add('visible');
+}
+function vatTab(id,el){
+  el.closest('.tabs').querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  el.closest('.card').querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('visible'));
+  document.getElementById('vt-'+id).classList.add('visible');
+}
+function updatePctLabels(){
+  const src=document.getElementById('pct-src').value;
+  const labels={
+    of:['%','Value'],'what':['Value A','Value B'],
+    markup:['Markup %','Cost'],margin:['Margin %','Cost'],
+    change:['From','To']
+  };
+  const l=labels[src]||['A','B'];
+  document.getElementById('pct-la').textContent=l[0];
+  document.getElementById('pct-lb').textContent=l[1];
+}
+function doTemp(src){
+  if(src==='c'){
+    const c=+document.getElementById('cv-tempc').value;
+    setVal('o-tempf',f(c*9/5+32,2)+'<span class="u">°F</span>');
+    setVal('o-tempk',f(c+273.15,2)+'<span class="u">K</span>');
+  } else {
+    const ff=+document.getElementById('cv-tempf').value;
+    setVal('o-tempc',f((ff-32)*5/9,2)+'<span class="u">°C</span>');
+    const k2=document.getElementById('o-tempk2');
+    if(k2) k2.innerHTML=f((ff-32)*5/9+273.15,2)+'<span class="u">K</span>';
+  }
+}
+restoreLand();
+
+// ── CONVERTER DIRECTION TOGGLE ────────────────────────────────────────────────
+let cvDir = 'imp';
+function setCvDir(dir){
+  cvDir = dir;
+  document.getElementById('cv-heading').textContent = dir==='imp' ? 'Imperial → Metric' : 'Metric → Imperial';
+  document.getElementById('cv-dir-imp').className = 'btn-mini'+(dir==='imp'?' primary':'');
+  document.getElementById('cv-dir-met').className = 'btn-mini'+(dir==='met'?' primary':'');
+  ['length','area','volume'].forEach(t=>{
+    const i=document.getElementById('cv-'+t+'-imp');
+    const m=document.getElementById('cv-'+t+'-met');
+    if(i) i.style.display=dir==='imp'?'block':'none';
+    if(m) m.style.display=dir==='met'?'block':'none';
+  });
+}
+function doLengthRev(){
+  const m=+document.getElementById('cv-m').value||0;
+  const totalIn=m/0.0254;
+  const ft=Math.floor(totalIn/12);
+  const inches=totalIn%12;
+  setVal('o-ft',f(m/0.3048,4)+'<span class="u">ft</span>');
+  setVal('o-ftin',ft+'<span class="u">ft</span> '+f(inches,2)+'<span class="u">in</span>');
+  setVal('o-in',f(totalIn,3)+'<span class="u">in</span>');
+  setVal('o-yd',f(m/0.9144,4)+'<span class="u">yd</span>');
+}
+function doAreaRev(){
+  const m=+document.getElementById('cv-sqm-in').value||0;
+  setVal('o-sqft',f(m/0.092903,3)+'<span class="u">ft²</span>');
+  setVal('o-sqyd',f(m/0.836127,4)+'<span class="u">yd²</span>');
+  setVal('o-sqin2',f(m/0.00064516,1)+'<span class="u">in²</span>');
+}
+function doVolumeRev(src){
+  let litres=0;
+  if(src==='m3') litres=(+document.getElementById('cv-cum-in').value||0)*1000;
+  else litres=+document.getElementById('cv-lit-in').value||0;
+  const m3=litres/1000;
+  setVal('o-cuft',f(m3/0.0283168,4)+'<span class="u">ft³</span>');
+  setVal('o-cuin',f(m3/0.0000163871,1)+'<span class="u">in³</span>');
+  setVal('o-usgal',f(litres/3.78541,3)+'<span class="u">US gal</span>');
+  setVal('o-ukgal',f(litres/4.54609,3)+'<span class="u">UK gal</span>');
+}
+function cvVolMetTab(id,el){
+  el.closest('.tabs').querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('cv-vol-m3').style.display=id==='m3'?'block':'none';
+  document.getElementById('cv-vol-lit').style.display=id==='lit'?'block':'none';
+}
+// Weight
+function doWeight(src){
+  let kg=0;
+  if(src==='kg') kg=+document.getElementById('cv-kg').value||0;
+  else if(src==='lb') kg=(+document.getElementById('cv-lb').value||0)*0.453592;
+  else if(src==='ton_uk') kg=(+document.getElementById('cv-ton-uk').value||0)*1016.05;
+  else if(src==='ton_us') kg=(+document.getElementById('cv-ton-us').value||0)*907.185;
+  setVal('o-kg',src!=='kg'?f(kg,3)+'<span class="u">kg</span>':'—');
+  setVal('o-lb',src!=='lb'?f(kg/0.453592,3)+'<span class="u">lb</span>':'—');
+  setVal('o-tonne',f(kg/1000,4)+'<span class="u">t</span>');
+  setVal('o-ton-uk',src!=='ton_uk'?f(kg/1016.05,4)+'<span class="u">ton (UK)</span>':'—');
+  setVal('o-ton-us',src!=='ton_us'?f(kg/907.185,4)+'<span class="u">ton (US)</span>':'—');
+  setVal('o-oz',f(kg/0.0283495,2)+'<span class="u">oz</span>');
+}
+// Pressure
+function doPressure(src){
+  let bar=0;
+  if(src==='bar') bar=+document.getElementById('cv-bar').value||0;
+  else if(src==='psi') bar=(+document.getElementById('cv-psi').value||0)*0.0689476;
+  else if(src==='kpa') bar=(+document.getElementById('cv-kpa').value||0)/100;
+  const kpa=bar*100; const psi=bar/0.0689476; const mpa=bar/10; const atm=bar/1.01325;
+  setVal('o-bar',src!=='bar'?f(bar,4)+'<span class="u">bar</span>':'—');
+  setVal('o-psi',src!=='psi'?f(psi,3)+'<span class="u">psi</span>':'—');
+  setVal('o-kpa',src!=='kpa'?f(kpa,3)+'<span class="u">kPa</span>':'—');
+  setVal('o-mpa',f(mpa,4)+'<span class="u">MPa</span>');
+  setVal('o-atm',f(atm,4)+'<span class="u">atm</span>');
+}
+
+// ── MATERIALS ────────────────────────────────────────────────────────────────
+function calcConcrete(){
+  const cls=document.getElementById('conc-class').value;
+  const vol=+document.getElementById('conc-vol').value||0;
+  if(!vol) return;
+  // Ratios by weight: cement:sand:aggregate (approximate for site-mixed)
+  const mixes={
+    'C15':[1,3,6],'C20':[1,2.5,5],'C25':[1,2,4],
+    'C30':[1,1.5,3],'C35':[1,1.25,2.5],'C40':[1,1,2]
+  };
+  const r=mixes[cls]||mixes['C25'];
+  const total=r[0]+r[1]+r[2];
+  // Typical yield: 1m³ concrete ≈ 320kg cement for C25
+  const cementPerM3={C15:240,C20:280,C25:320,C30:370,C35:400,C40:450};
+  const ckg=(cementPerM3[cls]||320)*vol;
+  const skg=ckg*(r[1]/r[0]);
+  const akg=ckg*(r[2]/r[0]);
+  const water=ckg*0.5; // W/C ratio ~0.5
+  const bags25=Math.ceil(ckg/25);
+  const bags50=Math.ceil(ckg/50);
+  setVal('o-conc-cement',f(ckg,1)+'<span class="u">kg</span>');
+  setVal('o-conc-sand',f(skg,1)+'<span class="u">kg</span>');
+  setVal('o-conc-agg',f(akg,1)+'<span class="u">kg</span>');
+  setVal('o-conc-water',f(water,1)+'<span class="u">L</span>');
+  setVal('o-conc-bags25',bags25+' bags');
+  setVal('o-conc-bags50',bags50+' bags');
+}
+function calcScreed(){
+  const area=+document.getElementById('scr-area').value||0;
+  const thkMm=+document.getElementById('scr-thk').value||0;
+  if(!area||!thkMm) return;
+  const vol=area*thkMm/1000; // m³
+  const bags=Math.ceil(vol*1800/25); // ~1800kg/m³, 25kg bags
+  const readymix=vol;
+  setVal('o-scr-vol',f(vol,3)+'<span class="u">m³</span>');
+  setVal('o-scr-bags',bags+' × 25kg bags');
+  setVal('o-scr-mix',f(readymix,3)+'<span class="u">m³ ready-mix</span>');
+  setVal('o-scr-weight',f(vol*1800,0)+'<span class="u">kg</span>');
+}
+function calcPaint(){
+  const area=+document.getElementById('pnt-area').value||0;
+  const yield_=+document.getElementById('pnt-yield').value||10;
+  const coats=+document.getElementById('pnt-coats').value||2;
+  const waste=+document.getElementById('pnt-waste').value||0.1;
+  if(!area) return;
+  const litresNet=(area*coats)/yield_;
+  const litresGross=litresNet*(1+waste);
+  const tins1=Math.ceil(litresGross/1);
+  const tins5=Math.ceil(litresGross/5);
+  const tins10=Math.ceil(litresGross/10);
+  setVal('o-pnt-net',f(litresNet,2)+'<span class="u">L</span>');
+  setVal('o-pnt-gross',f(litresGross,2)+'<span class="u">L</span>');
+  setVal('o-pnt-1l',tins1+' × 1L');
+  setVal('o-pnt-5l',tins5+' × 5L');
+  setVal('o-pnt-10l',tins10+' × 10L');
+}
+function calcBrick(){
+  const lm=+document.getElementById('brk-l').value||215;
+  const hm=+document.getElementById('brk-h').value||65;
+  const joint=+document.getElementById('brk-joint').value||10;
+  const area=+document.getElementById('brk-area').value||0;
+  const waste=+document.getElementById('brk-waste').value||0.05;
+  if(!area) return;
+  const bPerM2=1/((lm+joint)/1000*((hm+joint)/1000));
+  const net=Math.ceil(area*bPerM2);
+  const gross=Math.ceil(net*(1+waste));
+  const mortarVol=area*0.012; // ~12L mortar per m²
+  setVal('o-brk-per-m2',f(bPerM2,1)+' /m²');
+  setVal('o-brk-net',net+' bricks');
+  setVal('o-brk-gross',gross+' bricks');
+  setVal('o-brk-mortar',f(mortarVol,2)+'<span class="u">m³ mortar</span>');
+}
+function calcWallVol(){
+  const l=+document.getElementById('wv-l').value||0;
+  const h=+document.getElementById('wv-h').value||0;
+  const t=+document.getElementById('wv-t').value||0;
+  const op=+document.getElementById('wv-op').value||0;
+  if(!l||!h||!t) return;
+  const gross=l*h*t;
+  const net=Math.max(0,gross-op);
+  setVal('o-wv-gross',f(gross,3)+'<span class="u">m³</span>');
+  setVal('o-wv-open',f(op,3)+'<span class="u">m³</span>');
+  setVal('o-wv-net',f(net,3)+'<span class="u">m³</span>');
+  setVal('o-wv-area',f(l*h,2)+'<span class="u">m²</span>');
+}
+function calcFoundation(){
+  const l=+document.getElementById('fn-l').value||0;
+  const w=+document.getElementById('fn-w').value||0;
+  const d=+document.getElementById('fn-d').value||0;
+  const qty=+document.getElementById('fn-qty').value||1;
+  if(!l||!w||!d) return;
+  const single=l*w*d;
+  const total=single*qty;
+  const excavation=total*1.15; // 15% overdig
+  setVal('o-fn-single',f(single,3)+'<span class="u">m³</span>');
+  setVal('o-fn-total',f(total,3)+'<span class="u">m³</span>');
+  setVal('o-fn-excav',f(excavation,3)+'<span class="u">m³</span>');
+  setVal('o-fn-weight',f(total*2400,0)+'<span class="u">kg concrete</span>');
+}
+
+// ── SITE / LAYOUT ─────────────────────────────────────────────────────────────
+function calcCircle(){
+  const src=document.querySelector('input[name="circ-src"]:checked').value;
+  let r=0;
+  if(src==='r') r=+document.getElementById('circ-r').value||0;
+  else if(src==='d') r=(+document.getElementById('circ-d').value||0)/2;
+  else if(src==='c') r=(+document.getElementById('circ-c').value||0)/(2*Math.PI);
+  if(!r) return;
+  const d=2*r, circ=2*Math.PI*r, area=Math.PI*r*r;
+  setVal('o-circ-r',f(r,4)+'<span class="u">m</span>');
+  setVal('o-circ-d',f(d,4)+'<span class="u">m</span>');
+  setVal('o-circ-c',f(circ,4)+'<span class="u">m</span>');
+  setVal('o-circ-area',f(area,4)+'<span class="u">m²</span>');
+  // arc
+  const angDeg=+document.getElementById('circ-arc-ang').value||0;
+  if(angDeg>0){
+    const arcLen=2*Math.PI*r*(angDeg/360);
+    const sectorArea=Math.PI*r*r*(angDeg/360);
+    const chord=2*r*Math.sin(deg2rad(angDeg/2));
+    setVal('o-circ-arc',f(arcLen,4)+'<span class="u">m</span>');
+    setVal('o-circ-sector',f(sectorArea,4)+'<span class="u">m²</span>');
+    setVal('o-circ-chord',f(chord,4)+'<span class="u">m</span>');
+  }
+}
+function calcCutFill(){
+  const a1=+document.getElementById('cf-a1').value||0;
+  const a2=+document.getElementById('cf-a2').value||0;
+  const l=+document.getElementById('cf-l').value||0;
+  if(!l) return;
+  const vol=((a1+a2)/2)*l;
+  const swellPct=+document.getElementById('cf-swell').value||25;
+  const compPct=+document.getElementById('cf-comp').value||90;
+  const loose=vol*(1+swellPct/100);
+  const compacted=vol*(compPct/100);
+  setVal('o-cf-vol',f(vol,3)+'<span class="u">m³</span>');
+  setVal('o-cf-loose',f(loose,3)+'<span class="u">m³ (loose)</span>');
+  setVal('o-cf-compact',f(compacted,3)+'<span class="u">m³ (compacted)</span>');
+  const trucks=Math.ceil(loose/10); // 10m³ truck
+  setVal('o-cf-trucks',trucks+' × 10m³ trucks');
+}
+
+// ── PROJECT ───────────────────────────────────────────────────────────────────
+// VAT
+function calcVAT(){
+  const net=+document.getElementById('vat-net').value||0;
+  const rate=+document.getElementById('vat-rate').value||20;
+  const vatAmt=net*rate/100;
+  const gross=net+vatAmt;
+  setVal('o-vat-amt',f(vatAmt,2)+'<span class="u">€</span>');
+  setVal('o-vat-gross',f(gross,2)+'<span class="u">€</span>');
+  setVal('o-vat-back',f(gross/(1+rate/100)*(rate/100),2)+'<span class="u">€ VAT in gross</span>');
+}
+function calcVATRev(){
+  const gross=+document.getElementById('vat-gross-in').value||0;
+  const rate=+document.getElementById('vat-rate2').value||20;
+  const net=gross/(1+rate/100);
+  const vatAmt=gross-net;
+  setVal('o-vat-net2',f(net,2)+'<span class="u">€</span>');
+  setVal('o-vat-amt2',f(vatAmt,2)+'<span class="u">€</span>');
+}
+
+// Cost breakdown — dynamic rows
+let costRows=[];
+function addCostRow(){
+  const id=Date.now();
+  costRows.push({id,desc:'',qty:0,unit:'m²',rate:0});
+  renderCostRows();
+}
+function removeCostRow(id){
+  costRows=costRows.filter(r=>r.id!==id);
+  renderCostRows();
+}
+function updateCostRow(id,field,val){
+  const r=costRows.find(r=>r.id===id);
+  if(r) r[field]=field==='qty'||field==='rate'?+val:val;
+  renderCostRows();
+}
+function renderCostRows(){
+  const tbody=document.getElementById('cost-rows');
+  tbody.innerHTML='';
+  let total=0;
+  costRows.forEach(r=>{
+    const lineTotal=r.qty*r.rate;
+    total+=lineTotal;
+    tbody.innerHTML+=`
+    <div style="display:grid;grid-template-columns:2fr 1fr 80px 1fr 1fr 32px;gap:6px;margin-bottom:6px;align-items:center;">
+      <input type="text" value="${r.desc}" onchange="updateCostRow(${r.id},'desc',this.value)" placeholder="Description" style="background:var(--bg);border:1px solid var(--border);color:var(--white);font-family:'Share Tech Mono',monospace;font-size:12px;padding:6px 8px;outline:none;">
+      <input type="number" value="${r.qty||''}" onchange="updateCostRow(${r.id},'qty',this.value)" placeholder="Qty" style="background:var(--bg);border:1px solid var(--border);color:var(--white);font-family:'Share Tech Mono',monospace;font-size:12px;padding:6px 8px;outline:none;-moz-appearance:textfield;">
+      <select onchange="updateCostRow(${r.id},'unit',this.value)" style="background:var(--bg);border:1px solid var(--border);color:var(--white);font-family:'Share Tech Mono',monospace;font-size:11px;padding:6px 4px;">
+        ${['m²','m³','ml','nr','ls','hr','t','bag'].map(u=>`<option${r.unit===u?' selected':''}>${u}</option>`).join('')}
+      </select>
+      <input type="number" value="${r.rate||''}" onchange="updateCostRow(${r.id},'rate',this.value)" placeholder="Rate €" style="background:var(--bg);border:1px solid var(--border);color:var(--white);font-family:'Share Tech Mono',monospace;font-size:12px;padding:6px 8px;outline:none;-moz-appearance:textfield;">
+      <span style="font-family:'Share Tech Mono',monospace;font-size:14px;color:var(--accent);text-align:right;">${f(lineTotal,2)} €</span>
+      <button onclick="removeCostRow(${r.id})" style="background:none;border:1px solid var(--border);color:var(--muted);cursor:pointer;font-size:14px;padding:4px 8px;" title="Remove">×</button>
+    </div>`;
+  });
+  setVal('cost-total',f(total,2)+' €');
+  const vatRate=+document.getElementById('cost-vat').value||20;
+  setVal('cost-vat-amt',f(total*vatRate/100,2)+' €');
+  setVal('cost-ttc',f(total*(1+vatRate/100),2)+' €');
+}
+function clearCostRows(){costRows=[];renderCostRows();}
+
+// Percentage calculator
+function calcPct(){
+  const src=document.getElementById('pct-src').value;
+  const a=+document.getElementById('pct-a').value||0;
+  const b=+document.getElementById('pct-b').value||0;
+  if(src==='of') setVal('o-pct-res',f(a*b/100,2)+' ('+a+'% of '+b+')');
+  else if(src==='what') setVal('o-pct-res',a?f(a/b*100,2)+'%':'—');
+  else if(src==='markup') setVal('o-pct-res',f(a*(1+b/100),2)+' (cost + '+b+'% markup)');
+  else if(src==='margin') setVal('o-pct-res',f(a/(1-b/100),2)+' (sell price for '+b+'% margin)');
+  else if(src==='change') setVal('o-pct-res',f((b-a)/a*100,2)+'% change from '+a+' to '+b);
+}
+
+</script>
+</body>
+</html>

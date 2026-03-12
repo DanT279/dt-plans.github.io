@@ -1,114 +1,5 @@
-// Portfolio data - Construction and drafting projects
-const portfolioData = [
-    {
-        id: 1,
-        title: "Residential House Plans",
-        titleFr: "Plans de Maison Résidentielle",
-        category: "Architectural Drafting",
-        categoryFr: "Dessin Architectural",
-        image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500&h=300&fit=crop",
-        description: "**Project Scope:** 2,500 sq ft modern residential home with attached garage and basement development. **Challenges:** Tight lot constraints (30' x 100') requiring creative space optimization and compliance with setback requirements. **Solution:** Developed 3D Revit model with parametric families, coordinated MEP systems using Navisworks, and created detailed construction drawings with 15 sheets including structural details. **Results:** Delivered complete permit-ready package 2 weeks ahead of schedule, enabling contractor to break ground immediately. Client saved $15K in change orders due to detailed coordination drawings.",
-        descriptionFr: "**Portée du Projet :** Maison résidentielle moderne de 2 500 pi² avec garage attenant et développement de sous-sol. **Défis :** Contraintes de terrain serrées (30' x 100') nécessitant une optimisation créative de l'espace et le respect des exigences de recul. **Solution :** Développé un modèle Revit 3D avec familles paramétriques, coordonné les systèmes MEP avec Navisworks, et créé des plans de construction détaillés avec 15 feuilles incluant les détails structurels. **Résultats :** Livré un package complet prêt pour permis 2 semaines avant l'échéance, permettant au contracteur de commencer immédiatement. Le client a économisé 15K$ en modifications grâce aux plans de coordination détaillés.",
-        gallery: [
-            "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500&h=300&fit=crop",
-            "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=500&h=300&fit=crop",
-            "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=500&h=300&fit=crop",
-            "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=300&fit=crop",
-            "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=500&h=300&fit=crop",
-            "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=300&fit=crop",
-            "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500&h=300&fit=crop",
-            "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=500&h=300&fit=crop",
-            "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=500&h=300&fit=crop",
-            "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=300&fit=crop",
-            "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=500&h=300&fit=crop",
-            "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=300&fit=crop",
-            "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500&h=300&fit=crop",
-            "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=500&h=300&fit=crop",
-            "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=500&h=300&fit=crop"
-        ],
-        link: "https://example.com/residential-plans"
-    },
-    {
-        id: 2,
-        title: "Commercial Office Building",
-        titleFr: "Immeuble de Bureaux Commercial",
-        category: "Commercial Design",
-        categoryFr: "Design Commercial",
-        image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500&h=300&fit=crop",
-        description: "**Project Scope:** 5-story commercial office building with 12,000 sq ft of office space and ground-floor retail. **Challenges:** Complex zoning requirements, accessibility compliance (ADA), and coordination between 5 different trades. **Solution:** Created comprehensive AutoCAD drawings with layer standards, developed detailed MEP coordination using Revit, and implemented clash detection protocols. **Results:** Successfully obtained building permit on first submission, reduced construction time by 3 weeks through detailed coordination, and achieved 95% first-time installation accuracy for MEP systems.",
-        descriptionFr: "**Portée du Projet :** Immeuble de bureaux commercial de 5 étages avec 12 000 pi² d'espace de bureaux et commerce au rez-de-chaussée. **Défis :** Exigences de zonage complexes, conformité d'accessibilité (ADA), et coordination entre 5 corps de métier différents. **Solution :** Créé des plans AutoCAD complets avec standards de calques, développé une coordination MEP détaillée avec Revit, et implémenté des protocoles de détection de conflits. **Résultats :** Obtenu avec succès le permis de construction dès la première soumission, réduit le temps de construction de 3 semaines grâce à la coordination détaillée, et atteint 95% de précision d'installation du premier coup pour les systèmes MEP.",
-        gallery: [
-            "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500&h=300&fit=crop",
-            "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=500&h=300&fit=crop",
-            "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=500&h=300&fit=crop"
-        ],
-        link: "https://example.com/commercial-building"
-    },
-    {
-        id: 3,
-        title: "Structural Steel Detailing",
-        titleFr: "Détail d'Acier Structurel",
-        category: "Structural Engineering",
-        categoryFr: "Ingénierie Structurelle",
-        image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=300&fit=crop",
-        description: "Precise structural steel detailing for industrial warehouse construction. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.",
-        descriptionFr: "Détail précis d'acier structurel pour la construction d'entrepôt industriel. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.",
-        gallery: [
-            "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=300&fit=crop",
-            "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=300&fit=crop",
-            "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=300&fit=crop"
-        ],
-        link: "https://example.com/steel-detailing"
-    },
-    {
-        id: 4,
-        title: "MEP Systems Design",
-        titleFr: "Conception de Systèmes MEP",
-        category: "MEP Engineering",
-        categoryFr: "Ingénierie MEP",
-        image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=500&h=300&fit=crop",
-        description: "Comprehensive MEP (Mechanical, Electrical, Plumbing) system design for healthcare facility. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
-        descriptionFr: "Conception complète de systèmes MEP (Mécanique, Électrique, Plomberie) pour installation de soins de santé. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
-        gallery: [
-            "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=500&h=300&fit=crop",
-            "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=500&h=300&fit=crop",
-            "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=500&h=300&fit=crop"
-        ],
-        link: "https://example.com/mep-design"
-    },
-    {
-        id: 5,
-        title: "3D Building Model",
-        titleFr: "Modèle 3D de Bâtiment",
-        category: "3D Modeling",
-        categoryFr: "Modélisation 3D",
-        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=300&fit=crop",
-        description: "Detailed 3D building model created in Revit for client presentation and construction coordination. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.",
-        descriptionFr: "Modèle 3D de bâtiment détaillé créé dans Revit pour présentation client et coordination de construction. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.",
-        gallery: [
-            "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=300&fit=crop",
-            "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=300&fit=crop",
-            "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=300&fit=crop"
-        ],
-        link: "https://example.com/3d-model"
-    },
-    {
-        id: 6,
-        title: "Construction Documentation",
-        titleFr: "Documentation de Construction",
-        category: "Project Documentation",
-        categoryFr: "Documentation de Projet",
-        image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=300&fit=crop",
-        description: "Complete construction documentation package including specifications, details, and construction notes. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
-        descriptionFr: "Ensemble complet de documentation de construction incluant spécifications, détails et notes de construction. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
-        gallery: [
-            "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=300&fit=crop",
-            "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=300&fit=crop",
-            "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=300&fit=crop"
-        ],
-        link: "https://example.com/construction-docs"
-    }
-];
+// Portfolio data - Loaded dynamically from JSON file
+let portfolioData = [];
 
 // Language state
 let currentLanguage = 'en';
@@ -135,6 +26,12 @@ const skillsModal = document.getElementById('skills-modal');
 const closeSkillsBtn = document.getElementById('closeSkillsModal');
 const skillsLink = document.querySelector('a[href="#skills"]');
 
+// Tools / calculators modal elements
+const toolsModal = document.getElementById('tools-modal');
+const closeToolsBtn = document.getElementById('closeToolsModal');
+const toolsLink = document.querySelector('a[href="#tools"]');
+const calculatorFrame = document.getElementById('calculatorFrame');
+
 // Contact modal elements
 const contactModal = document.getElementById('contact-modal');
 const closeContactBtn = document.getElementById('closeContactModal');
@@ -151,9 +48,42 @@ const contactBtn = document.querySelector('.contact-btn');
 const mobileMenuToggle = document.getElementById('mobileMenuToggle');
 const nav = document.querySelector('.nav');
 
+// Load portfolio data from JSON file
+async function loadPortfolioData() {
+    try {
+        const response = await fetch('data/projects.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        portfolioData = data.projects;
+        return true;
+    } catch (error) {
+        console.error('Error loading portfolio data:', error);
+        // Fallback to empty array if JSON fails to load
+        portfolioData = [];
+        return false;
+    }
+}
+
 // Initialize the portfolio
-function initPortfolio() {
-    renderPortfolio();
+async function initPortfolio() {
+    // Show loading state
+    showLoading();
+    
+    // Load portfolio data
+    const dataLoaded = await loadPortfolioData();
+    
+    if (dataLoaded && portfolioData.length > 0) {
+        // Hide loading and render portfolio
+        hideLoading();
+        renderPortfolio();
+    } else {
+        // Show error message if no data loaded
+        hideLoading();
+        showError();
+    }
+    
     setupEventListeners();
     setupScrollEffects();
 }
@@ -221,6 +151,21 @@ function switchLanguage(lang) {
     
     // Re-render portfolio with new language
     renderPortfolio();
+
+    // Update tools/calculators language
+    updateCalculatorLanguage();
+}
+
+function getCalculatorSrcForLanguage(lang) {
+    return lang === 'fr' ? 'Calculators/calc-fr.html' : 'Calculators/calc-en.html';
+}
+
+function updateCalculatorLanguage() {
+    if (!calculatorFrame) return;
+    const nextSrc = getCalculatorSrcForLanguage(currentLanguage);
+    if (calculatorFrame.getAttribute('src') !== nextSrc) {
+        calculatorFrame.setAttribute('src', nextSrc);
+    }
 }
 
 // Render portfolio items
@@ -404,6 +349,7 @@ function closeAllModals() {
     // Close all modals
     aboutModal.classList.remove('active');
     skillsModal.classList.remove('active');
+    toolsModal.classList.remove('active');
     contactModal.classList.remove('active');
     modal.classList.remove('active');
     document.body.classList.remove('modal-open');
@@ -440,6 +386,24 @@ function openSkillsModal() {
 
 function closeSkillsModal() {
     skillsModal.classList.remove('active');
+    document.body.classList.remove('modal-open');
+    // Remove scroll listener
+    removeModalScrollListener();
+}
+
+// Tools / calculators modal functions
+function openToolsModal() {
+    // Close any other open modals first
+    closeAllModals();
+    updateCalculatorLanguage();
+    toolsModal.classList.add('active');
+    document.body.classList.add('modal-open');
+    // Add scroll listener to redirect scroll to modal content
+    addModalScrollListener();
+}
+
+function closeToolsModal() {
+    toolsModal.classList.remove('active');
     document.body.classList.remove('modal-open');
     // Remove scroll listener
     removeModalScrollListener();
@@ -575,6 +539,27 @@ function setupEventListeners() {
             }
         });
     }
+
+    // Tools / calculators modal events
+    if (toolsLink) {
+        toolsLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            openToolsModal();
+        });
+    }
+
+    if (closeToolsBtn) {
+        closeToolsBtn.addEventListener('click', closeToolsModal);
+    }
+
+    // Close tools modal when clicking backdrop
+    if (toolsModal) {
+        toolsModal.addEventListener('click', (e) => {
+            if (e.target === toolsModal || e.target.classList.contains('modal-backdrop')) {
+                closeToolsModal();
+            }
+        });
+    }
     
     // Contact modal events
     if (contactLink) {
@@ -618,6 +603,9 @@ function setupEventListeners() {
             if (skillsModal && skillsModal.classList.contains('active')) {
                 closeSkillsModal();
             }
+            if (toolsModal && toolsModal.classList.contains('active')) {
+                closeToolsModal();
+            }
             if (contactModal && contactModal.classList.contains('active')) {
                 closeContactModal();
             }
@@ -649,23 +637,13 @@ function setupEventListeners() {
     // Contact button event
     if (contactBtn) {
         contactBtn.addEventListener('click', () => {
-            // Copy email to clipboard and show feedback
-            navigator.clipboard.writeText('contact@dt-plans.com').then(() => {
-                // Show temporary feedback
-                const originalText = contactBtn.textContent;
-                contactBtn.textContent = 'Email Copied!';
-                contactBtn.style.background = '#d4d4d4';
-                contactBtn.style.color = '#1a1a1a';
-                
-                setTimeout(() => {
-                    contactBtn.textContent = originalText;
-                    contactBtn.style.background = 'rgba(212, 212, 212, 0.1)';
-                    contactBtn.style.color = '#d4d4d4';
-                }, 2000);
-            }).catch(() => {
-                // Fallback: open email client
-                window.location.href = 'mailto:contact@dt-plans.com';
-            });
+            const subject = encodeURIComponent('Project Inquiry');
+            const body = encodeURIComponent(
+                currentLanguage === 'fr'
+                    ? "Bonjour,\n\nJe souhaiterais discuter d'un projet de plans.\n\n- Nom:\n- Type de projet:\n- Localisation:\n- Échéancier:\n- Budget (si applicable):\n\nMerci!"
+                    : "Hi,\n\nI'd like to discuss a drafting project.\n\n- Name:\n- Project type:\n- Location:\n- Timeline:\n- Budget (if applicable):\n\nThanks!"
+            );
+            window.location.href = `mailto:contact@dt-plans.com?subject=${subject}&body=${body}`;
         });
     }
     
@@ -680,6 +658,8 @@ function setupEventListeners() {
             
             if (targetId === '#about') {
                 openAboutModal();
+            } else if (targetId === '#tools') {
+                openToolsModal();
             } else {
                 const targetSection = document.querySelector(targetId);
                 if (targetSection) {
@@ -770,10 +750,29 @@ function hideLoading() {
     }
 }
 
+// Show error message when data fails to load
+function showError() {
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'error-message';
+    errorDiv.innerHTML = `
+        <div style="text-align: center; padding: 40px; color: #d4d4d4;">
+            <h3 style="margin-bottom: 15px; color: #dc3545;">⚠️ Unable to Load Projects</h3>
+            <p style="margin-bottom: 20px;">There was an error loading the portfolio data.</p>
+            <p style="font-size: 14px; color: #a0a0a0;">
+                Make sure the <code>data/projects.json</code> file exists and is properly formatted.
+            </p>
+        </div>
+    `;
+    gallery.appendChild(errorDiv);
+}
+
 // Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     // Initialize portfolio immediately
-    initPortfolio();
+    await initPortfolio();
+
+    // Ensure calculators iframe matches current language
+    updateCalculatorLanguage();
 });
 
 // Add some interactive effects
