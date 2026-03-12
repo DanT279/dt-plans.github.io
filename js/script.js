@@ -157,7 +157,7 @@ function switchLanguage(lang) {
     
     // Update all elements with data attributes
     document.querySelectorAll('[data-en][data-fr]').forEach(element => {
-        element.innerHTML = element.getAttribute(`data-${lang}`);
+        element.textContent = element.getAttribute(`data-${lang}`);
     });
     
     // Update title
