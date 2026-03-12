@@ -135,9 +135,9 @@
         "assets/images/project2-office/main.jpg"
       ],
       "link": "https://example.com/office-project"
-    }
+    },
 	{
-	  "id": 1773318554851,
+	  "id": 9,
       "title": "Cabin in the Woods",
       "titleFr": "Cabane dans les Bois",
       "category": "Residential",
@@ -149,6 +149,6 @@
         "assets\\images\\Cabane\\images.jpg"
       ],
       "link": "https://example.com/project"
-   }
+    }
   ]
 }
