@@ -1,0 +1,14 @@
+{
+  "title": "Cabin in the Woods",
+  "titleFr": "Cabane dans les Arbres",
+  "category": "Residential",
+  "categoryFr": "Residentielle",
+  "image": "images/cover.jpg",
+  "description": "A simple cabin in the woods",
+  "descriptionFr": "Une jolie petite cabane dans les bois",
+  "gallery": [
+    "images/cover.jpg",
+    "images/photo2.jpg"
+  ],
+  "link": ""
+}
