@@ -137,18 +137,18 @@
       "link": "https://example.com/office-project"
     }
 	{
-  "id": 1773318554851,
-  "title": "Cabin in the Woods",
-  "titleFr": "Cabane dans les Bois",
-  "category": "Residential",
-  "categoryFr": "Residentielle",
-  "image": "https://landifornia-lodge.com/wp-content/uploads/2023/12/1-photo-scaled.jpg",
-  "description": "A nice liitle cabin",
-  "descriptionFr": "Un jolie petite cabane",
-  "gallery": [
-    "assets\\images\\Cabane\\images.jpg"
-  ],
-  "link": "https://example.com/project"
+	  "id": 1773318554851,
+      "title": "Cabin in the Woods",
+      "titleFr": "Cabane dans les Bois",
+      "category": "Residential",
+      "categoryFr": "Residentielle",
+      "image": "https://landifornia-lodge.com/wp-content/uploads/2023/12/1-photo-scaled.jpg",
+      "description": "A nice liitle cabin",
+      "descriptionFr": "Un jolie petite cabane",
+      "gallery": [
+        "assets\\images\\Cabane\\images.jpg"
+      ],
+      "link": "https://example.com/project"
    }
   ]
 }
