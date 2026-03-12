@@ -383,6 +383,12 @@ h1, h2, h3, h4, h5, h6 {
     grid-row: span 1;
 }
 
+/* Items 7+ tile like 4–6: same row height, 3 per row (span 4 each) */
+.portfolio-item:nth-child(n+7) {
+    grid-column: span 4;
+    grid-row: span 1;
+}
+
 .portfolio-item:hover {
     transform: scale(1.03);
     z-index: 10;
@@ -1269,6 +1275,10 @@ body.modal-open {
     .portfolio-item:nth-child(6) {
         grid-column: span 4;
     }
+    
+    .portfolio-item:nth-child(n+7) {
+        grid-column: span 4;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1286,6 +1296,11 @@ body.modal-open {
         grid-column: span 2;
         grid-row: span 1;
     }
+    
+    .portfolio-item:nth-child(n+7) {
+        grid-column: span 2;
+        grid-row: span 1;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1299,6 +1314,11 @@ body.modal-open {
     .portfolio-item:nth-child(4),
     .portfolio-item:nth-child(5),
     .portfolio-item:nth-child(6) {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+    
+    .portfolio-item:nth-child(n+7) {
         grid-column: span 1;
         grid-row: span 1;
     }
