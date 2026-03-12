@@ -46,11 +46,11 @@ header .sub{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liber
 /* FIELDS */
 .field{margin-bottom:14px;}
 label{display:block;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--label);margin-bottom:5px;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
-input[type=number],select{width:100%;background:rgba(26,26,26,0.6);border:1px solid var(--border);color:var(--white);font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;font-size:16px;padding:9px 12px;outline:none;transition:border-color .15s,background .15s;-moz-appearance:textfield;}
+input[type=number],select{width:100%;background:rgba(26,26,26,0.9);border:1px solid var(--border);color:var(--white);font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;font-size:16px;padding:9px 12px;outline:none;transition:border-color .15s,background .15s;-moz-appearance:textfield;}
 input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;}
-input[type=number]:focus,select:focus{border-color:var(--accent);background:rgba(0,191,191,.04);}
-select{font-size:14px;cursor:pointer;}
-select option{background:var(--panel);}
+input[type=number]:focus,select:focus{border-color:var(--accent);background:rgba(245,245,245,0.06);}
+select{font-size:14px;cursor:pointer;background:rgba(26,26,26,0.9);color:var(--white);}
+select option{background:#111111;color:var(--white);}
 /* Dropdown section headings (Land Area) */
 #land-from option[disabled]{color:var(--accent);text-transform:uppercase;letter-spacing:.2em;font-size:10px;}
 .unit-hint{font-size:10px;color:var(--muted);font-family:'Share Tech Mono',monospace;margin-top:3px;letter-spacing:.05em;}
@@ -87,6 +87,23 @@ svg.diag{width:100%;max-width:260px;height:auto;}
 .info{background:rgba(245,245,245,0.04);border-left:2px solid var(--accent);padding:10px 14px;font-size:12px;color:var(--text);line-height:1.6;margin-top:14px;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;}
 
 footer{text-align:center;margin-top:40px;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;font-size:10px;letter-spacing:.2em;color:var(--muted);}
+
+/* Hide scrollbars but keep scrolling */
+html,body{
+  scrollbar-width:none;
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar{
+  width:0;
+  height:0;
+}
+*::-webkit-scrollbar{
+  width:0;
+  height:0;
+}
+*{
+  scrollbar-width:none;
+}
 </style>
 </head>
 <body>
