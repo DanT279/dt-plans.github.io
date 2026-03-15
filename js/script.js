@@ -223,7 +223,7 @@ function openModal(item) {
     const description = currentLanguage === 'fr' ? item.descriptionFr : item.description;
     
     modalTitle.textContent = title;
-    modalDescription.innerHTML = description.replace(/\n\n/g, '<br><br>');
+    modalDescription.textContent = description;
     
     // Render gallery images
     modalGallery.innerHTML = '';
