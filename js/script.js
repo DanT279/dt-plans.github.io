@@ -4,6 +4,9 @@ let portfolioData = [];
 // Language state
 let currentLanguage = 'en';
 
+// Project currently shown in modal (so we can refresh it on language switch)
+let currentModalItem = null;
+
 // DOM elements
 const gallery = document.getElementById('gallery');
 const modal = document.getElementById('modal');
@@ -176,6 +179,11 @@ function switchLanguage(lang) {
 
     // Update tools/calculators language
     updateCalculatorLanguage();
+
+    // If project modal is open, refresh its content to the new language
+    if (modal.classList.contains('active') && currentModalItem) {
+        openModal(currentModalItem);
+    }
 }
 
 function getCalculatorSrcForLanguage(lang) {
@@ -217,6 +225,7 @@ function renderPortfolio() {
 
 // Open modal with project details
 function openModal(item) {
+    currentModalItem = item;
     modalImage.src = item.image;
     
     const title = currentLanguage === 'fr' ? item.titleFr : item.title;
@@ -257,6 +266,7 @@ function openModal(item) {
 
 // Close modal
 function closeModalHandler() {
+    currentModalItem = null;
     modal.classList.remove('active');
     document.body.classList.remove('modal-open');
     // Remove scroll listener
