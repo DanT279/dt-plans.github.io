@@ -185,7 +185,7 @@ function switchLanguage(lang) {
         const title = currentLanguage === 'fr' ? currentModalItem.titleFr : currentModalItem.title;
         const description = currentLanguage === 'fr' ? currentModalItem.descriptionFr : currentModalItem.description;
         if (modalTitle) modalTitle.textContent = title;
-        if (modalDescription) modalDescription.textContent = description;
+        setModalDescription(description);
         if (modalImage) modalImage.src = currentModalItem.image;
         modalGallery.innerHTML = '';
         (currentModalItem.gallery || []).forEach((image, index) => {
@@ -243,6 +243,18 @@ function renderPortfolio() {
     });
 }
 
+// Set modal description with paragraph breaks (\n\n in JSON = new paragraph)
+function setModalDescription(description) {
+    if (!modalDescription) return;
+    modalDescription.innerHTML = '';
+    const paragraphs = (description || '').split(/\n\n+/);
+    paragraphs.forEach((text) => {
+        const p = document.createElement('p');
+        p.textContent = text.trim();
+        if (p.textContent) modalDescription.appendChild(p);
+    });
+}
+
 // Open modal with project details
 function openModal(item) {
     currentModalItem = item;
@@ -252,7 +264,7 @@ function openModal(item) {
     const description = currentLanguage === 'fr' ? item.descriptionFr : item.description;
     
     modalTitle.textContent = title;
-    modalDescription.textContent = description;
+    setModalDescription(description);
     
     // Render gallery images
     modalGallery.innerHTML = '';
