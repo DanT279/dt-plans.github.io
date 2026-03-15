@@ -180,9 +180,29 @@ function switchLanguage(lang) {
     // Update tools/calculators language
     updateCalculatorLanguage();
 
-    // If project modal is open, refresh its content to the new language
-    if (modal.classList.contains('active') && currentModalItem) {
-        openModal(currentModalItem);
+    // If project modal is open, refresh its title/description/image/gallery to the new language
+    if (modal && modal.classList.contains('active') && currentModalItem) {
+        const title = currentLanguage === 'fr' ? currentModalItem.titleFr : currentModalItem.title;
+        const description = currentLanguage === 'fr' ? currentModalItem.descriptionFr : currentModalItem.description;
+        if (modalTitle) modalTitle.textContent = title;
+        if (modalDescription) modalDescription.textContent = description;
+        if (modalImage) modalImage.src = currentModalItem.image;
+        modalGallery.innerHTML = '';
+        (currentModalItem.gallery || []).forEach((image, index) => {
+            const img = document.createElement('img');
+            img.src = image;
+            img.alt = `${title} - Image ${index + 1}`;
+            img.addEventListener('click', () => {
+                modalImage.style.opacity = '0';
+                setTimeout(() => {
+                    modalImage.src = image;
+                    modalImage.style.opacity = '1';
+                    centerImageInGallery(img);
+                }, 375);
+            });
+            modalGallery.appendChild(img);
+        });
+        updateGalleryNavigation();
     }
 }
 
