@@ -246,13 +246,7 @@ function renderPortfolio() {
 // Set modal description with paragraph breaks (\n\n in JSON = new paragraph)
 function setModalDescription(description) {
     if (!modalDescription) return;
-    modalDescription.innerHTML = '';
-    const paragraphs = (description || '').split(/\n\n+/);
-    paragraphs.forEach((text) => {
-        const p = document.createElement('p');
-        p.textContent = text.trim();
-        if (p.textContent) modalDescription.appendChild(p);
-    });
+    modalDescription.innerHTML = description || '';
 }
 
 // Open modal with project details
