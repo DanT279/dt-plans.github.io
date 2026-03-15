@@ -62,22 +62,6 @@
     },
     {
       "id": 4,
-      "title": "MEP Systems Design",
-      "titleFr": "Conception de Systèmes MEP",
-      "category": "MEP Engineering",
-      "categoryFr": "Ingénierie MEP",
-      "image": "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=500&h=300&fit=crop",
-      "description": "Comprehensive MEP (Mechanical, Electrical, Plumbing) system design for healthcare facility. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
-      "descriptionFr": "Conception complète de systèmes MEP (Mécanique, Électrique, Plomberie) pour installation de soins de santé. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
-      "gallery": [
-        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=500&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=500&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=500&h=300&fit=crop"
-      ],
-      "link": "https://example.com/mep-design"
-    },
-    {
-      "id": 5,
       "title": "3D Building Model",
       "titleFr": "Modèle 3D de Bâtiment",
       "category": "3D Modeling",
@@ -93,7 +77,7 @@
       "link": "https://example.com/3d-model"
     },
     {
-      "id": 6,
+      "id": 5,
       "title": "Construction Documentation",
       "titleFr": "Documentation de Construction",
       "category": "Project Documentation",
@@ -109,7 +93,7 @@
       "link": "https://example.com/construction-docs"
     },
     {
-      "id": 7,
+      "id": 6,
       "title": "Modern House Project",
       "titleFr": "Projet de Maison Moderne",
       "category": "Residential Design",
@@ -123,7 +107,7 @@
       "link": "https://example.com/house-project"
     },
     {
-      "id": 8,
+      "id": 7,
       "title": "Office Building Design",
       "titleFr": "Conception d'Immeuble de Bureaux",
       "category": "Commercial Architecture",
@@ -136,19 +120,6 @@
       ],
       "link": "https://example.com/office-project"
     },
-	  {
-	    "id": 9,
-      "title": "Cabin in the Woods",
-      "titleFr": "Cabane dans les Bois",
-      "category": "Residential",
-      "categoryFr": "Residentielle",
-      "image": "https://landifornia-lodge.com/wp-content/uploads/2023/12/1-photo-scaled.jpg",
-      "description": "A nice liitle cabin",
-      "descriptionFr": "Un jolie petite cabane",
-      "gallery": [
-        "assets\\images\\Cabane\\images.jpg"
-      ],
-      "link": "https://example.com/project"
-    }
+	  
   ]
 }
