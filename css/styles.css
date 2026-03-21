@@ -123,13 +123,29 @@ p {
     position: relative;
 }
 
-/* Grid System (The "Masonry" Look) */
+/* Updated Portfolio Grid Fix */
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    /* This ensures it fills the full width of the container */
+    width: 100%; 
+    /* Force columns to be at least 300px, or 100% on small screens */
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
     gap: 20px;
     padding: 40px 0;
+    /* Ensures the grid itself doesn't shrink to zero */
+    align-items: start;
 }
+
+.portfolio-item {
+    position: relative;
+    width: 100%; /* Ensure the item fills the grid cell */
+    aspect-ratio: 1 / 1;
+    background: var(--bg-card);
+    border-radius: 4px;
+    overflow: hidden;
+    display: block; /* Make sure it's not behaving like an inline element */
+}
+
 
 .portfolio-item {
     position: relative;
