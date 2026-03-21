@@ -1,3 +1,8 @@
+(function() {
+    "use strict";
+
+    // Your existing code starts here...
+
 // Portfolio data - Loaded dynamically from JSON file
 let portfolioData = [];
 
@@ -843,6 +848,10 @@ document.addEventListener('DOMContentLoaded', () => {
             hero.style.transform = `translateY(${scrolled * 0.5}px)`;
         }
     });
+
+    
     
     // Portfolio items are visible by default - no animation needed
 });
+
+})(); 
