@@ -15,7 +15,7 @@
     {
      "src": "favicon-dt.svg",
      "sizes": "512x512",
-     "type": "image/svg",
+     "type": "image/svg+xml",
      "purpose": "any"
     }
   ],
