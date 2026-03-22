@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow">
+  <title>Étape 2 — Les Années 70</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Georgia, serif; background: #f5f3ee; color: #1a1a1a; display: flex; align-items: center; justify-content: center; padding: 2rem 1rem; min-height: 100vh; }
+    .card { background: #fff; border: 1px solid #ddd; border-radius: 4px; max-width: 560px; width: 100%; padding: 2.5rem 2rem; }
+    .etape { font-family: 'Courier New', monospace; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: #888; margin-bottom: 1.5rem; }
+    h2 { font-size: 1rem; font-weight: normal; letter-spacing: 0.05em; text-transform: uppercase; color: #555; margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 1px solid #eee; }
+    audio { width: 100%; margin: 0.75rem 0; accent-color: #1a1a1a; }
+    .audio-hint { font-size: 0.8rem; color: #999; font-style: italic; margin-bottom: 1.5rem; }
+    .audio-section { margin-bottom: 1.5rem; }
+    .divider { border: none; border-top: 1px solid #eee; margin: 1.5rem 0; }
+    .question-text { font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem; }
+    input[type="text"] { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; margin: 0.5rem 0 1rem 0; font-size: 1rem; font-family: Georgia, serif; outline: none; }
+    input[type="text"]:focus { border-color: #1a1a1a; }
+    button { width: 100%; padding: 12px; background: #1a1a1a; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; font-family: 'Courier New', monospace; }
+    button:hover { background: #333; }
+    #hidden-content { display: none; margin-top: 2rem; }
+    .mot-cle-section { padding: 0.75rem 1rem; background: #f9f9f9; border-left: 3px solid #ddd; margin-bottom: 1.5rem; }
+    .mot-cle-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: #999; margin-bottom: 0.3rem; }
+    .mot-cle-value { font-family: 'Courier New', monospace; font-size: 1.2rem; font-weight: bold; color: #444; letter-spacing: 0.1em; }
+    .indice-section { padding: 0.75rem 1rem; background: #fdfae6; border-left: 3px solid #f1c40f; }
+    .indice-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: #999; margin-bottom: 0.3rem; }
+    .indice-text { font-size: 0.95rem; line-height: 1.5; color: #333; }
+    .footer { margin-top: 2rem; font-size: 0.7rem; color: #bbb; text-align: center; font-family: 'Courier New', monospace; letter-spacing: 0.05em; }
+    .erreur { color: #c0392b; font-size: 0.9rem; margin-top: 0.5rem; display: none; }
+  </style>
+</head>
+<body>
+  <div class="card">
+
+    <div class="etape">Blind Test &mdash; Étape 2 sur 6 &mdash; Les Années 70</div>
+
+    <div id="quiz-ui">
+
+      <!-- Audio -->
+      <div class="audio-section">
+        <h2>🎵 Écoutez</h2>
+        <audio controls>
+          <source src="audio/chanson2.mp3" type="audio/mpeg" />
+          Votre navigateur ne supporte pas la lecture audio.
+        </audio>
+        <p class="audio-hint">Notez votre réponse sur votre feuille avant de valider.</p>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- Question -->
+      <h2>🕵️ L'Énigme</h2>
+      <p class="question-text">
+        En 1969, ce duo franco-britannique a sorti un titre tellement provocateur
+        qu'il fut interdit sur plusieurs radios européennes.
+        Nommez l'un ou l'autre des deux artistes.
+      </p>
+
+      <input type="text" id="answer-input" placeholder="Nom de l'artiste..." autocomplete="off" />
+      <button onclick="check()">Valider</button>
+      <p class="erreur" id="erreur-msg">❌ Ce n'est pas ça — réessayez !</p>
+
+    </div>
+
+    <!-- Révélé après bonne réponse -->
+    <div id="hidden-content">
+
+      <div class="mot-cle-section">
+        <div class="mot-cle-label">📝 Mot clé — notez-le sur votre feuille</div>
+        <div class="mot-cle-value">VINYLE</div>
+      </div>
+
+      <div class="indice-section">
+        <div class="indice-label">📍 Prochaine étape</div>
+        <p class="indice-text">
+          Trouvez le prochain code là où l'eau coule...
+        </p>
+      </div>
+
+    </div>
+
+    <div class="footer">Blind Test &bull; Sortie de Service &bull; 2026</div>
+  </div>
+
+  <script>
+    function check() {
+      const reponses = ["gainsbourg", "serge gainsbourg", "jane birkin", "birkin"];
+      const val = document.getElementById('answer-input').value.trim().toLowerCase();
+      const erreur = document.getElementById('erreur-msg');
+      if (reponses.includes(val)) {
+        document.getElementById('quiz-ui').style.display = 'none';
+        document.getElementById('hidden-content').style.display = 'block';
+      } else {
+        erreur.style.display = 'block';
+      }
+    }
+
+    // Valider avec la touche Entrée
+    document.getElementById('answer-input').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') check();
+    });
+  </script>
+</body>
+</html>
